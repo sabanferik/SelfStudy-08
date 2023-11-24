@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORM ELEMENTS</title>
+    <style>
+        .container{
+             background-color: rgb(236, 90, 37);
+        }
+        .header{
+            background-color: grey;
+            display: flex;
+            align-items: center;
+        }
+        .header img{
+            padding:10px;
+        }
+        form{
+            padding: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="./images/avatar-men.png" alt="" width="20%" />
+        <h4>PERSONEL TANIMA FORMU</h4>
+      </div>
+
+      <form action="./result.html">
+        <div>
+          <label for="ad">Adınız:</label>
+          <br />
+          <input type="text" id="ad" name="AD" />
+        </div>
+        <br />
+        <div>
+          <label for="soyad">Soyadınız:</label>
+          <br />
+          <input type="text" id="soyad" name="SOYAD" />
+        </div>
+        <br />
+        <div>
+          <label for="sifre">Şifreniz:</label> <br />
+          <input type="password" name="SIFRE" id="sifre" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
