@@ -1,0 +1,45 @@
+body{
+    background-image: linear-gradient(to right top, #d16ba5, #ed7690, #fb8b7b, #fba66d, #efc26c, #d0c56a, #b1c670, #92c57c, #68aa75, #438e6d, #237261, #065752);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+/* body deki uygulama css gradient makerla yapildi */
+.box1{
+    /* isim ile renk kullanimi */
+    background-color:maroon;
+    color: antiquewhite;
+}
+
+.box2{
+    /* rgb degeri ile renk kullanimi */
+    /* background-color: rgb(200,25,200); */
+    background-color: rgb(14,149,104);
+}
+.box3{
+    /* rgb-alpha degeri */
+    background-color: rgba(12,230,80,0.8);
+}
+.box4{
+    /* hexadecimal degeri ile renk kullanimi */
+    background-color: #2345ef;
+}
+.box5{
+    background-color: #E51A59;
+    color: #FFEB80;
+}
+.box6{
+    background-color: hsla(330,40%,80%);
+}
+ 
+.box7{
+    background-color: hsla(330,40%,60%);
+}
+ 
+.box8{
+    background-color: hsla(330,40%,40%);
+}
+ 
+.box9{
+    background-color: hsla(330,40%,20%);
+}
+ 
