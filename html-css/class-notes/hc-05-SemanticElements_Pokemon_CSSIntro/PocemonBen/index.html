@@ -11,7 +11,7 @@
     
     <header>
         <h1>PokemonClub</h1>
-        <audio src="./audio/Pokemon.mp3" controls autoplay muted></audio>
+        <audio src="./audio/Pokemon.mp3" controls autoplay id="myAudio"></audio>
     </header>
     <section class="banner">
         <img src="./img/Pokemon.jpg" alt="pokemon">
@@ -46,6 +46,11 @@
             <p>© Copyright 2023 PokemonClub</p>
             
         </footer>
+
+        <script>
+            var myAudio = document.getElementById("myAudio");
+            myAudio.volume = 0.01;
+        </script>
         
     
 
