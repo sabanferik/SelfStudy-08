@@ -18,6 +18,7 @@ header{
     z-index: 1;
 }
 header h1{
+  margin: 30px auto;
     color: white;
     border: 8px solid white;
     display: inline-block;
@@ -122,7 +123,7 @@ header h1{
   #myAudio{
     display: block;
     /* border: 2px solid yellow; */
-    margin: 10px auto;
+    margin: 30px auto;
   }
  
 
