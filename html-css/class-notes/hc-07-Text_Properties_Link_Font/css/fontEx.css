@@ -1,0 +1,28 @@
+/* font-family: 'Dosis', sans-serif;
+font-family: 'Saira Extra Condensed', sans-serif;
+font-family: 'Vina Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+
+.app{
+    background-color: chocolate;
+    /* font-family:Georgia, 'Times New Roman', Times, serif */
+    font-family: 'Dosis', sans-serif;
+    font-style: italic;
+    
+}
+
+.banana{
+    background-color: indianred;
+    font-family: 'Nova Square', sans-serif;
+    /* font-variant: small-caps; */
+    font-weight: 800;
+}
+
+p{
+    font-family: 'Saira Extra Condensed', sans-serif
+}
+
+.variantFont{
+    font-variant: small-caps;
+    font-weight: 900;
+}

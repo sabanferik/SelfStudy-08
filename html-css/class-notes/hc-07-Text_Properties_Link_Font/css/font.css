@@ -1,28 +1,41 @@
-/* browserin font boyutu 16px dir */
+
+/* browserın font boyutu 16px  */
 *{
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
+    border:1px solid red;
 }
-
 html{
-    font-size: 10px;
+    font-size: 20px;
 }
-
 h1{
-    font-size: 3rem;
-    /* 16*3=48px */
+    font-size: 3rem;  
+    /* 16x3=48px > 20x3=60px*/
 }
 p{
-    font-size: 2rem;
-    /* 16*2=32px */
+    font-size:2rem;
+    /* 16x2=32px  > 20x2 =40px*/
 }
-
 img{
     width: 20rem;
-    border: 0.3rem solid gray;
-    padding: 0.5rem;
+    border:0.3rem solid gray;
+    padding:0.5rem;
 }
-
 .imagess{
     width: 300px;
+}
+
+.endis{
+    font-size: 10px;
+    width: 50%;
+}
+
+.yazi{
+    font-size:2em;
+}
+
+.icdiv img{
+      /* View width ekran genisligi 100vwdir */
+    /* width: 50vw; */
+    width: 80%;
 }
