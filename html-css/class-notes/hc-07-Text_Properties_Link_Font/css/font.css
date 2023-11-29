@@ -1,0 +1,28 @@
+/* browserin font boyutu 16px dir */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 10px;
+}
+
+h1{
+    font-size: 3rem;
+    /* 16*3=48px */
+}
+p{
+    font-size: 2rem;
+    /* 16*2=32px */
+}
+
+img{
+    width: 20rem;
+    border: 0.3rem solid gray;
+    padding: 0.5rem;
+}
+
+.imagess{
+    width: 300px;
+}
