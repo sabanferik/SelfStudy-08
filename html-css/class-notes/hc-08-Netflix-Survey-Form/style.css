@@ -23,6 +23,7 @@ body{
     margin: auto;
     margin-top: 30px;
     padding-bottom: 30px;
+    border-radius: 10px;
 }
 
 #title{
@@ -50,11 +51,14 @@ span{
     width: 500px;
     margin: auto;
     padding: 30px 40px;
+    border-radius: 10px;
 }
-
+ 
+ 
 .input-box{
     /* border: 2px solid red; */
     margin-top: 20px;
+   
 }
 
 #name,
