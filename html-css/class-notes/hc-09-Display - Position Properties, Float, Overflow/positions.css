@@ -1,0 +1,32 @@
+.main{
+    background-color: aquamarine;
+    width: 90%;
+    margin: 30px auto 1000px;
+}
+
+
+.box1{
+    background-color: rgba(148, 0, 211, 0.805);
+    width: 100px;
+    height: 100px;
+}
+
+.box2{
+    background-color: rgba(255, 166, 0, 0.8);
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: 20px;
+    left: 30px;
+
+}
+
+.box3{
+    background-color: rgba(220, 20, 60, 0.8);
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 100px;
+    right: 100px;
+    /* z-index: -1; */
+}
