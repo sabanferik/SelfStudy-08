@@ -2,7 +2,8 @@
     display: grid;
     /* grid-template-columns: 1fr 1fr 1fr 1fr; */
     grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(4,15vh) 15vh;
+    grid-template-rows: repeat(4,15vh) 15vh 15vh;
+    gap: 10px 15px;
      
  }
 
@@ -17,7 +18,58 @@
 
  .parca1{
     background-color: pink;
+   /* 1.column dan başla 3. column a  kadar (3 dahil değil) beni büyüt */ 
     grid-column-start: 1;
     grid-column-end: 3;
     /* baslangic degeri dahildir bitis degeri ise öncesindeki sayiyi kasdeder */
+
  }
+
+ .parca4{
+    background-color: orange;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    /* 2. rowdan 4. row a kadar büyü (4 dahil değil) */
+
+     /** kisa yol **/
+    /* grid-area: 2/1/4/2; */
+     
+ }
+
+ .parca6{
+    background-color: rgb(237,31,237);
+    /* grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 4; */
+    
+    /** kisa yol **/
+
+     /* başlangıç row/ başlangıç column u / bitiş row  / bitiş column */
+
+     grid-area: 2/3/4/5;
+ }
+
+.parca8{
+    background-color: yellow;
+    grid-column-start: 1;
+    grid-column-end: 3;
+     /* grid-row: 5;bu sari kutunun yerini yani satir yerini degistirmek istersek */
+}
+
+.parca9{
+    background-color: aqua;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    /* sadece row yada sadece column birlestirirsek, birlesen kutu basa gelir, o yüzden digerinide belirtmem gerek */
+    grid-column: 3;
+}
+
+.parca12{
+    background-color: purple;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    grid-column: 2;
+}
+    
+   
