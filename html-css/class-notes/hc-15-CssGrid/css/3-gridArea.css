@@ -1,41 +1,37 @@
 *{
-    margin: 0;
+    margin:0;
     box-sizing: border-box;
 }
-
 .container{
     display: grid;
-    height: 100vh;
-    grid-template-rows: 20% 40% 20% 20%;
+
+    height:100vh;
+    grid-template-rows:20% 40% 20% 20%;
     grid-template-columns: 30% 50% 20%;
 
-
-grid-template-areas: 
-    "osman osman osman"
-    "ali ali veli"
-    "ece ece ece"
-    "ece ece ece";
+grid-template-areas:
+"osman osman osman"
+"ali ali veli"
+"ece ece ece"
+"ece ece ece"
 
 }
-
 .box{
     background-color: bisque;
-    border: 1px solid red;
+    border:1px solid red;
 }
 
 .box1{
     background-color: cadetblue;
-    grid-area: osman;
+    grid-area:osman
 }
-
 .box2{
     background-color: chartreuse;
-    grid-area: ali;
+    grid-area:ali
 }
-
 .box3{
     background-color: crimson;
-    grid-area: veli;
+    grid-area:veli;
 }
 .box4{
     background-color: chocolate;
