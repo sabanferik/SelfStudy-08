@@ -30,6 +30,15 @@
     text-shadow: 3px 3px 3px black;
     font-weight: 600;
 }
+.caurousel-caption{
+    /* border: 2px solid red; */
+    bottom: 5rem;
+}
+.carousel-indicators button{
+    background-color: var(--red) !important;
+    padding: 0.1rem !important;
+    width: 3rem !important;
+}
 
 /*! -------------- 3- ABOUT SECTION ---------------- */
 
