@@ -84,4 +84,37 @@ section#courses .nav-pills{
 
 /*! -------------- 6- CONTACT SECTION -------------- */
 
+section#contact i{
+    color: var(--red) !important;
+}
+section#contact a{
+    color: var(--red) !important;
+    text-decoration: none;
+}
+
+/* .btn-submit{
+    background-color: var(--red);
+    color: white;
+}
+.btn-submit:hover{
+    background-color: #c2414d;
+    color: white;
+} */
+
 /*! -------------- 7- FOOTER ----------------------- */
+
+
+footer i {
+    color: white;
+    font-size: 2rem;
+    margin-right: 0.8rem;
+    transition:  color .6s;
+}
+footer i:hover{
+    color: var(--red);
+}
+
+
+
+
+
