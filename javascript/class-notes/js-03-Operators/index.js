@@ -109,13 +109,85 @@ console.log(10n+20n)
 // console.log(isNaN(y)) //* NaN tespiti yapar. NaN ise true, NaN değilse false verir.
 // console.log(isNaN(z))
 
-console.log(null === null) 
-console.log(undefined === undefined) 
-console.log(NaN === NaN) 
+// console.log(null === null) 
+// console.log(undefined === undefined) 
+// console.log(NaN === NaN) 
 
-console.log(Boolean(NaN))
+// console.log(Boolean(NaN))
 
-console.log(NaN == false)
-console.log(NaN == true)
+// console.log(NaN == false)
+// console.log(NaN == true)
+
+//^ Symbol
+//* Objelerin properti isimleri kullanılabilir
+//* uniq yani benzersiz değerlerdir.
+// const sym1 = Symbol('Hello')
+// const sym2 = Symbol('Hello')
+
+// console.log(sym1, sym2)
+
+// console.log(sym1 == sym2)
 
 
+//^ type conversions
+
+// let a = 10
+// let b = '5'
+
+// console.log('Toplama', a + b) //105
+// console.log('Çıkarma', a - b) // 5
+// console.log('Çarpma', a * b) // 50
+// console.log('Bölme', a / b) //2
+
+
+// console.log(a + Number(b)) // 15
+// console.log(typeof b)
+
+// let c = Number(b)
+// let d = b
+// console.log(typeof c)
+// console.log(typeof d)
+// console.log(b,c,d)
+
+// console.log(b**2)
+
+// let e = '123.45'
+
+// console.log(parseInt(e)) //* Noktasız kısmı alır
+// console.log(parseFloat(e)) //* Nokatalı kısmı da alır
+// console.log(Math.trunc(e)) //* Noktasız kısmı alır
+
+// //* .toString() Metodu numberları stringe çevirir
+// let f = 123.456
+// let g = '123.456'
+
+// let h = f.toString()
+// console.log(typeof h)
+
+// console.log(f.toString())
+
+// let i = + g //* + operatörü stringi number a çevirir
+// console.log(typeof i)
+
+// const age1 = prompt("Enter your age: ")
+// console.log(typeof age1,age1) // string
+
+// const age2 = +prompt("Enter your age: ") 
+// console.log(typeof age2, age2) // number
+
+
+//* .toFixed() noktadan sonra kaç basamak alacağımızı belirtir
+
+//* Sayıyı stringe çevirir
+
+// let j = 0.123456789
+// console.log(j)
+// console.log(j.toFixed(4)) //sonuç string
+// console.log(+j.toFixed(4)) //sonuç number + operatöründen dolayı
+
+// console.log(typeof j, j)
+
+
+//* 0.1 + 0.2
+//https://0.30000000000000004.com/
+// console.log(0.1 + 0.2)
