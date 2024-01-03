@@ -96,3 +96,56 @@
 // } else {
 //   console.log("Low Speed")
 // }
+
+
+// //************************ SWITCH-CASE ***********************
+// console.log("-------------------------------------");
+// console.log(" ==SWİTCH-CASE== 4 Islem Hesap Makinesi ");
+// console.log("-------------------------------------");
+
+// const number1 = +prompt("1. sayıyı giriniz");
+// const operation = prompt("+,-,*,/ işlemlerinden birini giriniz");
+// const number2 = Number(prompt("2. sayıyı giriniz"));
+
+// let sonuc=0;
+
+//  switch (operation) {
+//   case "+":
+//     sonuc=number1+number2
+//     break;
+//   case "-":
+//     sonuc=number1-number2
+//     break;
+//   case "*":
+//     sonuc=number1*number2
+//     break;
+//   case "/":
+//     sonuc=number1/number2
+//     break;
+ 
+//   default:
+//     alert("yanlış işlem girdiniz");
+//     break;
+//  }
+
+//  console.log(`${number1} ${operation} ${number2} = ${sonuc}`);
+
+//**************** */ TERNARY
+
+//? ornek: maasınız asgari ücretten düşük ve eşitse maaşınıza %25 zam yapılsın, değilse maaşınıza %10 zam yapılsın.
+
+// const asgariUcret=17000
+// const maas=+prompt ("lütfen maasinizi giriniz")
+
+// const zamliMaas=maas <= asgariUcret ? maas*1.25 : maas*1.10
+
+// console.log(zamliMaas);
+
+//?Ornek:10 aylık maasınız borcunuzdan 5000 ve üstü kadar fazlaysa kredi alabilirsiniz, aksi durumda alamazsınız
+
+const Schuld = +prompt("borcunuzu giriniz");
+const Gehalt = +prompt("maaşınızı giriniz");
+
+// const Kredit = Gehalt > 5000 ? "kredi alabilirsiniz" : "kredi alamazsınız";
+
+console.log(Gehalt*10-Schuld>5000 ? "kredi alabilirsiniz🥳" : "kredi alamazsınız😞");
