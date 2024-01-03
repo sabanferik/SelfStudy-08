@@ -148,9 +148,38 @@ console.log(y)
 let z = d1 || b1 && c1
 console.log(z)
 
-// ! olumsuzluk
+// * =======================================================
+// *         MANTIKSAL OPERATORLER (logical operators)
+// * =======================================================
+ 
+//? TRUE
+console.log(Boolean(5));//true
+console.log(Boolean(-5));//true
+console.log(Boolean(-15.5));//true
+
+//? 5 falsy
+console.log(Boolean(0)); //false
+console.log(Boolean(null));//false
+console.log(Boolean(""));//false
+console.log(Boolean(undefined));//false
+console.log(Boolean(NaN));//false
+
+const v1=false || 0 || 12.6 || true || false || null
+
+console.log(v1);//12.6
+
+const v2=false || 0 || null || undefined || NaN
+
+console.log(v2);//NaN
 
 
+const v3 = 5 && true && true && 0 && ""
 
+console.log(v3);
 
+const v4 = 5 && true && true && 12 && -5;
+console.log(v4);
 
+//! olumsuzu
+console.log(!v4);//false
+console.log(!v2);//true
