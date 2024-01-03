@@ -141,11 +141,60 @@
 
 // console.log(zamliMaas);
 
-//?Ornek:10 aylık maasınız borcunuzdan 5000 ve üstü kadar fazlaysa kredi alabilirsiniz, aksi durumda alamazsınız
+//?Ornek 1 :10 aylık maasınız borcunuzdan 5000 ve üstü kadar fazlaysa kredi alabilirsiniz, aksi durumda alamazsınız
 
-const Schuld = +prompt("borcunuzu giriniz");
-const Gehalt = +prompt("maaşınızı giriniz");
+// const Schuld = +prompt("borcunuzu giriniz");
+// const Gehalt = +prompt("maaşınızı giriniz");
 
 // const Kredit = Gehalt > 5000 ? "kredi alabilirsiniz" : "kredi alamazsınız";
 
-console.log(Gehalt*10-Schuld>5000 ? "kredi alabilirsiniz🥳" : "kredi alamazsınız😞");
+// console.log(Gehalt*10-Schuld>5000 ? "kredi alabilirsiniz🥳" : "kredi alamazsınız😞");
+
+//? ORNEK2: console'dan 3 tamsayi alarak bunlarin en buyugunu
+//? yazdiriniz.
+
+// const n1=+prompt("number 1");
+// const n2=+prompt("number 2");
+// const n3=+prompt("number 3");
+
+//! 1 yöntem
+
+//? kosullarin logical operatörler yardimiyla birlestirilmesi
+
+// if (n1>n2 && n1>n3){
+//     console.log("biggest:",n1);
+// } else if (n2>n1 && n2>n3) {
+//     console.log("biggest:",n2);
+// } else if (n3>n1 && n3>n2) {
+//     console.log("biggest:",n3);
+// } else {
+//     alert("yalnis tercih girdiniz");
+// }
+
+// //! 2. yontem
+
+// let biggest =n1;
+
+// if (n2>biggest){
+//     biggest=n2
+// }
+// if (n3>biggest){
+//     biggest=n3
+// }
+
+// console.log(biggest);
+
+// let ogrencininNotu = +prompt("notunuzu giriniz");
+
+// if (ogrencininNotu >= 91 && ogrencininNotu <= 100) {
+//   console.log("AA");
+// } else if (ogrencininNotu >= 76) {
+//   console.log("BB");
+// }  else if (ogrencininNotu >= 66) {
+//   console.log("CC");
+// } else if (ogrencininNotu >= 45) {
+//   console.log("DD");
+// } else {
+//   console.log("FF");
+// }
+ 
