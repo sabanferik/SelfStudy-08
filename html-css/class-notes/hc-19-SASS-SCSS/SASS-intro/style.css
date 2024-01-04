@@ -66,4 +66,108 @@ header ul a {
   min-width: 250px;
 }
 
-/*# sourceMappingURL=style.css.map */
+.cards {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.cards .card1 {
+  background-color: blue;
+  width: 25%;
+  height: 15rem;
+  border-radius: 10px;
+  color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cards .card2 {
+  background-color: green;
+  width: 25%;
+  height: 15rem;
+  border-radius: 10px;
+  color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cards .card3 {
+  background-color: magenta;
+  width: 25%;
+  height: 15rem;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cards .card4 {
+  background-color: hotpink;
+  width: 25%;
+  height: 15rem;
+  border-radius: 10px;
+  color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex, .articles .article1, .articles .article2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.articles {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+}
+.articles .article1, .articles .article2 {
+  background-color: gray;
+  width: 50%;
+  height: 10rem;
+  border-radius: 10px;
+  border: 2px solid brown;
+}
+.articles .article2 {
+  background-color: purple;
+}
+
+footer p {
+  background-color: olive;
+}
+footer .social-icons {
+  display: flex;
+  height: 10rem;
+}
+footer .social-icons .social1 {
+  width: 25%;
+  background-color: #0000e6;
+  font-size: 1rem;
+  color: #990000;
+}
+footer .social-icons .social2 {
+  width: 25%;
+  background-color: #0000cc;
+  font-size: 2rem;
+  color: #55004e;
+}
+footer .social-icons .social3 {
+  width: 25%;
+  background-color: #0000b3;
+  font-size: 3rem;
+  color: #0fa8a1;
+}
+footer .social-icons .social4 {
+  width: 25%;
+  background-color: #000099;
+  font-size: 4rem;
+  color: #dcacf1;
+}
+footer .social-icons .social5 {
+  width: 25%;
+  background-color: navy;
+  font-size: 5rem;
+  color: #64c217;
+}/*# sourceMappingURL=style.css.map */
