@@ -7,6 +7,8 @@
 //pages
 @import './pages/about','./pages/contact','./pages/home','./pages/project';
 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+
 
 body{
     font-family: $font-family;
@@ -23,5 +25,4 @@ a{
 
 h1,h2,h3{
     font-weight: 400;
-    
 }
