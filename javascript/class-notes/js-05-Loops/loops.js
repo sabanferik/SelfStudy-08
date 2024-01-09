@@ -43,10 +43,10 @@
 // const rast2=Math.ceil(rast)
 // console.log(rast,rast2);
 
-// for (let i = 1; i <= 7; i++) {
-//     const rastgele = Math.round(Math.random() * 100);
-//     console.log(rastgele);
-//   }
+for (let i = 1; i <= 7; i++) {
+    const rastgele = Math.round(Math.random() * 100);
+    console.log(rastgele);
+  }
   
   //* NOT:
   //* Math.floor() =>en yakin alt tamsayiya yuvarlar
@@ -68,12 +68,12 @@
   
   
   //?for ile çözümü
-//   let not2 = prompt("Lütfen notunuzu giriniz:");
-//   for (; not2 < 1 || not2 > 100; ) {
-//     console.log("Not 1'dan kucuk veya 100'den buyuk olamaz.");
-//     not2 = prompt("Yeniden notunuzu giriniz:");
-//   }
-//   console.log("Giridiginiz Not:", not2);
+  let not2 = prompt("Lütfen notunuzu giriniz:");
+  for (; not2 < 1 || not2 > 100; ) {
+    console.log("Not 1'dan kucuk veya 100'den buyuk olamaz.");
+    not2 = prompt("Yeniden notunuzu giriniz:");
+  }
+  console.log("Giridiginiz Not:", not2);
   
   //! while daki şart true old sürece altındaki süslü işler, false old anda süslünün dışına çıkılır
   
@@ -98,29 +98,28 @@
   //? yaziniz. Program her hesaplamadan sonra tekrar başkası için hesaplama yapilmak
   //? istenip istenmedigini soracak cevap 'e' veya 'E' ise yeniden not
   //? isteyecek ve islemleri tekrar edecektir.
-  // let devam;
-  // do {
+  let devam;
+  do {
   
-  // let vize = +prompt("vize notunuzu giriniz");
-  // let final = +prompt("final notunuzu giriniz");
+  let vize = +prompt("vize notunuzu giriniz");
+  let final = +prompt("final notunuzu giriniz");
   
-  // let ortalama=vize*0.4+final*0.6
-  // console.log(ortalama >=60 ? "tebrikler geçtiniz":"kaldınız");
+  let ortalama=vize*0.4+final*0.6
+  console.log(ortalama >=60 ? "tebrikler geçtiniz":"kaldınız");
   
-  // devam=prompt("devam etmek istiyorsanız e/E giriniz")
+  devam=prompt("devam etmek istiyorsanız e/E giriniz")
   
-  // } while (devam.toUpperCase()=="E");
+  } while (devam.toUpperCase()=="E");
   
   // console.log("çıktık");
   
   //? ORNEK2: klavyeden q karakteri girilene kadar sayı girişi isteyen bir programı döngü kullanarak yazınız.
-//   let sayi1;
-//   do {
-//     sayi1 = prompt("lütfen sayı gir");
-//   } while (sayi1 != "q");
+  let sayi1;
+  do {
+    sayi1 = prompt("lütfen sayı gir");
+  } while (sayi1 != "q");
   
-//   console.log("bitti");
+  console.log("bitti");
   
-  //? : Tahmin Oyunu
-  //* Program 1*20 arasında rasgele bir sayı tutacak ve kullanıcının bu sayıyı 5 kere(hak) de bilmesini isteyecektir. Her yanlışta hakkını bir düşürecek ve ARTTIR/AZALT diyerek kullanıcıyı yönlendirecektir.Sonuç olarak kullanıcının hakkı 0 olursa "Üzgünüz bilemediniz" eğer 5 hak içinde bildi ise "Tebrikler  bildiniz" yazacaktır.
+  
   
