@@ -76,22 +76,92 @@ console.log(null && NaN) //null */
 
 // kullanicinin sayi girene kadar tekrar giris yapmasini saglayan while yapisini yaziniz.
 
-while (true) {
-    var girilenSayi = prompt("Lütfen bir sayı girin:");
+// while (true) {
+//     var girilenSayi = prompt("Lütfen bir sayı girin:");
 
-    // Kullanıcının iptal butonuna basması durumunda veya boş bir giriş yapması durumunda çık
-    if (girilenSayi === null || girilenSayi.trim() === "") {
-        alert("Geçersiz giriş. Lütfen bir sayı girin.");
+//     // Kullanıcının iptal butonuna basması durumunda veya boş bir giriş yapması durumunda çık
+    
+//     if (girilenSayi === null || girilenSayi.trim() === "") {
+//         alert("Geçersiz giriş. Lütfen bir sayı girin.");
+//     } else {
+//         // Girilen değeri sayıya dönüştürme denemesi
+//         var sayi = parseInt(girilenSayi);
+
+//         // Eğer dönüşüm başarılıysa döngüden çık
+//         if (!isNaN(sayi)) {
+//             alert("Girdiğiniz sayı: " + sayi);
+//             break;
+//         } else {
+//             alert("Geçersiz giriş. Lütfen bir sayı girin.");
+//         }
+//     }
+// }
+
+
+
+//NIDA hnm cözüm
+
+// let age = +prompt("Yas girin:");
+// while (isNaN(age)){
+//     age = +prompt("Gecerli bir sayisal deger girin:");
+// }
+// let response = (age >= 18) ? "Alkol alabilir" : "Alkol alamaz";
+// console.log(response);
+
+// isNaN()
+
+
+
+// let age = +prompt("Yas girin:");
+
+// while (isNaN(age) || age == ''  ){
+//     age = +prompt("Gecerli bir sayisal deger girin:");
+// }
+// let response = (age >= 18) ? "Alkol alabilir" : "Alkol alamaz";
+// console.log(response);
+
+//do while
+
+// let age2;
+
+// do {
+//     age2 = +prompt("Yaşınızı giriniz");
+// } while (isNaN(age2));
+
+// let response = (age2 >= 18) ? "Alkol alabilir" : "Alkol alamaz";
+// console.log(response);
+
+
+//isNaN()
+/* let x = +prompt('Bir sayı giriniz :')
+console.log('x = ', x)
+console.log('typeof X',typeof x)
+
+console.log(isNaN(x)) */
+
+
+// Kullanici adi ve parola kontrolu yap, dogru ise ismiyle karsila degilse tekrar girmesi icin yonlendir. 3 kez yanlis giris olursa cikis yapsin.
+
+let user = "Mark";
+let password = "1234";
+
+let loginCount = 3;
+
+while (loginCount > 0) {
+  let userid = prompt("Kullanıcı adınızı girin:");
+  let userpw = prompt("Parolanızı girin:");
+
+  if (userid === user && userpw === password) {
+    alert(`Merhaba, ${userid}! Sayfamıza hoşgeldiniz.🎉:tada:`);
+    break;
+  } else {
+    loginCount--;
+    if (loginCount > 0) {
+      alert(`Kullanıcı adı veya parola yanlış girdiniz. Kalan giriş hakkı: ${loginCount}`);
     } else {
-        // Girilen değeri sayıya dönüştürme denemesi
-        var sayi = parseInt(girilenSayi);
-
-        // Eğer dönüşüm başarılıysa döngüden çık
-        if (!isNaN(sayi)) {
-            alert("Girdiğiniz sayı: " + sayi);
-            break;
-        } else {
-            alert("Geçersiz giriş. Lütfen bir sayı girin.");
-        }
+      alert("Giriş hakkınız kalmadı.Güle güle..");
     }
+  }
 }
+
+
