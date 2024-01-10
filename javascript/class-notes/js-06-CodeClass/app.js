@@ -142,26 +142,129 @@ console.log(isNaN(x)) */
 
 // Kullanici adi ve parola kontrolu yap, dogru ise ismiyle karsila degilse tekrar girmesi icin yonlendir. 3 kez yanlis giris olursa cikis yapsin.
 
-let user = "Mark";
-let password = "1234";
+// let user = "Mark";
+// let password = "1234";
 
-let loginCount = 3;
+// let loginCount = 3;
 
-while (loginCount > 0) {
-  let userid = prompt("Kullanıcı adınızı girin:");
-  let userpw = prompt("Parolanızı girin:");
+// while (loginCount > 0) {
+//   let userid = prompt("Kullanıcı adınızı girin:");
+//   let userpw = prompt("Parolanızı girin:");
 
-  if (userid === user && userpw === password) {
-    alert(`Merhaba, ${userid}! Sayfamıza hoşgeldiniz.🎉:tada:`);
-    break;
-  } else {
-    loginCount--;
-    if (loginCount > 0) {
-      alert(`Kullanıcı adı veya parola yanlış girdiniz. Kalan giriş hakkı: ${loginCount}`);
-    } else {
-      alert("Giriş hakkınız kalmadı.Güle güle..");
-    }
-  }
-}
+//   if (userid === user && userpw === password) {
+//     alert(`Merhaba, ${userid}! Sayfamıza hoşgeldiniz.🎉:tada:`);
+//     break;
+//   } else {
+//     loginCount--;
+//     if (loginCount > 0) {
+//       alert(`Kullanıcı adı veya parola yanlış girdiniz. Kalan giriş hakkı: ${loginCount}`);
+//     } else {
+//       alert("Giriş hakkınız kalmadı.Güle güle..");
+//     }
+//   }
+// }
+
+
+//! 10- Aşağıdaki çıktıyı konsola yazdırınız
+
+// ?      * * * * *
+// ?      * * * * * 
+// ?      * * * * *
+// ?      * * * * * 
+// ?      * * * * *
+
+// for (let i = 0; i <5; i++) {
+//     let satir = "";
+//     for (let j = 0; j < 5; j++) {
+//         satir += "* ";
+//     }
+//     console.log(`${satir}`);
+// }
+
+//! Asagidaki cıktıyı konsola yazdırınız
+
+//? *
+//? **
+//? ***
+//? ****
+//? *****
+ 
+
+
+// for (let i = 1; i <= 5; i++) {
+//     let row = "";
+//     for (let j = 0; j < i; j++) {
+//       row += "*";
+//     }
+//     console.log(row);
+// }
+
+//! piranit sekli olusturmak icin
+
+// let size = 5;
+// let output = "";
+// for (let i = 0; i < size; i++) {
+//   let row = "";
+//   for (let s = 0; s < size - i - 1; s++) {
+//     row += " ";
+//   }
+//   for (let j = 1; j <= 2 * i + 1; j++) {
+//     output += "#";
+//   }
+//   console.log(row + output);
+//   output = "";
+// }
+
+
+// kullanicidan alinan 5 adet sayinin ortalamasini konsola yazdiriniz.
+
+//? for ile
+
+// let sayac=0
+// let toplam=0;
+// for(let i=1; i<=5; i++){
+//     sayi=+prompt(`${i}. sayi giriniz`);
+//     sayac++
+//     toplam+=sayi;
+   
+// }
+
+// console.log(toplam/sayac);
+
+//? while ile 
+
+// let num = 0;
+// let result = 0;
+
+// while (num < 5) {
+//     let sayi = +prompt(`Lutfen ${num+1} adet sayi giriniz...`)
+//     result += sayi 
+//     num++ // counter
+// }
+// console.log(`Girinlen ${num} sayinin ortalamasi ${result/num}'dur`);
+
+// 1000 ile 2000 arasindaki hem 3 hemde 5 e bölünebilen sayilari konsola yazdiran cözüm?
+
+// let sayac = 0
+// for (let i = 1000; i < 2000; i++) {
+//     if (i%3 === 0 && i%5 ===0 ) {
+//         console.log(i)
+//         sayac ++
+//     }
+// }
+
+// console.log(sayac)
+
+
+// while ile 
+
+// let sayi = 1000;
+
+// while (sayi < 2000) {
+//     if (sayi % 3 === 0 && sayi % 5 === 0) {
+//         console.log(sayi);
+//     }
+//     sayi++;
+// }
 
 
