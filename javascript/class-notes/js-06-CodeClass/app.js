@@ -268,3 +268,200 @@ console.log(isNaN(x)) */
 // }
 
 
+
+
+// Armstrong number while solution
+
+// let num = parseInt(prompt("Enter a number:"));
+// let originalNumber = num;
+// let digitCount = 0;
+// let sum = 0;
+
+// while(originalNumber !== 0){
+//     originalNumber = Math.floor(originalNumber / 10)
+//     console.log(originalNumber)
+//     digitCount++
+// }
+
+// originalNumber = num;
+
+// while (originalNumber > 0) {
+//  let digit = originalNumber % 10;
+//  sum += digit ** digitCount;
+//  originalNumber = Math.floor(originalNumber / 10)
+// }
+
+// sum === num ? console.log(num + " is an Armstrong number.") : console.log(num + " is not an Armstrong number."
+// )
+
+//? Kullanıcıdan bir sayı girişi alın. Eğer kullanıcı negatif bir sayı girerse, kullanıcıya "Negatif sayı girdiniz!" mesajını verin. Eğer kullanıcı pozitif bir sayı girerse, bu sayının 1'den başlayarak kendisine kadar olan sayıları konsola yazdırın. 0 girerse de sıfır girdiniz yazdırın.
+
+
+// // Kullanıcıdan sayı girişi alın
+// var sayi = +prompt("Lütfen bir sayı girin:");
+
+// // Girilen değeri sayıya çevirin
+// sayi = parseInt(sayi);
+
+// // Girilen sayının pozitif, negatif veya sıfır olduğunu kontrol edin
+// if (sayi < 0) {
+//     console.log("Negatif sayı girdiniz!");
+// } else if (sayi > 0) {
+//     // 1'den girilen sayıya kadar olan sayıları yazdırın
+//     for (var i = 1; i <= sayi; i++) {
+//         console.log(i);
+//     }
+// } 
+
+
+// Elif hnm cözüm
+//? Kullanıcıdan bir sayı girişi alın. Eğer kullanıcı negatif bir sayı girerse, kullanıcıya "Negatif sayı girdiniz!" mesajını verin. Eğer kullanıcı pozitif bir sayı girerse, bu sayının 1'den başlayarak kendisine kadar olan sayıları konsola yazdırın. 0 girerse de sıfır girdiniz yazdırın.
+
+
+// let positive = false
+// while (!positive) {
+//     let sayi=+prompt("Sayi giriniz")
+//     if(sayi <0){
+//       console.log("Negatif bir sayı girdiniz")
+    
+    
+//     }else if (sayi == 0){
+//      console.log("Sıfır girdiniz") 
+//     } else{
+//     for (i=1;i<=sayi;i++){
+//       console.log(i)
+//     }
+//     positive = true
+//     }
+    
+// }
+
+//! 3- Artık yıl sorusu
+//? Artık yıl, bir yıldaki günlerin 365 yerine 366 gün olmasına denir. Bu fazladan gün (artık gün), normalde 28 gün olan şubat ayına 29 Şubat’ın eklenmesi ile elde edilir.  Bunun hesaplanması için aşağıdaki algoritma kullanılır.
+
+//? Bir tarih 4 ile tam bölünüp 100 katları ile tam bölünemiyorsa, veya yıl 400 sayısına tam bölünüyorsa artık yıldır. BU iki şartın dışında yılarda şubat ayı 28 gün, artık yıllarda 29 gün olarak belirlenir.
+
+//? Yukarıdaki bilgilere göre bir yılın artık yıl olup olmadığını konsola yazdıran conditional statement'i yazınız.
+
+
+// let yil=+prompt("Bir Yil Giriniz")
+ 
+
+// if (yil % 4 == 0 && yil % 100 != 0) {
+//     console.log(`${yil} artık yıldır`)
+// } else if (yil % 400 == 0 ) {
+//     console.log(`${yil} artık yıldır`)
+// }else {
+//     console.log(`${yil} artık yıl değildir`)
+// }
+
+
+// Emre Hc nin
+
+// let year = prompt("Yıl girin:");
+
+// if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+//   console.log(year + " bir artık yıldır.");
+// } else {
+//   console.log(year + " bir artık yıl değildir.");
+// }
+
+//? Kuulanicidan yil ve ay bilgisi alinacak . O na göre o ay kac cekiyor hesaplanacak.
+//? switch case yapisi kullanilacak
+
+// örnek yil : 2000 ay:2 => 2000 yilinda 2. ay 29 ceker
+// örnek yil : 2001 ay 2: => 2001 yilinda 2. ay 28 ceker
+
+// // Kullanıcıdan yıl ve ay bilgisini alın
+// let yil = prompt("Lütfen bir yıl giriniz:");
+// let ay = prompt("Lütfen bir ay giriniz (1-12 arasında):");
+
+// // Girilen değerleri tamsayıya çevirin
+// yil = parseInt(yil);
+// ay = parseInt(ay);
+
+// // Girilen ayın gün sayısını hesapla
+// let gunSayisi;
+
+// switch (ay) {
+//     case 1: // Ocak
+//     case 3: // Mart
+//     case 5: // Mayıs
+//     case 7: // Temmuz
+//     case 8: // Ağustos
+//     case 10: // Ekim
+//     case 12: // Aralık
+//         gunSayisi = 31;
+//         break;
+//     case 4: // Nisan
+//     case 6: // Haziran
+//     case 9: // Eylül
+//     case 11: // Kasım
+//         gunSayisi = 30;
+//         break;
+//     case 2: // Şubat
+//         // Şubat'ın gün sayısını hesapla (artık yıl kontrolü yapılacak)
+//         if ((yil % 4 == 0 && yil % 100 != 0) || (yil % 400 == 0)) {
+//             gunSayisi = 29; // Artık yıl
+//         } else {
+//             gunSayisi = 28; // Artık yıl değil
+//         }
+//         break;
+//     default:
+//         console.log("Geçersiz ay girişi!");
+//         break;
+// }
+
+// // Sonucu ekrana yazdır
+// if (gunSayisi !== undefined) {
+//     console.log(yil + " yılında " + ay + ". ay " + gunSayisi + " gün çeker.");
+// }
+
+
+
+//? ay bilgisinin kullanici tarafindan hatali girilmesini önlemek
+
+ 
+let yil = prompt("Lütfen bir yıl giriniz:");
+let ay = prompt("Lütfen bir ay giriniz (1-12 arasında):");
+
+ 
+yil = parseInt(yil);
+ay = parseInt(ay);
+
+ 
+while (ay < 1 || ay > 12) {
+    ay = +(prompt(`Hatalı ay girdiniz. Lütfen 1-12 arasında bir değer girin`));
+  } 
+     
+    let gunSayisi;
+
+    switch (ay) {
+        case 1: 
+        case 3:   
+        case 5:  
+        case 7:  
+        case 8: 
+        case 10:  
+        case 12:  
+            gunSayisi = 31;
+            break;
+        case 4:  
+        case 6:  
+        case 9:  
+        case 11:  
+            gunSayisi = 30;
+            break;
+        case 2:  
+            
+            if ((yil % 4 == 0 && yil % 100 != 0) || (yil % 400 == 0)) {
+                gunSayisi = 29;  
+            } else {
+                gunSayisi = 28;  
+            }
+            break;
+    }
+
+     
+    console.log(yil + " yılında " + ay + ". ay " + gunSayisi + " gün çeker.");
+
