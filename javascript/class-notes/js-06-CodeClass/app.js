@@ -422,46 +422,46 @@ console.log(isNaN(x)) */
 //? ay bilgisinin kullanici tarafindan hatali girilmesini önlemek
 
  
-let yil = prompt("Lütfen bir yıl giriniz:");
-let ay = prompt("Lütfen bir ay giriniz (1-12 arasında):");
+// let yil = prompt("Lütfen bir yıl giriniz:");
+// let ay = prompt("Lütfen bir ay giriniz (1-12 arasında):");
 
  
-yil = parseInt(yil);
-ay = parseInt(ay);
+// yil = parseInt(yil);
+// ay = parseInt(ay);
 
  
-while (ay < 1 || ay > 12) {
-    ay = +(prompt(`Hatalı ay girdiniz. Lütfen 1-12 arasında bir değer girin`));
-  } 
+// while (ay < 1 || ay > 12) {
+//     ay = +(prompt(`Hatalı ay girdiniz. Lütfen 1-12 arasında bir değer girin`));
+//   } 
      
-    let gunSayisi;
+//     let gunSayisi;
 
-    switch (ay) {
-        case 1: 
-        case 3:   
-        case 5:  
-        case 7:  
-        case 8: 
-        case 10:  
-        case 12:  
-            gunSayisi = 31;
-            break;
-        case 4:  
-        case 6:  
-        case 9:  
-        case 11:  
-            gunSayisi = 30;
-            break;
-        case 2:  
+//     switch (ay) {
+//         case 1: 
+//         case 3:   
+//         case 5:  
+//         case 7:  
+//         case 8: 
+//         case 10:  
+//         case 12:  
+//             gunSayisi = 31;
+//             break;
+//         case 4:  
+//         case 6:  
+//         case 9:  
+//         case 11:  
+//             gunSayisi = 30;
+//             break;
+//         case 2:  
             
-            if ((yil % 4 == 0 && yil % 100 != 0) || (yil % 400 == 0)) {
-                gunSayisi = 29;  
-            } else {
-                gunSayisi = 28;  
-            }
-            break;
-    }
+//             if ((yil % 4 == 0 && yil % 100 != 0) || (yil % 400 == 0)) {
+//                 gunSayisi = 29;  
+//             } else {
+//                 gunSayisi = 28;  
+//             }
+//             break;
+//     }
 
      
-    console.log(yil + " yılında " + ay + ". ay " + gunSayisi + " gün çeker.");
+//     console.log(yil + " yılında " + ay + ". ay " + gunSayisi + " gün çeker.");
 
