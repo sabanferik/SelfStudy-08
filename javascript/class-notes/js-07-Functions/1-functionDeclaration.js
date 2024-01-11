@@ -71,5 +71,30 @@ console.log((fatma+emre+kagan)/3);
         console.log( isEvenOdd(8)) //call invoke
         console.log( isEvenOdd(-4)) //call invoke
 function isEvenOdd(sayi) {
-    return sayi % 2 === 0 ? "cift" : "tek";
+    return sayi % 2 === 0 ? "cifttir" : "tektir";
 }
+
+
+
+
+//* örnek5 : argument keywordüyle parametre karsilama
+
+
+
+
+function sumAll(){
+    // console.log(arguments);
+    // console.log(arguments[0]);
+
+
+    let toplam=0
+    for(let i=0;i<arguments.length;i++){
+        toplam+=arguments[i]
+    }
+
+
+
+    return toplam
+}
+
+    console.log(sumAll(25,34,56,78,12,45,67,87,23));  
