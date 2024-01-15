@@ -288,3 +288,77 @@
 // };
 
 // main();
+
+
+//! Yil bilgisinin artik yil olup olmadigini bize fonksiyon ile donduren kodu yaziniz
+// if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+//     console.log(year + " bir artık yıldır.");
+// } else {
+//     console.log(year + " bir artık yıl değildir.");
+// }
+
+
+// const isArtikYil = (year) => {
+//     return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+// };
+
+ 
+// const year = 2024;
+// if (isArtikYil(year)) {
+//     console.log(year + " bir artık yıldır.");
+// } else {
+//     console.log(year + " bir artık yıl değildir.");
+// }
+
+
+//------------------------
+//2. yontem
+
+// const artikYil = (year) => {
+//     if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+//         console.log(year + " bir artık yıldır.");
+//     } else {
+//         console.log(year + " bir artık yıl değildir.");
+//     }
+// }
+// artikYil(prompt("Bir yil girin:"));
+
+
+//!---------------------------------
+//? String lere giris 
+//!---------------------------------
+
+// let str1 = 'Lorem'
+// let str2 = "Hello"
+// let str3 = `Hello`
+
+// let str4 = new String('Hello')
+// console.log(str1.length);
+// console.log(str1[0]);
+// console.log(str1[1]); 
+// console.log(str1[2]);
+// console.log(str1[3]);
+// console.log(str1[4]);
+
+// for (let i = 0; i <str1.length; i++) {
+//     console.log(str1[i].toUpperCase());
+// }
+// console.log(str1[str1.length -1]);
+
+// function tersCevir (str){
+//     let ters = "";
+//     for (let i = str.length - 1; i >= 0; i--) {
+//         ters += str[i];
+//     }
+//     if(str.toLowerCase()===ters.toLowerCase()){
+//         console.log(`${str} bir palindrome dur`);
+//     }else{
+//         console.log(`${str} bir palindrome degildir`);
+//     }
+// }
+//    console.log('Girilen bir sayinin pozitif bölenlerini bulan bir'.split(' '));
+
+// tersCevir('Merhaba')
+// tersCevir('Kayak')
+// tersCevir('rotator')
+ 
