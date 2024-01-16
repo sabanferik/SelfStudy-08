@@ -229,7 +229,7 @@ console.log(veysel.slice(veysel.length-4,veysel.length-2));
 console.log(veysel.substring(-10));
 
 //* ----------------------------------------------------------
-//* split= string i diziye çevirir
+//! split= string i diziye çevirir
 //* split(seperator , limit ) =>ikisi de optional
 // //* split("x")=>x lerden ayırır, virgül+boşluk yapar ve yeni dizi döndürür.orjinal diziyi değiştirmez
 //* ----------------------------------------------------------
@@ -244,3 +244,58 @@ console.log(tarkan.split("e"));//e harflerinden virgülle ayrılan bir dizi
  console.log(tarkan.split("e",3));//dizinin 3 elemanını al
 
  console.log(tarkan);
+
+ let months =
+   "Jan / Feb / Mar / Apr / May / Jun / Jul / Aug / Sep / Oct / Nov / Dec";
+
+   console.log(months.split("/"));
+
+   let date="16.01.2024"
+   console.log(date.split("."));
+
+   console.log(`bugün ayın ${date.split(".")[0]} sı`);
+
+//    alttaki string i diziye çevir ve ilk 3 elemanını al
+   let liste = "Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand";
+
+   console.log(liste.split(";",3));
+
+  let yeniListe= liste.split(";")
+  console.log(yeniListe);
+
+  //!join() ile tekrar diziyi string e çeviriyoruz
+  console.log(yeniListe.join()); //defaultta virgülle stringe çevirir
+  console.log(yeniListe.join("-")); 
+
+
+  //!reverse( metodu ile bir diziyi tersten yazdırabiliriz)
+
+
+let selam="ey edip adana'da pide ye"
+
+let tersten=selam.split("").reverse().join("")
+
+console.log(tersten);
+
+
+if(selam==tersten){
+   console.log("selam cümlesi polindrom bir cümledir" ); 
+}else {
+    console.log("selam cümlesi polindrom değildir");
+}
+
+//* ----------------------------------------------------------
+//*  trim();
+//* ----------------------------------------------------------
+
+const ramazan="         Hoşgeldin ya Şehr-i Ramazan       "
+console.log(ramazan);
+console.log(ramazan.length);
+console.log(ramazan.trim())
+console.log(ramazan.trim().length)
+
+//? örnek chaining
+
+let abc="      Clarusway Full Stack"
+
+console.log(abc.trim().slice(0,9).toUpperCase()); //CLARUSWAY
