@@ -44,6 +44,7 @@ if(lorem.charAt(20) === 'y'){
 
 
 // & charCodeAt()	        Returns the Unicode of the character at the specified index.
+//& fromCharCode()	        Converts Unicode values to characters.
 
 /* let lorem2 = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
 
@@ -133,27 +134,92 @@ console.log('Hello '.concat('World!'))
 // }
 
 // indexBul(lrm,'dummy')
+// indexBul(lrm,'e')
+
+
+//& includes()	        Checks whether a string contains the specified substring.
+
+/*  let lrm = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+
+console.log(lrm.includes('Ipsum'))
+console.log(lrm.includes('IPsum')) //false
+console.log(lrm.includes('Ipsum', 10)) //false 
+
+let email1 = 'mark.m@clarusway.com' //'Valid Email'
+let email2 = 'mark.mclarusway.com' //'Invalid email'
+
+if(email1.includes('@')){
+console.log('Valid Email')
+}else{
+    console.log('Invalid email')
+} */
+
+
+//& lastIndexOf()	    Returns the index of the last occurrence of the specified value in a string.
+
+// let lrm = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+
+// console.log(lrm.lastIndexOf('e')) //58
+// console.log(lrm.lastIndexOf('e',57)) //56
 
 
 
+//& slice()	            Extracts a portion of a string and returns it as a new string.
 
-// fromCharCode()	    Converts Unicode values to characters.
-// includes()	        Checks whether a string contains the specified substring.
-// lastIndexOf()	    Returns the index of the last occurrence of the specified value in a string.
+// let lrm = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+
+// let lrm2 = lrm.slice() // Aynı metni kopyalamış oluruz
+
+// let lrm3 = lrm.slice(lrm.indexOf('Ipsum'), lrm.indexOf('Ipsum')+5)
+// let lrm4 = lrm.slice(5,-5) 
+// let lrm5 = lrm.slice(-5,5) 
+
+// console.log(lrm.slice())
+// console.log(lrm2)
+// console.log(lrm5)
+
+//& substring()	        Extracts the part of a string between the start and end indexes.
+// let lrm10 = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+// console.log(lrm10.substring(6,11))
+// console.log(lrm10.substring(11,6))
+// console.log(lrm10.substring(-5,5))
+
+// toLowerCase()	    Converts a string to lowercase letters.
+// toUpperCase()	    Converts a string to uppercase letters.
+
+
+// toLocaleLowerCase()	Converts a string to lowercase letters, according to host machine's current locale.
+// toLocaleUpperCase()	Converts a string to uppercase letters, according to host machine's current locale.
+
+//Pangram
+
+let TR = 'Pijamalı hasta yağız şoföre çabucak güvendi'
+let US = 'The quick brown fox jumps over the lazy dog'
+let DE ='Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich. '
+
+
+console.log(TR.toUpperCase())
+console.log(TR.toLocaleUpperCase('tr-TR'))
+
+console.log(DE.toUpperCase())
+console.log(DE.toLocaleUpperCase('de-DE'))
+
 // localeCompare()	    Compares two strings in the current locale.
+
+console.log('ß'.localeCompare('B'))
+
+
+console.log('ç'.charCodeAt(0))
+console.log('c'.charCodeAt(0))
+
+
 // match()	            Matches a string against a regular expression, and returns an array of all matches.
 // repeat()	            Returns a new string which contains the specified number of copies of the original string.
 // replace()	        Replaces the occurrences of a string or pattern inside a string with another string, and return a new string without modifying the original string.
 // search()	             Searches a string against a regular expression, and returns the index of the first match.
-// slice()	            Extracts a portion of a string and returns it as a new string.
-// split()	            Splits a string into an array of substrings.
 // substr()	            Extracts the part of a string between the start index and a number of characters after it.
-// substring()	        Extracts the part of a string between the start and end indexes.
-// toLocaleLowerCase()	Converts a string to lowercase letters, according to host machine's current locale.
-// toLocaleUpperCase()	Converts a string to uppercase letters, according to host machine's current locale.
-// toLowerCase()	    Converts a string to lowercase letters.
+// split()	            Splits a string into an array of substrings.
 // toString()	        Returns a string representing the specified object.
-// toUpperCase()	    Converts a string to uppercase letters.
 // trim()	            Removes whitespace from both ends of a string.
 // valueOf()	        Returns the primitive value of a String object.
 
