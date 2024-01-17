@@ -99,14 +99,41 @@ console.log('Hello '.concat('World!'))
 //& startsWith()	    Checks whether a string begins with a specified substring.
 //& endsWith()	        Checks whether a string ends with a specified substring.
 
-let lrm = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+// let lrm = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
 
-console.log(lrm.startsWith('Lorem',1))
-console.log(lrm.startsWith('dummy',22))
+// console.log(lrm.startsWith('Lorem',1)) //false
+// console.log(lrm.startsWith('dummy',22)) //true
 
-console.log(lrm.indexOf('dummy'))
-console.log(lrm.indexOf('xyz')) // -1 aranan metnin belirtilen string içerisinde olmadığını belirtir.
-console.log(first)
+// console.log(lrm.indexOf('dummy')) //22
+// console.log(lrm.indexOf('xyz')) // -1 aranan metnin belirtilen string içerisinde olmadığını belirtir.
+// console.log(lrm.endsWith('industry.')) //true
+// console.log(lrm.endsWith('Ipsum',11)) //true
+
+//^ Verilen uzun text içerisindeki istenilen metnin bulunduğu tüm indexleri yazdıran fonksiyon
+
+// let lrm = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+
+// function indexBul(str, char){
+//     let index = 0
+
+// if (str.indexOf(char,index) == -1) {
+//     console.log(`Metin içerisinde ${char} bulunamadı`)
+//     return
+// }
+
+    
+//     while(str.indexOf(char,index) !== -1){
+//         console.log(str.indexOf(char,index))
+//         index = str.indexOf(char,index) +1 
+
+//     }
+
+
+
+// }
+
+// indexBul(lrm,'dummy')
+
 
 
 
