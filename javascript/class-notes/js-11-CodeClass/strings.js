@@ -239,11 +239,11 @@ console.log(cardNumberReplace(creditCardNumber));  */
 
 //3
 
-/* const creditCardNumber = (numbers) => {
-    return numbers.replace(numbers.slice(7, 14), "******").replaceAll("-", "");
-  };
-  console.log(creditCardNumber("1234-5678-9012-3456"));
- */
+// const creditCardNumber = (numbers) => {
+//     return numbers.replace(numbers.slice(7, 14), "******").replaceAll("-", "");
+//   };
+//   console.log(creditCardNumber("1234-5678-9012-3456"));
+
 
 //4 
 // const creditCardNumber= '1234-5678-9012-3456' //123456******3456
@@ -292,6 +292,47 @@ console.log(cardNumberReplace(creditCardNumber));  */
   const creditCardNumber = '1234-5678-9012-3456';
   const maskedNumber = maskCreditCardNumber(creditCardNumber);
   console.log(maskedNumber);  // Örneğin: '123456••••••3456' */
+
+//& split ()
+
+// let str = 'Hello World'
+
+// /* console.log(str)
+// console.log(str.split()) //tamamını tek bir array yaptı.
+// console.log(str.split('')) // 11 elemanlı array yapar
+// console.log(str.split(' ')) // 2 elemanlı array yapar */
+
+// const creditCardNumber = '1234-5678-9012-3456';
+
+// // console.log(creditCardNumber.split())
+// // console.log(creditCardNumber.split(''))
+// // console.log(creditCardNumber.split('-'))
+// let arr = creditCardNumber.split('-')
+
+
+// arr[2] = '****'
+
+// console.log(arr)
+
+// arr[1] =arr[1].slice(0,2)+'**'
+
+// console.log(arr.join(''))
+
+
+let a = 3;
+let b = 5;
+
+[a,b] = [b,a]
+
+console.log('a',a)
+console.log('b',b)
+console.log([1,2])
+
+
+
+
+
+
 
 // match()	            Matches a string against a regular expression, and returns an array of all matches.
 // repeat()	            Returns a new string which contains the specified number of copies of the original string.
