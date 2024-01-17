@@ -45,14 +45,14 @@ if(lorem.charAt(20) === 'y'){
 
 // & charCodeAt()	        Returns the Unicode of the character at the specified index.
 
-let lorem2 = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+/* let lorem2 = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
 
 console.log(lorem2.charCodeAt(0))
-console.log(lorem2.charCodeAt(19))
+console.log(lorem2.charCodeAt(19)) */
 
 //^ Sezar şifrelemesi. String alacak ve ikinci parametre sayı olacak. O sayı kadar kaydırma yapacak.
 
-function cipher(str,shift){
+/* function cipher(str,shift){
     let result = ''
 
     for (let i = 0; i < str.length; i++) {
@@ -63,16 +63,55 @@ function cipher(str,shift){
     }
 
     console.log(result)
+} 
+
+cipher('Hello world',4)*/
+
+//^ Bir şifreli metin ve sayı alacağız. Text'in şifresini çözeceğiz
+
+/* function deCipher(str,shift){
+    let result = ''
+
+    for (let i = 0; i < str.length; i++) {
+        
+        let ciphedText = str.charCodeAt(i)-shift
+        result += String.fromCharCode(ciphedText)
+        
+    }
+
+    console.log(result)
 }
+deCipher('Lipps${svph',4)
+ */
 
-cipher('Hello world',1)
+//& concat()	            Joins two or more strings, and returns a new string.
+
+/* let lorem2 = `Lorem Ipsum is simply dummy text `
+let lorem3 = `of the printing and typesetting industry.`
+
+console.log(lorem2 + lorem3)
+console.log(lorem2.concat(' merhaba ',lorem3))
+console.log('Hello '.concat('World!'))
+ */
 
 
-// concat()	            Joins two or more strings, and returns a new string.
-// endsWith()	        Checks whether a string ends with a specified substring.
+//& indexOf()	        Returns the index of the first occurrence of the specified value in a string.
+//& startsWith()	    Checks whether a string begins with a specified substring.
+//& endsWith()	        Checks whether a string ends with a specified substring.
+
+let lrm = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+
+console.log(lrm.startsWith('Lorem',1))
+console.log(lrm.startsWith('dummy',22))
+
+console.log(lrm.indexOf('dummy'))
+console.log(lrm.indexOf('xyz')) // -1 aranan metnin belirtilen string içerisinde olmadığını belirtir.
+console.log(first)
+
+
+
 // fromCharCode()	    Converts Unicode values to characters.
 // includes()	        Checks whether a string contains the specified substring.
-// indexOf()	        Returns the index of the first occurrence of the specified value in a string.
 // lastIndexOf()	    Returns the index of the last occurrence of the specified value in a string.
 // localeCompare()	    Compares two strings in the current locale.
 // match()	            Matches a string against a regular expression, and returns an array of all matches.
@@ -81,7 +120,6 @@ cipher('Hello world',1)
 // search()	             Searches a string against a regular expression, and returns the index of the first match.
 // slice()	            Extracts a portion of a string and returns it as a new string.
 // split()	            Splits a string into an array of substrings.
-// startsWith()	        Checks whether a string begins with a specified substring.
 // substr()	            Extracts the part of a string between the start index and a number of characters after it.
 // substring()	        Extracts the part of a string between the start and end indexes.
 // toLocaleLowerCase()	Converts a string to lowercase letters, according to host machine's current locale.
