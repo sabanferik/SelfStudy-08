@@ -193,7 +193,7 @@ console.log('Valid Email')
 
 //Pangram
 
-let TR = 'Pijamalı hasta yağız şoföre çabucak güvendi'
+/* let TR = 'Pijamalı hasta yağız şoföre çabucak güvendi'
 let US = 'The quick brown fox jumps over the lazy dog'
 let DE ='Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich. '
 
@@ -211,7 +211,87 @@ console.log('ß'.localeCompare('B'))
 
 console.log('ç'.charCodeAt(0))
 console.log('c'.charCodeAt(0))
+ */
 
+/* let str = ' 1234 5678 9012 3456          '
+console.log(str)
+console.log(str.trim())
+console.log(str.trimStart())
+console.log(str.trimEnd()) */
+
+
+//1
+/* const creditCardNumber = '1234-5678-9012-3456'; //'123456••••••3456'
+
+const veiledCardNumber = (numberStr) => {
+   return numberStr.split('-').join('').slice(0,6) + '******' +numberStr.slice(-4)
+}
+console.log(veiledCardNumber(creditCardNumber)) */
+
+//2
+/* function cardNumberReplace(creditCardNumber) {
+    let a=creditCardNumber.replaceAll('-', '');
+    a = a.slice(0, 6) + '******' + a.slice(-4);
+    return a
+}
+const creditCardNumber = '1234-5678-9012-3456';
+console.log(cardNumberReplace(creditCardNumber));  */
+
+//3
+
+/* const creditCardNumber = (numbers) => {
+    return numbers.replace(numbers.slice(7, 14), "******").replaceAll("-", "");
+  };
+  console.log(creditCardNumber("1234-5678-9012-3456"));
+ */
+
+//4 
+// const creditCardNumber= '1234-5678-9012-3456' //123456******3456
+// function Usercard(card) {
+
+//    return card=creditCardNumber.split('-').join('').slice(0,6)+'******'+card.slice(-4)
+   
+// }
+// console.log(Usercard('1234-5678-9012-3456'))
+
+
+//5 
+/* function numaraGizle(cardNo) {
+    
+    let tiresiz = cardNo.replaceAll("-", "");
+  
+    let yildizli = tiresiz.slice(0, 6) + "*".repeat(tiresiz.length - 10) + tiresiz.slice(-4);
+  
+    return yildizli;
+  }
+  
+  let ornek = "1234-5678-9012-3456";
+  let yildizli = numaraGizle(ornek);
+  
+//   console.log(ornek);
+  console.log(yildizli);
+ */
+
+  //6. 
+
+/*   function maskCreditCardNumber(cardNumber) {
+    // Kredi kartı numarasını temizle
+    const cleanedCardNumber = cardNumber.replace(/\D/g, '');
+  
+    // Sadece ilk 6 ve son 4 hane görünür, geri kalanlar maskelenir
+    const visiblePart = cleanedCardNumber.slice(0, 6) 
+    // console.log(cleanedCardNumber.slice(-4))
+    // const maskedPart = cleanedCardNumber.slice(6, -4).replace(/\d/g, '•')+cleanedCardNumber.slice(-4);
+    const maskedPart = visiblePart.padEnd(12, '•')+cleanedCardNumber.slice(-4);
+  
+    // Formatlı kredi kartı numarasını döndür
+    return maskedPart;
+  }
+  
+  // Örnek kullanım
+  const creditCardNumber = '1234-5678-9012-3456';
+  const maskedNumber = maskCreditCardNumber(creditCardNumber);
+  console.log(maskedNumber);  // Örneğin: '123456••••••3456' */
 
 // match()	            Matches a string against a regular expression, and returns an array of all matches.
 // repeat()	            Returns a new string which contains the specified number of copies of the original string.
