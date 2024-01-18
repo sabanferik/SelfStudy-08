@@ -125,7 +125,7 @@ console.log(colors.slice(-2)) // Son iki elemanı getiri */
 //& Push() Array in sonuna elaman ekler ve yeni arrayin elaman sayısını return eder.
 
 
-const colors = ['Red','Green']
+// const colors = ['Red','Green']
 
 // let newLen = colors.push('Blue')
 
@@ -141,12 +141,56 @@ const colors = ['Red','Green']
 // console.log(colors)
 
 
-const colors2 = ['Blue','Yellow']
+// const colors2 = ['Blue','Yellow']
 
 // colors.push(colors2) // ['Red','Green',['Blue','Yellow']]
 
 
-colors.push(...colors2) //spread parametresi ile tek tek ekler
+// colors.push(...colors2) //spread parametresi ile tek tek ekler
 
-console.log(colors) // ['Red','Green','Blue','Yellow']
+// console.log(colors) // ['Red','Green','Blue','Yellow']
 
+
+//& pop() dizinin son elemanını siler. Sildiği elemanı return eder
+
+
+/* const colors = ['Red','Green','Blue','Yellow']
+
+const removedItem = colors.pop()
+
+console.log(colors)
+console.log(removedItem)
+console.log(colors.pop())
+ */
+
+//& unshift() dizinin başına eleman ekler. Yeni oluşan dizinin uzunluğunu return eder.
+
+/* const colors = ['Blue','Yellow']
+
+const newLen = colors.unshift('Red','Green')
+
+// console.log(colors)
+// console.log(newLen)
+// console.log(colors.unshift()) // Boş verirsek eleman sayısını verir
+
+const colors2 = ['White','Brown']
+
+// colors.unshift(colors2) //0 ıncı indexe array olarak ekler
+
+
+colors.unshift(...colors2) //spread operatörü 2. arrayin tüm elamanlarını başa ekler
+console.log(colors) */
+
+//& shift() dizinin 0. indexindeki değeri siler sildiği değeri return eder.
+
+
+/* const newColors = ['White', 'Brown', 'Red', 'Green', 'Blue', 'Yellow']
+
+const silinenDeger = newColors.shift()
+
+console.log(newColors)
+console.log(silinenDeger)
+
+//delete newColors[2] //indexi empty hale getirir çok kullanılan bir yöntem değil.
+newColors[2] = undefined // delete yerine bunu kullanabiliriz
+console.log(newColors) */
