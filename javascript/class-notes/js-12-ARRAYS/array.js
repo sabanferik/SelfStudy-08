@@ -194,3 +194,112 @@ console.log(silinenDeger)
 //delete newColors[2] //indexi empty hale getirir çok kullanılan bir yöntem değil.
 newColors[2] = undefined // delete yerine bunu kullanabiliriz
 console.log(newColors) */
+
+
+//& splice() üç işe yarar. 1- eleman silmeye 2- eleman eklemeye 3- Eleman değiştirmeye. 
+//& İşlem sonunda varsa silinen elemanları yoksa boş array döndürür.
+
+// const colors = ['Red','Green', 'Blue','Yellow','Brown']
+
+// colors.splice(0) // Tüm arrayi boş array haline getirir
+
+// colors.splice(1,1) // 1. indexe git 1 tane sil
+
+// colors.splice(2,1,'white','pink') // 2. indexe git 1 elaman sil ve white ve pinki o nun yerine ekle
+
+// console.log(colors.splice(4,0,'white','pink')) //bir şey silmediği için boş array döndürür
+// console.log(colors.splice(4,1,'white','pink')) //['Brown']
+
+
+// let result = colors.splice(2,2) //  ['Blue', 'Yellow'] siler ve return eder
+
+
+
+// console.log(colors,result)
+
+
+//& Concat() Arrayleri birleştirir. Orjinal array i bozmaz
+
+/* const color1 = [ 'red', 'green']
+const color2 = ['blue', 'orange']
+const color3 = [10, true]
+
+console.log(color1.concat(color2,color3)) //['red', 'green', 'blue', 'orange', 10, true]
+
+console.log(color1 +' '+ color2) //red,green blue,orange
+
+
+const newArr = color1.concat('yellow', 2,color3,color2,color1) //['red', 'green', 'yellow', 2, 10, true, 'blue', 'orange', 'red', 'green']
+
+
+console.log(newArr) */
+
+
+//& indexOf() soldan sağa doğru arar ilk eşleşen elementin indexini döndürür. 
+//& ikinci parametre opsiyoneldir. verilirse aramaya o indexten itibaren başlar
+//^ Bulamazsa -1 döner
+
+/* const colors = ['Red','Green', 'Blue','Green','Brown']
+console.log(colors.indexOf('Green')) //1
+console.log(colors.indexOf('Green',2)) //3
+console.log(colors.indexOf('green')) //-1
+
+
+if(colors.indexOf('Green') == -1){
+    colors.push('green')
+    console.log(colors)
+}else{
+    console.log('Bu elaman zaten var')
+    console.log(colors)
+} */
+
+//& lastIndexOf() sağdan saola doğru arar ilk eşleşen elementin indexini döndürür. 
+//& ikinci parametre opsiyoneldir. verilirse aramaya o indexten itibaren başlar
+//^ Bulamazsa -1 döner
+
+/* const colors = ['Red','Green', 'Blue','Green','Brown']
+
+console.log(colors.lastIndexOf('Green')) //3
+console.log(colors.lastIndexOf('Green',2))//1
+console.log(colors.lastIndexOf('green'))//-1 */
+
+//& reverse() array elemanlarının sırasını sondan başa doğru değiştirir.
+//^ Orjinal array i değiştirir
+
+/* const colors = ['Red','Green', 'Blue','Green','Brown']
+colors.reverse()
+console.log(colors) //['Brown', 'Green', 'Blue', 'Green', 'Red'] */
+
+//& join() Array in tüm elemanlarını verilen seperatöre göre stringe çevirir.
+//^ Orjinal array i değiştirmez
+
+/* const arr = [ 'C', 'l', 'a', 'r', 'u', 's', 'w', 'a', 'y' ]
+
+console.log(arr.join()) //C,l,a,r,u,s,w,a,y
+console.log(arr.join('')) //Clarusway
+console.log(arr.join('*'))//C*l*a*r*u*s*w*a*y
+
+const cw = arr.join('')
+
+console.log(cw) //Clarusway 
+
+const arr2 = [ 'C', 'l', 'a', 'r', ,'u', 's', 'w', 'a', 'y',[2019,'CW'] ]
+console.log(arr2.join()) //C,l,a,r,,u,s,w,a,y,2019,CW
+console.log(arr2.join('')) //Clarusway2019,CW
+console.log(arr2.join('_')) //C_l_a_r__u_s_w_a_y_2019,CW
+console.log(arr2[10].join('')) //2019CW*/
+
+
+//& Sort() Arary in içindeki elamanları sıralar. Default olarak string sıralaması yapar.
+//^ Orjinal array i değiştirir
+
+/* const arr = [ 'red', 'blue', 'Purple', "white", "orange" ] //['Purple', 'blue', 'orange', 'red', 'white']
+
+arr.sort()
+
+console.log(arr)
+
+const arr2 = [ 55, 5, 22,23, 2, 11,12, 1, 111 ]
+
+arr2.sort()
+console.log(arr2) //[1, 11, 111, 12, 2, 22, 23, 5, 55] */
