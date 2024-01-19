@@ -293,13 +293,50 @@ console.log(arr2[10].join('')) //2019CW*/
 //& Sort() Arary in içindeki elamanları sıralar. Default olarak string sıralaması yapar.
 //^ Orjinal array i değiştirir
 
-/* const arr = [ 'red', 'blue', 'Purple', "white", "orange" ] //['Purple', 'blue', 'orange', 'red', 'white']
+// const arr = [ 'red', 'blue', 'Purple', "white", "orange" ] //['Purple', 'blue', 'orange', 'red', 'white']
 
-arr.sort()
+// arr.sort()
 
-console.log(arr)
+// console.log(arr)
 
-const arr2 = [ 55, 5, 22,23, 2, 11,12, 1, 111 ]
+/* const arr2 = [ 55, 5, 22,23, 2, 11,12, 1, 111 ]
 
 arr2.sort()
-console.log(arr2) //[1, 11, 111, 12, 2, 22, 23, 5, 55] */
+console.log(arr2) //[1, 11, 111, 12, 2, 22, 23, 5, 55] 
+
+arr2.sort((a,b) => a-b) //Artan sıralama
+
+console.log('artan sıralama',arr2) //[1, 2, 5, 11, 12, 22, 23, 55, 111]
+
+arr2.sort((a,b) => b-a ) //Azalan
+console.log('Azalan Sıralama', arr2) //[111, 55, 23, 22, 12, 11, 5, 2, 1] */
+
+//& Includes Array içinde aranan eleman varsa true yoksa false değer return eder.
+//& Büyük / Küçük harf duyarlıdır
+
+/* const colors = ['Red','Green', 'Blue','Green','Brown']
+
+
+
+let checkElement = (element)=>{
+    if(!colors.includes(element) ){
+        colors.push(element)
+        console.log(`${element} diziye eklendi`)
+        console.log(colors)
+    }else{
+        console.log('Bu elaman zaten var')
+        console.log(colors)
+    }
+
+}
+
+checkElement('green') //green diziye eklendi
+checkElement('Green') //Bu elaman zaten var
+checkElement('green') //Bu elaman zaten var */
+
+
+//? Array'in içerisinden her çalıştırıldığında rastgele eleman seçen bir fonksiyon yazalım 
+
+const colors = ['Red','Green', 'Blue','Green','Brown']
+
+
