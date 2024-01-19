@@ -120,7 +120,7 @@ console.log(besHarfli) */
 
 
 //300 tl üzerinde olanlara %20 altında olanlara %50 zam yapılacak
-const prices4 = [100,200,300,400,50,70];
+const prices4 = [100, 200, 300, 400, 50, 70];
 
 // const prices5 = prices4.filter((price)=>price >= 300).map((inc)=> inc * 1.2)
 
@@ -129,7 +129,44 @@ const prices4 = [100,200,300,400,50,70];
 
 //? n harfi ile biten isimleri tersten yazdırarak ayrı bir array e aktar
 
-const names = ['John', 'Jane', 'Robert', 'Susan', 'Steven', 'Katherine', 'Martin', 'Melissa', 'Brian', 'Karen'];
+// const names = ['John', 'Jane', 'Robert', 'Susan', 'Steven', 'Katherine', 'Martin', 'Melissa', 'Brian', 'Karen'];
 
-const namesN = names.filter((name) => name.endsWith('n'));
-console.log(namesN);
+// const namesN = names.filter((name) => name.endsWith('n')).map((name) => name.split('').reverse().join(''));
+// console.log(namesN);
+
+// const nHarf = names.filter(name => name.endsWith('n')).map(kelime => kelime.split('').reverse().join(''));
+// console.log(nHarf);
+
+// const names = ['John', 'Jane', 'Robert', 'Susan', 'Steven', 'Katherine', 'Martin', 'Melissa', 'Brian', 'Karen'];
+// const namesN = names.filter((name) => name.endsWith('n'));
+// const reversedNamesN = namesN.map((name) => name.split('').reverse().join(''));
+// console.log(reversedNamesN);
+
+//& Reduce tek bir elaman döndürür 
+//^ orjinali değiştirmez
+//^ Array değil değer return eder
+
+const maaslar = [30000, 20000, 10000, 17000, 7500]
+
+console.log(maaslar.reduce((toplam, mevcut) => toplam + mevcut, 0))
+const yeniToplam = maaslar.reduce((toplam, mevcut) => toplam + mevcut, 15500)
+console.log(yeniToplam)
+
+//reduce string kullanımı 
+const words = ['Merhaba', ' ', 'Dünya', '!']
+
+const newStr = words.reduce((yeni, suanki) => yeni + suanki, '');
+
+console.log(newStr)
+
+
+// Bir dizi içersindeki çift sayıları *2 yapıp sonrada bu çift sayıların toplamını al.
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const result = numbers
+    .filter((num) => num % 2 === 0) //çift sayıları filtreledi
+    .map((num) => num * 2) // her bir çift elamanı 2 katına çıkardık
+    .reduce((toplam, yeni) => toplam + yeni, 0) // Toplamı hesapla
+
+console.log(result)
