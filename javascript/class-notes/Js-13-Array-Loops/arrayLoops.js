@@ -70,7 +70,7 @@ prices4.map((price,i,arr)=>{
 
 //? Dizi içindeki tüm elemanların € ve $ karşılıklarını map ile yazdırın
 
-const prices5 = [100,200,300,400,50,70];
+/* const prices5 = [100,200,300,400,50,70];
 console.log(prices5)
 
 const dolar = 30.2
@@ -82,6 +82,54 @@ console.log(dolarArr)
 
 const euroArr = prices5.map((price)=> +(price / euro).toFixed(2))
 
-console.log(euroArr)
+console.log(euroArr) */
 
 //& Filter Method
+//^ Dizi içerisinde belirtilen koşulu sağlayan elemanlarla yeni bir dizi oluşturur.
+//^ Orjinal array i bozmaz 
+
+/* const prices6 = [100,200,300,400,50,70];
+
+const newArr = prices6.filter((price)=> price < 250)
+
+console.log(newArr) */
+
+//? 5 harfli kelimeleri yeni bir array de topla
+
+/* const words = ['apple', 'banana', 'grape', 'orange', 'kiwi'];
+
+const besHarfli = words.filter(word => word.length === 5);
+
+console.log(besHarfli) */
+
+
+//? n harfi ile biten isimleri ayrı bir array e aktar
+
+// const names = ['John', 'Jane', 'Robert', 'Susan', 'Steven', 'Katherine', 'Martin', 'Melissa', 'Brian', 'Karen'];
+
+// const newNames = names.filter((name) => name[name.length - 1] === "n");
+// console.log(newNames);
+
+// console.log(names.filter((name) => name[name.length - 1] === "n"))
+
+// const namesN = names.filter((name) => name.endsWith('n'));
+// console.log(namesN);
+
+// const newNames = names.filter((n) => n.endsWith('n'))
+// console.log(newNames);
+
+
+//300 tl üzerinde olanlara %20 altında olanlara %50 zam yapılacak
+const prices4 = [100,200,300,400,50,70];
+
+// const prices5 = prices4.filter((price)=>price >= 300).map((inc)=> inc * 1.2)
+
+// console.log(prices5)
+
+
+//? n harfi ile biten isimleri tersten yazdırarak ayrı bir array e aktar
+
+const names = ['John', 'Jane', 'Robert', 'Susan', 'Steven', 'Katherine', 'Martin', 'Melissa', 'Brian', 'Karen'];
+
+const namesN = names.filter((name) => name.endsWith('n'));
+console.log(namesN);
