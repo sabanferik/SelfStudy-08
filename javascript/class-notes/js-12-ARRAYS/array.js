@@ -337,6 +337,57 @@ checkElement('green') //Bu elaman zaten var */
 
 //? Array'in içerisinden her çalıştırıldığında rastgele eleman seçen bir fonksiyon yazalım 
 
-const colors = ['Red','Green', 'Blue','Green','Brown']
+// const colors = ['Red','Green', 'Blue','Green','Brown']
 
 
+// function randomColour(list) {
+//     let color = list[Math.floor(Math.random() * list.length)];
+//     console.log(color)
+//     document.body.style.backgroundColor = color
+//   }
+//   console.log(randomColour(colors));
+
+/* let colorsA = ["Red", "Yellow", "Green", "Blue", "Pink", "Green"];
+
+  const getRandomColor = (color) => {
+    return color[Math.floor(Math.random() * color.length)];
+  };
+  console.log(getRandomColor(colorsA));
+  console.log(getRandomColor(colors)); */
+
+
+  //& Arrayler üzerinde loop işlemleri
+
+  //? for loop
+
+//   const colors = ['Red','Yellow', 'Blue','Green','Brown']
+
+/*   for (let i = 0; i < colors.length; i++) {
+    if(colors[i] == 'Red') continue
+    if(colors[i] == 'Green') break
+    console.log(colors[i].toUpperCase())
+    
+  } */
+
+  //? While loop
+
+/*   let i = 0;
+
+  while (i < colors.length) {
+    if(colors[i] == 'Green') {
+        i++
+        break
+    }
+    console.log(colors[i].toLowerCase())
+    i++
+    
+  } */
+
+//& For ... in loop empty elamanları atlar
+
+const colors = ['Red','Yellow','Blue','Green','Brown']
+
+for(let i in colors){
+    // console.log(i, typeof i) //i string
+    console.log(colors[i])
+}
