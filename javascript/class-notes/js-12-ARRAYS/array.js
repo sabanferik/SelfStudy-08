@@ -385,9 +385,78 @@ checkElement('green') //Bu elaman zaten var */
 
 //& For ... in loop empty elamanları atlar
 
-const colors = ['Red','Yellow','Blue','Green','Brown']
+/* const colors = ['Red','Yellow','Blue','Green','Brown']
 
 for(let i in colors){
     // console.log(i, typeof i) //i string
     console.log(colors[i])
+} */
+
+//& For .. of ES6 ile gelmiştir empty elemanları atlamaz
+
+// const colors = ['Red','Yellow',,'Blue','Green','Brown']
+
+// for (let color of colors) {
+//     if(color == undefined)continue //Empty elemanları bu şekilde atlatabiliriz
+//     console.log(color)
+// }
+
+const nums = [100,20,-5,9,-3,-87,30]
+
+const negatif = []
+const positif = []
+
+
+//^ klasik for ile
+/* for (let i = 0; i < nums.length; i++) {
+    if(nums[i]< 0){
+        negatif.push(nums[i])
+    }else{
+        positif.push(nums[i])
+    }
+
+    
 }
+console.log(negatif)
+console.log(positif) */
+
+//^  for in ile
+
+/* for(let i in nums){
+    if(nums[i]< 0){
+        negatif.push(nums[i])
+    }else{
+        positif.push(nums[i])
+    }
+}
+
+console.log(negatif)
+console.log(positif) */
+
+//^  for of ile
+
+/* for(let num of nums){
+    if(num < 0){
+        negatif.push(num)
+    }else{
+        positif.push(num)
+    }
+
+}
+
+console.log(negatif)
+console.log(positif) */
+
+//& dizinin elemanlarını yanyana string olarak yazdır (for of döngüsü kullanın)
+const arabalar = ["bmw", "mercedes", "audi", "volvo"];
+
+console.log(arabalar.join('')) // bmwmercedesaudivolvo
+
+let birleştir =""
+for (let araba of arabalar){
+    birleştir+=araba
+    
+}
+console.log(birleştir)
+
+
