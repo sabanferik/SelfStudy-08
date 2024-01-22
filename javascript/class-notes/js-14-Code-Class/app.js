@@ -85,3 +85,92 @@ function countWords(cumle) {
   }
   
   console.log(countWords("Java Script bana zor geliyor"));
+
+  //!3- Bu cümleyi tersine cevirecek ve büyük harflerden olusan yeni bir cümleye cevirecek fonksiyonu yaziniz
+
+let sentence = "Java Script bana zor geliyor";  
+
+function changedWord(newSentence){
+    let changedSentence = newSentence.toUpperCase().split(/\s+/).reverse().join(" ");
+    return changedSentence
+}
+console.log(changedWord(sentence));
+
+//! 4-Size bir cümle verildi. "Clarusway" kelimesini bulmanız ve şuna benzer bir cümle döndürmeniz gerekir: 
+
+
+//? Clarusway'i bulamıyorsanız, "I can't find Clarusway :(" yazın.
+
+//? findClarusway("I am finding Clarusway !") ➞ "I found Clarusway at 4!"
+
+test: "I like Clarusway" // Output : I found at Clarusway at 3!
+test : "I like bootcamps" // Output I can't find Clarusway :(
+
+// 1. yol
+const sentence2 = "I like Clarusway";
+const findSpecificWord = (ourSentence, specificWord) => {
+  const stringToArray = ourSentence.split(/\s+/);
+  for (let i = 0; i < stringToArray.length; i++) {
+    if (stringToArray.includes(specificWord))
+      return `I found ${specificWord} at ${
+        stringToArray.indexOf(specificWord) + 1
+      }!`;
+    else return `I cant find ${specificWord}!`;
+  }
+};
+console.log(findSpecificWord(sentence2, "Clarusway"));
+
+
+// 2. yol
+
+const findClarusway = (sentence) => {
+    let index = sentence.split(" ").indexOf("Clarusway");
+    return index !== -1 ? `I found Claruswat at ${index+1}!`: "I can't find Clarusway";
+   }
+   console.log(findClarusway("I like Clarusway"));
+
+   // Helen hocanın kodu
+
+//    function findClarusway(sentence) {
+//        if (sentence.includes("Clarusway")){
+//         return `I found Clarusway at ${sentence.split(" ").sentence.indexOf("Clarusway") + 1}`
+//        } else {
+//         return "I can't find Clarusway :("
+//        }
+//        }
+   
+//    const sent="Ilike Clarusway"
+//    findClarusway(sent)
+
+   //! Alternatif soru 1: Bu şekilde giirlen stringi "altı,bir,iki,dört,beş,üç,yedi,sekiz,dokuz"
+    // 612453789   bu hale dönüştüren program
+
+    const string = "612453789"
+
+
+
+
+   //!5- Bir öğe dizisini alan, tüm yinelenen öğeleri kaldıran ve eski diziyle aynı sırada yeni bir dizi döndüren bir fonksiyon oluşturan program 
+
+   // örnegin :
+    // removeDuplicated([1,0,1,0,1]) // Output [1,0]
+    // removeDuplicated(["the","small","cat","the","cat"]) // ouput["the","small","cat"] 
+      
+const inputArray = [1, 0, 1, 0, 1];
+const inputArray2 = ["the", "small", "cat", "the", "cat"];
+function removedDuplicated(arr) {
+  let uniqueArray = [];
+  arr.forEach((element) => {
+    if (!uniqueArray.includes(element)) {
+      uniqueArray.push(element);
+    }
+  });
+  return uniqueArray;
+}
+console.log(removedDuplicated(inputArray)); // Output [1,0]
+console.log(removedDuplicated(inputArray2)); // ouput["the","small","cat"]
+
+
+  //! Alternatif soru 2: Bir dizi içindeki sayıları asal olanlarını filtreleyen bir  fonksiyonu oluşturun.(filter ile yapılması önerilen)
+
+  removeDuplicated(["the","small","cat","the","cat"])
