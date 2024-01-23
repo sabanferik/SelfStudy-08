@@ -213,3 +213,113 @@ employeeList2.push({
   console.log(employeeList2);
   
   employeeList2.forEach((t)=>console.log(t.lastName))
+
+  //* örnek employeeList dizisindeki name leri büyük harf yapip ekrana bastiriniz
+ 
+
+  employeeList2.map((a)=>Object.values(a)[0].toUpperCase()).forEach((b)=>console.log(b))
+
+// * ======================================================
+// *                  OBJECT ITERATION
+// * ======================================================
+// key lerin belirli bir sırası (index) olmadığı için, diziye alırsak object araması daha tutarlı bir arama performansına sahip olacaktır. Ayrıca diziler arasında döngü yapmak, keys arasında döngü yapmaktan daha hızlıdır, bu nedenle tüm öğeler üzerinde işlem yapmayı planlıyorsanız, bunları bir diziye koymak akıllıca olabilir.
+
+const people = [
+    {
+      name: "Mustafa",
+      surname: "Gertrud",
+      job: "developer",
+      age: 30,
+    },
+    {
+      name: "Halo",
+      surname: "Müller",
+      job: "tester",
+      age: 35,
+    },
+    {
+      name: "Mehmet",
+      surname: "Rosenberg",
+      job: "team lead",
+      age: 40,
+    },
+    {
+      name: "Ozkul",
+      surname: "Gutenberg",
+      job: "developer",
+      age: 26,
+    },
+  
+    {
+      name: "Baser",
+      surname: "Shaffer",
+      job: "tester",
+      age: 24,
+    },
+  ];
+
+  console.log(people);
+
+  //* Ornek1: people dizisindeki job lari göster
+
+  people.forEach((a)=>console.log(a.job))
+
+  //* Ornek2 yaslari 1 er arttir ve sonucu yeni diziye aktar
+
+   const yaslar=  people.map((kisi)=>kisi.age+1)
+   console.log(yaslar);
+   console.log(people);
+
+   //* Ornek3 yaslari 1 er arttir, sonucu dizide kalici degistir
+
+   people.map((kisi,index,array)=> (array[index].age=array[index].age+1));
+//    people.map((kisi, index, array)=>(kisi.age=array[index].age+1));
+
+   console.log(people);
+
+   //* Ornek4 people (object li ) dizisinden yaşları 5 fazlasıyla değişmiş ve salary eklenmiş olarak (diger elemanlari duran) yeni bir object li dizi oluşturalım
+
+   const yeniPeople=  people.map((kisi)=>({
+    adi:kisi.name,
+    soyadi:kisi.surname,
+    yas:kisi.age+5,
+    is:kisi.job,
+    salary:30000
+
+   }))
+   console.log(yeniPeople);
+   console.log(people);
+
+
+
+//* Ornek5 başharfi M olan elemanların name ini büyük harfli yaz, hepsinin yaslarını 2 kat yap, hepsinin job larının önüne senior kelimesi ekleyelim ve sadece bunları yeni bir diziye atalım
+
+// const updatePeople=people.map((kisi)=>({
+// name:kisi.name.startsWith("M")? kisi.name.toUpperCase():kisi.name,
+// age:kisi.age*2,
+// job:"senior "+ kisi.job
+
+// }))
+// console.log(updatePeople);
+// console.log(people);
+
+ 
+//* Ornek5 başharfi M olan elemanların name ini büyük harfli yaz, hepsinin yaslarını 2 kat yap, hepsinin job larının önüne senior kelimesi ekleyelim ve sadece bunları yeni bir diziye atalım
+
+const updatePeople=people.map((kisi)=>({
+name:kisi.name.startsWith("M")? kisi.name.toUpperCase():kisi.name,
+age:kisi.age*2,
+job:"senior "+ kisi.job
+
+}))
+console.log(updatePeople);
+console.log(people);
+ 
+//* Ornek6: ortalama yasi hesaplayiniz.
+
+console.log(people.reduce((toplam,kisi)=>toplam+kisi.age,0)/people.length)
+
+//* ornek7: Developer olanların adlarını ve yaşlarını yeni bir object olarak saklayın
+ //* Ornek8 yası 33 ün üstünde olan kişilerin name lerini listele
+
+ 
