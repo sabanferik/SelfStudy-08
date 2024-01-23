@@ -163,3 +163,53 @@ for (const i in employeeList){
 }
 // console.clear() // console u temizlemek için
 
+//!!!   employeeList.forEach((m)=> console.log(m.name)) // Objelerde map,forEach,filter,reduce kullanılmaz. JSon bir dizi içinde obje olduğu için dizi metodları map,filter,reduce,forEach kullanılabiliyor.
+
+//* -------------------------------------------------------------------------- */
+//* -------------------------------------------------------------------------- */
+//*                   JSON -Javascript Script Object Notation                  */
+//* -------------------------------------------------------------------------- */
+
+const employeeList2 = [
+    {
+      name1: "Abdulkadir",
+      lastName: "baki",
+      dateOfBirth: 1980,
+      salary: 20000,
+      job: "developer",
+    },
+    {
+      name2: "elif",
+      lastName: "akalın",
+      dateOfBirth: 1990,
+      salary: 20000,
+      job: "developer",
+    },
+    {
+      name3: "esra",
+      lastName: "bilgin",
+      dateOfBirth: 1985,
+      salary: 21000,
+      job: "devops",
+    },
+  ]
+
+
+  // JSON ile farklı veri türleri barındırılabilir
+// Dillerden bağımsızdır.
+//nesnelerin (objelerin) temsil edilmesi için anahtar-değer çiftlerini kullanır. Bu, verilerin daha iyi organize edilmesini ve ilişkilendirilmesini sağlar.
+//JSON, veri  işleme açısından hızlıdır. Bu nedenle web uygulamalarında ve servislerde yaygın olarak kullanılır.
+
+//* json a yeni eleman ekleme
+
+employeeList2.push({
+    name4: "nida",
+    lastName: "güler",
+    dateOfBirth: 1995,
+    salary: 21000,
+    job: "devops",
+  });
+  
+  console.log(employeeList2);
+  
+  employeeList2.forEach((t)=>console.log(t.lastName))
