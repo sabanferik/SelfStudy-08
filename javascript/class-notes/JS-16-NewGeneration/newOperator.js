@@ -169,5 +169,25 @@ const personel = {
     surname: "DEEP",
     job: "actor",
     age: 55,
+    salary:30000
   
   };
+
+const{pName,surname,...gerisi}=personel
+
+console.log(pName);
+console.log(gerisi);
+console.log(gerisi.job);
+
+//* OBJECT KOPYA (rest)
+
+//? orjinal object le ayni sartlarda bir object yaptim
+const ikizPersonel=personel
+
+//?orjinal diziden farkli bir kopya olusturdum
+
+const{...personel2}=personel
+
+ 
+
+
