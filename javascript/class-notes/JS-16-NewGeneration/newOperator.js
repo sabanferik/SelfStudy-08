@@ -309,3 +309,28 @@ const insanlar = [
   }));
   
   console.log(yeniInsan);
+
+  //* ornek
+
+  const zeug=["Aircraft", "Helicopter", "Bicycle"]
+  const otomobiles=["Trucks", "Bus", "Car", "SUV"]
+
+  console.log(zeug,otomobiles);
+  console.log(zeug.concat(otomobiles));
+
+  console.log([...zeug, "atobüs",...otomobiles,"tir"]);
+
+  // ******************* job:father olsun ve location:USA ekleyelim (spread ile yapalım) sonucu yeni bir diziye atalım
+
+
+  const personell = {
+    pName: "Johny",
+    surname: "DEEP",
+    job: "actor",
+    age: 55,
+    salary:30000,
+  
+  };
+  
+  const yeni= {...personell,job:"father", location:"USA"}
+  console.log(yeni);
