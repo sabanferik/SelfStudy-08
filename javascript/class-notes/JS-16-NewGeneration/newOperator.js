@@ -188,6 +188,124 @@ const ikizPersonel=personel
 
 const{...personel2}=personel
 
+//***** orjinal diziyle aynı şartlarda bir kopya oluşturduk, bu yüzden kopyada yapılan değişiklik orjinal diziyi de etkiledi */
+ikizPersonel.job="father"
+console.log(personel);
+console.log(personel2);
+console.log(ikizPersonel);
+
+
+//*** orjinal diziden farklı bir kopya oluşturduğumuz için, bu kopyaya yapılan değişiklik orjinal diziyi bozmaz*/
+personel2.age=12
+console.log(personel);
+console.log(personel2);
+console.log(ikizPersonel);
+
+//*ARRAY KOPYA (rest)
+
+const autos = ["anadol", "renault", "tofas", "ferrari"];
+
+const ikizAutos=autos //assign ettik
+
+const [...autos2]=autos // ayri bir kopya olusturduk
+
+autos2.push("bmw")
+console.log(autos);
+console.log(autos2);
+console.log(ikizAutos);
+
+ikizAutos.unshift("mercedes")
+
+console.log(autos);
+console.log(autos2);
+console.log(ikizAutos);
+
+//! 2- bir fonksiyonun argument lerini diziye cevirmek icin kullanilabilir
+
+//*ornek1
+
+//?yanlis cozum
+
+const sum =(x,y)=>x+y
+
+ console.log( sum(1,2,3,4,5,6))
  
+//?dogru cozum
+
+const sum2 =(...x)=> console.log(x.reduce((toplam,a)=>toplam+a,0));
+
+ sum2(1,2,3,4,5,6);
+
+//*örnek2
+
+const show=(name,surname, ...title)=>{
+    // console.log(title);
+    
+    console.log(`${name} ${surname} is a ${title.join(" and ")} `);
+    
+     }
+    
+     show("asiye", "yildiz", "developer", "mom", "teacher", "computer science")
+
+   
+     
+//? ------------------------------------------------------
+//?  SPREAD==>> parçala (yapısını boz)-> istenilen diziye ekle,içinde gezin vs
+//? ------------------------------------------------------
+
+//* Ornek people (object li ) dizisinden yaşları değişmiş olarak yeni bir object li dizi oluşturalım    
 
 
+const insanlar = [
+    {
+      name: "Mustafa",
+      surname: "Gertrud",
+      job: "developer",
+      age: 30,
+    },
+    {
+      name: "Halo",
+      surname: "Müller",
+      job: "tester",
+      age: 35,
+    },
+    {
+      name: "Mehmet",
+      surname: "Rosenberg",
+      job: "team lead",
+      age: 40,
+    },
+    {
+      name: "Ozkul",
+      surname: "Gutenberg",
+      job: "developer",
+      age: 26,
+    },
+  
+    {
+      name: "Baser",
+      surname: "Shaffer",
+      job: "tester",
+      age: 24,
+    },
+  ];
+  
+  const yeniInsanlar = insanlar.map((kisi) => ({
+    name: kisi.name,
+    surname: kisi.surname,
+    job: kisi.job,
+    age: kisi.age + 5,
+  }));
+  console.log(yeniInsanlar);
+  
+  
+  //* SPREAD  obje de değişmesini istemediğimiz elemanlar için ... kullanıyoruz ÖNEMLİ***!!!!!
+  // ...kisi=  name: kisi.name,
+  //   surname: kisi.surname,
+  //   job: kisi.job,
+  const yeniInsan = insanlar.map((kisi) => ({
+    ...kisi,
+    age: kisi.age + 5,
+  }));
+  
+  console.log(yeniInsan);
