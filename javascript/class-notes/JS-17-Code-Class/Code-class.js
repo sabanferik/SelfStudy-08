@@ -1448,4 +1448,88 @@ const newIndirimliProducts = products.map(product => ({
   }));
   console.log(newIndirimliProducts);
 
+//! - Her kategoride kac ürün oldugunu gösterelim
 
+// // 1.Yol
+// const categoryCount = products.reduce((acc, product) => {
+//   if (!acc[product.category]) {
+//     acc[product.category] = 1;
+//   } else {
+//     acc[product.category]++;
+//   }
+//   return acc;
+// });
+
+// console.log(categoryCount);
+
+// 2. Yol
+
+function countCategoryElements(products) {
+  const categoryCount={}
+
+  products.forEach((product)=>{
+      
+    const {category}=product
+
+    if (categoryCount[category]){
+        categoryCount[category]=categoryCount[category]+1
+    }
+    else{
+        categoryCount[category]=1
+    }
+
+    
+  });
+  return categoryCount
+}
+
+console.log(countCategoryElements(products));
+
+
+
+
+//! - Kac Katogori var
+
+console.log(
+    products
+      .map((product) => product.category)
+      .reduce((catArray, category) => {
+        if (!catArray.includes(category)) {
+          catArray.push(category);
+        }
+        return catArray;
+      }, [])
+      .length
+  );
+
+
+  //!1- Müşteri bilgilerini düzenli bir şekilde göstermek istiyor.Bunun için
+//   İsim - adres ve telefonlarını yeni bir listeye alarak düzenli bir şekide gösterecektir.
+
+// Beklenen Sonuç:
+// [
+//     {name: 'LEANNE GRAHAM', adress: 'Gwenborough city, Kulas Light street Apt. 556 suite', phone: '1-770-736-8031 x56442'}
+//     {name: 'ERVIN HOWELL', adress: 'Wisokyburgh city, Victor Plains street Suite 879 suite', phone: '010-692-6593 x09125'}
+//     {name: 'CLEMENTINE BAUCH', adress: 'McKenziehaven city, Douglas Extension street Suite 847 suite', phone: '1-463-123-4447'}
+// ]
+
+/* -------------------------------------------------------------------------- */
+//!2- Müşterilerinin bazılarına telefon ile arayıp memnuniyet anketi yapacaktır
+// Baş harfi e ile başlıyorsa Pazartesi,
+// Baş harfi C ile başlıyorsa Çarşamba arayacaktır
+
+// Beklenen Sonuç:
+// Pazartesi Aranacaklar
+// {name: 'ERVIN HOWELL', phone: '010-692-6593 x09125'}
+
+// Çarşamba Aranacaklar
+// {name: 'CLEMENTINE BAUCH', phone: '1-463-123-4447'}
+// {name: 'CHELSEY DIETRICH', phone: '(254)954-1289'}
+// {name: 'CLEMENTINA DUBUQUE', phone: '024-648-3804'}
+
+/* -------------------------------------------------------------------------- */
+//!3- id Ad-ve email adreslerini ayrı bir listeye alıp, id numaraları tek sayı olanlara yeni çıkan elektronik cihazları ile ilgili mesaj ekleyecek, çift sayı olanlara yeni çıkan küçük ev aleti mesajını ekleyecektir
+
+// Beklenen Sonuc
+// {name: 'Leanne Graham', phone: 'Sincere@april.biz', mesaj: 'Yeni çıkan XXX elektronik cihazımızı mutlaka denemelisiniz '}
+// {name: 'Ervin Howell', phone: 'Shanna@melissa.tv', mesaj: ' Yeni Çıkan kahve yapma makinamızı deneyin.Memnun kalacaksınız'}
