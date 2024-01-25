@@ -608,9 +608,95 @@ const userTodos=[
   /*             1.Question
   /*-----------------------------------------*/
 
-  const userTodos=[
+//   const userTodos=[
 
-  ]
+//   ]
 
 //! Bir Todo Uygulamasında 5 tane kullanıcının todolistinin olduğu Json dosyasında
 //!a-Kullanıcıların yapılacak listesini ve completed durumunu listeleyelim
+
+//  1.yol
+userTodos.forEach(todo => {
+  console.log(`User ${todo.userId}'s Todo: ${todo.title}, Completed: ${todo.completed}`);
+});
+
+//  2.yol
+
+userTodos.forEach((todo)=>console.log(`${todo.title}: ${todo.completed}`))
+
+//! b - Birinci kullanicinin todo bilgisi ve yapilip yapilmama durumunu listeleyin
+
+// 1-yol
+
+const firstUserTodos = userTodos.filter(todo => todo.userId === 1);
+
+console.log(`Birinci Kullanıcının Todo Bilgileri:`);
+firstUserTodos.forEach(todo => {
+  console.log(`Todo ID: ${todo.id}, Todo: ${todo.title}, Completed: ${todo.completed}`);
+});
+
+// 2-yol
+
+userTodos
+.filter((user1)=>user1.userId===1)
+.forEach((user1)=>console.log(`${user1.title}: ${user1.completed}`))
+
+//! c- Birinci kullanicinin (id si 1 olan ) sadece bitirdigi islerin listesi
+
+userTodos
+.filter((user1)=>user1.userId===1 && user1.completed===true)
+.forEach((user1)=>console.log(`${user1.title}: ${user1.completed}`))
+
+//! d- Kullanicinin girdigi id'ye sahip kisinin bitirdigi islerin listesi
+
+// 1.Yol
+
+const targetUserId = 2;  
+const targetUserCompletedTodos = userTodos.filter(todo => todo.userId === targetUserId && todo.completed);
+
+console.log(`ID'si ${targetUserId} olan Kullanıcının Bitirdiği İşlerin Listesi:`);
+targetUserCompletedTodos.forEach(todo => {
+  console.log(`Todo ID: ${todo.id}, Todo: ${todo.title}`);
+});
+
+// 2.Yol
+
+// user=+prompt("Enter an Id (1-5):")
+
+// userTodos
+// .filter((todo)=> todo.userId===user && todo.completed === true)
+// .forEach((newtodo)=> console.log(`${newtodo.title}`))
+
+
+//! e- Bu yapiya yeni bir eleman ekleyelim
+
+// 1.yoll
+
+const newTodo = {
+    "userId": 1,
+    "id": 6,
+    "title": "Yeni Todo",
+    "completed": false
+  };
+  
+  userTodos.push(newTodo);
+  
+  console.log("Yeni Eklenen Todo:");
+  console.log(newTodo);
+  
+  console.log("Güncellenmiş Todo Listesi:");
+  userTodos.forEach(todo => {
+    console.log(`Todo ID: ${todo.id}, Todo: ${todo.title}, Completed: ${todo.completed}`);
+  });
+
+//   2.yol
+
+userTodos.push({
+    userId: 6,
+    id: 6,
+    title: "my new todo",
+    completed: false,
+  });
+  console.log(userTodos[100]);
+
+  
