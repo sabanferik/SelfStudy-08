@@ -1,6 +1,6 @@
-/* -------------------------------------------------------------------------- */
-/*                                 1.QUESTION                                 */
-/* -------------------------------------------------------------------------- */
+/* ------------------ --------------------------- */
+/*                     1.QUESTION                  */
+/* --------------------- ------------------------------- */
 const userTodos=[
     {
       "userId": 1,
@@ -703,7 +703,7 @@ userTodos.push({
   /*             2.Question
   /*-----------------------------------------*/
 
-  const products=[
+  let products=[
     {
       "id": 1,
       "title": "iPhone 9",
@@ -1298,5 +1298,154 @@ ${price}
 ${category}`))
 
 // ! c laptoplarin adini ve fiyatlarini listeleyelim
+
+// 1.Yol
+
+products
+  .filter((product) => product.category == 'laptops')
+  .map(({title,price}) => {
+    console.log(title,price,);
+  });
+
+//   2.yol
+
+products
+  .filter((product) => product.category == "laptops")
+  .forEach(({ title, price }) => {
+    console.log(title, price);
+  });
+
+//   3.yol
+
+products
+.filter(({category})=> category==="laptops")
+.forEach(({title,price})=>console.log(`${title}: ${price}`))
+
+//! d- Firmamız home-decoration categorisine sahip ürünleri ayrı bir sitede yayınlama kararı aldığı için bu ürünleri pörtföyünden çıkartacak. Bu karategorideki ürünleri listeden çıkaralım
+
+// 1.Yol
+
+const newProducts = products.filter(
+    (product) => product.category !== "home-decoration"
+  );
+  console.log(newProducts);
+
+//   2. Yol
+
+//  const newProducts=products.filter((products)=>products.category !== "home-decoration")
+
+products=products.filter((products)=>products.category !== "home-decoration")
+
+ console.log(newProducts);
+
+ //! Kulanicinin sectigi ürünü (id si girilen ürünü) silelim
+
+//  1. Yol
+//  const idSil = +prompt("Silmek istediğiniz ürün id'si giriniz.");
+// const urunler = products.filter(product => product.id !== idSil);
+// console.log(urunler);
+
+// 2.Yol
+// const productId = +prompt("Please enter a product id you wanna remove");
+// const newProducts = products.filter(({ id }) => id !== productId);
+// console.log(newProducts);
+
+// 3. Yol
+
+// const id=Number(prompt("Enter an id:"))
+// const updatedProducts= products.filter((product)=> product.id !== id)
+// console.log(updatedProducts)
+console.clear();
+//! Yeni ürün ekleyelim - create
+
+//  1. ürün ekleme cözümü
+
+products.push({
+    id: products.length + 1,
+    title: "wallet",
+    description: "Attractive Wallet",
+    price: 20,
+    discountPercentage: 2.92,
+    rating: 4.92,
+    stock: 54,
+    brand: "blue",
+    category: "leather",
+    thumbnail: "https://cdn.dummyjson.com/product-images/30/thumbnail.jpg",
+    images: [
+      "https://cdn.dummyjson.com/product-images/30/1.jpg",
+      "https://cdn.dummyjson.com/product-images/30/2.jpg",
+      "https://cdn.dummyjson.com/product-images/30/3.jpg",
+      "https://cdn.dummyjson.com/product-images/30/thumbnail.jpg",
+    ],
+  });
+
+//   2. ürün ekleme cözümü
+
+products.push({
+    id: 31,
+    title: "iPhone 10",
+    description: "An apple mobile which is nothing like apple",
+    price: 599,
+    discountPercentage: 12.96,
+    rating: 4.69,
+    stock: 94,
+    brand: "Apple",
+    category: "smartphones",
+    thumbnail: "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+    images: [
+      "https://cdn.dummyjson.com/product-images/1/1.jpg",
+    ],
+  });
+  console.log(products);
+
+//   3. ürün ekleme cözümü
+
+  const addProduct = {
+    
+        "id": products.length + 1,
+        "title": "iPhone 10",
+        "description": "An apple mobile which is nothing like apple",
+        "price": 1299,
+        "discountPercentage": 14.96,
+        "rating": 4.69,
+        "stock": 73,
+        "brand": "Apple",
+        "category": "smartphones",
+        "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+        "images": [
+          "https://cdn.dummyjson.com/product-images/1/1.jpg",
+          "https://cdn.dummyjson.com/product-images/1/2.jpg",
+          "https://cdn.dummyjson.com/product-images/1/3.jpg",
+          "https://cdn.dummyjson.com/product-images/1/4.jpg",
+          "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+        ]
+     
+    }
+
+    products=[...products,addProduct]
+    console.log(products);
+    //? Bu son yöntem daha best practice olarak kullanılır
+
+
+    //! - Rest operatörünü kullanarak 
+    // fiyatlari indirimli fiyatlarla güncelliyoruz
+
+// 1. Yol
+
+const guncelFiyatlar = products.map(product => {
+    const discount = product.price * (product.discountPercentage / 100);
+    const newPrice = product.price - discount;
+    return { ...product, price: newPrice };
+   });
+   
+   console.log(guncelFiyatlar);
+
+//    2. Yol
+
+const newIndirimliProducts = products.map(product => ({
+    ...product,
+    price: product.price - (product.price * (product.discountPercentage / 100)).toFixed(2)
+  }));
+  console.log(newIndirimliProducts);
 
 
