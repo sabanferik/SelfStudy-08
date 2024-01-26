@@ -46,3 +46,26 @@ document.querySelector("#par").style.fontSize="40px"
 
 buton.textContent="TIKLANDI"
 }
+
+
+// ? METHOD-2 (sadece JAVASCRIPT te yazılır- addEventListener())  
+//2.yol
+// ? ---------------------------------------------------------------
+
+buton.addEventListener("click", () => {
+    badi.style.backgroundImage = "linear-gradient(to right, purple,gray)";
+  
+    document.querySelector("#par").style.fontSize = "40px";
+  
+    buton.textContent = "TIKLANDI";
+  });
+
+//* EXAMPLE-4 (Mouse Over, Mouse Out )
+//* -------------------------------------------------------
+
+//?METHOD-3 (HTML-INLINE)
+//?---------------------------------------------------------------
+
+// <!--* inline js kodları -->
+// <h1 onmouseover="style.color='blue'"  onmouseout="style.color='yellow'"> JAVASCRIPT TE DOM</h1>
+
