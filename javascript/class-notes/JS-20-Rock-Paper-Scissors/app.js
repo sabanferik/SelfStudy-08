@@ -41,48 +41,56 @@ selectionArticle.addEventListener('click',(e)=>{
     userSelection = e.target.id
     // console.log(userSelection)
 
-    if(userSelection){
+    if(userSelection && !(pcScoreSpan.textContent === '10' || yourScoreSpan.textContent === '10') ){
         userSelectImg.src =`./assets/${userSelection}.png`;
         userSelectImg.id = `you`;
         yourChoiceDiv.appendChild(userSelectImg)
+        createPcSelection()
     }
-    createPcSelection()
 
 
+})
+
+playAgainButton.addEventListener('click',()=>{
+    window.location.reload()
 })
 
 //& Functions
 
 const createPcSelection = ()=>{
     pcArr = ['rock', 'paper', 'scissor', 'rock', 'paper', 'scissor'];
-    // pcRandom = pcArr[Math.trunc(Math.random() * 6)]
-    pcRandom = 'scissor'
+    pcRandom = pcArr[Math.trunc(Math.random() * 6)]
+    // pcRandom = 'scissor'
     // console.log(pcRandom)
     pcSelectImg.src = `./assets/${pcRandom}.png`;
     pcSelectImg.id = `pcs`;
     pcChoiceDiv.appendChild(pcSelectImg)
 
-    calculateResult()
+
+        calculateResult()
+    
 }
 
 const calculateResult = () =>{
     // console.log(userSelection)
     // console.log(pcRandom)
 
+
     if(userSelection === pcRandom){
         draw()
     }else{
         if(userSelection === 'rock'){
-            pcRandom === 'paper' ?  youLost(userSelection) : youWin()
+            pcRandom === 'paper' ?  youLost(userSelection) : youWin(pcRandom)
         }else if(userSelection === 'paper'){
-            pcRandom === 'scissor'? youLost(userSelection) : youWin()
+            pcRandom === 'scissor'? youLost(userSelection) : youWin(pcRandom)
         }else if(userSelection === 'scissor'){
-            pcRandom === 'rock' ? youLost(userSelection) : youWin()
+            pcRandom === 'rock' ? youLost(userSelection) : youWin(pcRandom)
         }
     }
-    if(pcScore === '10' || yourScore === '10'){
-        openModal
+    if(pcScoreSpan.textContent === '10' || yourScoreSpan.textContent === '10'){
+        openModal()
     }
+
 
 }
 
@@ -94,7 +102,7 @@ const draw = () => {
 }
 
 const youLost = (userSelection)=>{
-    console.log(userSelection)
+    // console.log(userSelection)
     messagePar.textContent = "You Lost!☹️";
     messagePar.style.backgroundColor = RED;
     scoreCardSection.style.color = RED;
@@ -103,26 +111,75 @@ const youLost = (userSelection)=>{
     document.getElementById('you').setAttribute('src', `./assets/${userSelection}l.png`)
 }
 
-const youWin = ()=>{
-    messagePar.textContent = "You Win!🎉";
+const youWin = (pcRandom) => {
+    messagePar.textContent = "You Win😁";
     messagePar.style.backgroundColor = GREEN;
     scoreCardSection.style.color = GREEN;
     yourScoreSpan.textContent++
     document.getElementById('pcs').setAttribute('src', `./assets/${pcRandom}l.png`)
 }
 
+
 const openModal = () => {
-    modalCardSection.classList.add('show');
+    modalCardSection.classList.add("show")
+    if(yourScoreSpan.textContent === '10'){
+        finalMessagePar.textContent = '🎉You Win🎈'
+        playAgainButton.style.color = GREEN
+        document.querySelector('.modal').style.backgroundColor = GREEN
+        updateTopScore()
+
+    }
 }
 
 
+//! Local storage kullanımı
+
+
+//  localStorage.setItem('highScore', 10 )
+// localStorage.setItem('Hello', 'dünya' )
+
+// let x = localStorage.getItem('highScore')
+
+// console.log( typeof x)
+
+// localStorage.removeItem('Hello')
 
 
 
+//& update top Score
+
+// ilk başlangıçta localstorage de tutulan skoru yazdır.
+
+const storedScore = localStorage.getItem("highScore")
+const topScore = storedScore ? `10 : ${storedScore}` : "0 : 0"
+
+// console.log(topScore)
+
+//ilk açılışta high score var ise  yaz yok ise 0 :0 yaz
+domTopScore.textContent = topScore
+
+const updateTopScore = ()=>{
+    
+    // Eğer highscore yoksa veya oyun sonunda update edilecekse
+    if(!storedScore || storedScore > +pcScoreSpan.textContent){
+        localStorage.setItem("highScore", pcScoreSpan.textContent)
+    }
+}
 
 
+//& Local storage deki verinin kullanıcı onayıyla silinmesi
 
 
+domTopScore.addEventListener('dblclick', ()=>{
+
+    if(domTopScore.textContent != "0 : 0"){
+        if(confirm("Are you sure you want to reset the Top Score?")){
+            localStorage.removeItem("highScore");
+            domTopScore.textContent = "0 : 0"
+        }
+
+    }
+})
 
 
 
