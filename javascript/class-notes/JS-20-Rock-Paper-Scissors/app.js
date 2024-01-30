@@ -5,9 +5,9 @@ const selectionArticle = document.querySelector('.selection')
 
 const messagePar = document.querySelector('.message')
 
-//& Score
+//&Score
 const scoreCardSection = document.querySelector('.score-card')
-const yourScoreSpan = document.getElementById('your-score')
+const yourScoreSpan =document.getElementById('your-score')
 const pcScoreSpan = document.getElementById('pc-score')
 const domTopScore = document.getElementById('top-score')
 
@@ -24,7 +24,9 @@ const YELLOW = "#ffc538";
 const RED = "#fb778b";
 const GREEN = "#5ab7ac";
 
+
 // console.log(selectionArticle)
+
 
 //& Event listeners
 
@@ -40,44 +42,57 @@ selectionArticle.addEventListener('click',(e)=>{
     }
     createPcSelection()
 
+
 })
 
 //& Functions
 
 const createPcSelection = ()=>{
-    pcArr = ['rock', 'paper', 'scissor','rock', 'paper', 'scissor'];
-    pcRandom = pcArr[Math.trunc(Math.random()*6)]// daha fazla secim alternatifi olsun diye iki defa yazildi
+    pcArr = ['rock', 'paper', 'scissor', 'rock', 'paper', 'scissor'];
+    // pcRandom = pcArr[Math.trunc(Math.random() * 6)]
+    pcRandom = 'scissor'
     // console.log(pcRandom)
-    pcSelectImg.src =`./assets/${pcRandom}.png`;
-    pcSelectImg.id = `pc`;
+    pcSelectImg.src = `./assets/${pcRandom}.png`;
+    pcSelectImg.id = `pcs`;
     pcChoiceDiv.appendChild(pcSelectImg)
 
     calculateResult()
 }
 
-const calculateResult = ()=>{
+const calculateResult = () =>{
     // console.log(userSelection)
     // console.log(pcRandom)
+
     if(userSelection === pcRandom){
         draw()
-    }else {
-        if(userSelection=== 'rock'){
-            pcRandom==='paper' ? youLost() : youWin()
-        }else if(userSelection=== 'paper'){
-            pcRandom==='scissor' ? youLost() : youWin()
-        }else if(userSelection=== 'scissor'){
-            pcRandom==='rock' ? youLost() : youWin()
+    }else{
+        if(userSelection === 'rock'){
+            pcRandom === 'paper' ?  youLost(userSelection) : youWin()
+        }else if(userSelection === 'paper'){
+            pcRandom === 'scissor'? youLost(userSelection) : youWin()
+        }else if(userSelection === 'scissor'){
+            pcRandom === 'rock' ? youLost(userSelection) : youWin()
         }
     }
-    
- }
+
+}
 
 
+const draw = () => {
+    messagePar.textContent = "it's a draw";
+    messagePar.style.backgroundColor = YELLOW;
+    scoreCardSection.style.color = YELLOW;
+}
 
-
-
-
-
+const youLost = (userSelection)=>{
+    console.log(userSelection)
+    messagePar.textContent = "You Lost!☹️";
+    messagePar.style.backgroundColor = RED;
+    scoreCardSection.style.color = RED;
+    pcScoreSpan.textContent++
+    // console.log(document.getElementById('you').getAttribute('src')) // attribute kontrol
+    document.getElementById('you').setAttribute('src', `./assets/${userSelection}l.png`)
+}
 
 
 
