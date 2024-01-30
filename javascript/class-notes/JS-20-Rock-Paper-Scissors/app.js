@@ -24,6 +24,12 @@ const YELLOW = "#ffc538";
 const RED = "#fb778b";
 const GREEN = "#5ab7ac";
 
+//& Modal
+
+const modalCardSection = document.querySelector('.modal-card');
+const finalMessagePar = document.getElementById('final-message');
+const playAgainButton = document.getElementById('play-again');
+
 
 // console.log(selectionArticle)
 
@@ -74,6 +80,9 @@ const calculateResult = () =>{
             pcRandom === 'rock' ? youLost(userSelection) : youWin()
         }
     }
+    if(pcScore === '10' || yourScore === '10'){
+        openModal
+    }
 
 }
 
@@ -94,7 +103,17 @@ const youLost = (userSelection)=>{
     document.getElementById('you').setAttribute('src', `./assets/${userSelection}l.png`)
 }
 
+const youWin = ()=>{
+    messagePar.textContent = "You Win!🎉";
+    messagePar.style.backgroundColor = GREEN;
+    scoreCardSection.style.color = GREEN;
+    yourScoreSpan.textContent++
+    document.getElementById('pcs').setAttribute('src', `./assets/${pcRandom}l.png`)
+}
 
+const openModal = () => {
+    modalCardSection.classList.add('show');
+}
 
 
 
