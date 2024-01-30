@@ -6,9 +6,14 @@ const selectionArticle = document.querySelector('.selection')
 //& Değişkenler
 
 let userSelection;
+let pcRandom;
+let pcArr = [];
 const userSelectImg = document.createElement('img');
+const pcSelectImg = document.createElement('img');
 
 // console.log(selectionArticle)
+
+//& Event listeners
 
 selectionArticle.addEventListener('click',(e)=>{
     // console.log(e.target.id)
@@ -20,10 +25,20 @@ selectionArticle.addEventListener('click',(e)=>{
         userSelectImg.id = `you`;
         yourChoiceDiv.appendChild(userSelectImg)
     }
-
-
+    createPcSelection()
 
 })
+
+//& Functions
+
+const createPcSelection = ()=>{
+    pcArr = ['rock', 'paper', 'scissor','rock', 'paper', 'scissor'];
+    pcRandom = pcArr[Math.trunc(Math.random()*6)]// daha fazla secim alternatifi olsun diye iki defa yazildi
+    console.log(pcRandom)
+    pcSelectImg.src =`./assets/${pcRandom}.png`;
+    pcSelectImg.id = `pc`;
+    pcChoiceDiv.appendChild(pcSelectImg)
+}
 
 
 
