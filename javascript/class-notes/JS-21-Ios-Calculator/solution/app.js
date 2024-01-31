@@ -13,7 +13,7 @@
 
 
 
-// //?eşittir yada percent e basıldıktan sonra yeni işleme yeni sayılar girmek için, tıklandı tıklanmadı boolean değişkeni hazırladık, eşittir (ve de percent) butonunda bu true yani tıklandı olacak
+//todo eşittir yada percent e basıldıktan sonra yeni işleme yeni sayılar girmek için, tıklandı tıklanmadı boolean değişkeni hazırladık, eşittir (ve de percent) butonunda bu true yani tıklandı olacak
 
 
 
@@ -29,24 +29,26 @@
 
   
 
-// //?kullanıcı 0 girerse, sonrasında 0 ve . dışında bir sayı girerse, ekranda sadece girilen yeni sayı (0 iptal olsun) gözüksün
+
+
+//todo kullanıcı 0 girerse, sonrasında 0 ve . dışında bir sayı girerse, ekranda sadece girilen yeni sayı (0 iptal olsun) gözüksün
 
 
 
 
 
-//?kullanıcı herhangi bir yerde . girmişken, tekrar nokta girmeye kalkarsa giremesin
+//todo kullanıcı herhangi bir yerde . girmişken, tekrar nokta girmeye kalkarsa giremesin
 
 
-//?kullanıcı 10 haneden sonra girmesin
+//todo kullanıcı 10 haneden sonra girmesin
 
 
 
 
-//?kullanıcı ilk başta 0 girer ardından tekrar 0 girerse, girilmesin, tek 0 döndürsün
+//todo kullanıcı ilk başta 0 girer ardından tekrar 0 girerse, girilmesin, tek 0 döndürsün
 
 
-// //?eşittir yada percent a basıldıktan sonra girilen number tek başına ekranda görünsün,çünkü yeni işlem başlıyor(ekranda 72 yazan işlem sonucu varken 5 e basınca 725 olmasın)
+//todo eşittir yada percent a basıldıktan sonra girilen number tek başına ekranda görünsün,çünkü yeni işlem başlıyor(ekranda 72 yazan işlem sonucu varken 5 e basınca 725 olmasın)
 
 
 
@@ -58,7 +60,9 @@
 
 
 
-  //? işlem sonucu 8 haneyi geçmesin
+  //todo işlem sonucu 8 haneyi geçmesin
+
+
 
   //?işlem girilince
 
@@ -75,7 +79,7 @@
 
 
 
-    //?eşittire basılmadan arka arkaya işleme basılırsa (alt ve üst ekran doluyken işleme basılmaya devam edilirse)
+    //todo eşittire basılmadan arka arkaya işleme basılırsa (alt ve üst ekran doluyken işleme basılmaya devam edilirse)
 
 
 
