@@ -2,15 +2,20 @@
 //*                     IOS CALCULATOR
 //* ======================================================
 
+const numberButtons= document.querySelectorAll(".num")
+const operationButtons= document.querySelectorAll(".operator")
+const equalButtons=document.querySelector(".equal")
+const previousDisplay=document.querySelector(".previous-display")
 
-
+const currentDisplay = document.querySelector(".current-display");
 
 
 
 
 //?operator değişkenleri
-
-
+let ustEkranText=""
+let altEkranText=""
+let islem=""
 
 
 //todo eşittir yada percent e basıldıktan sonra yeni işleme yeni sayılar girmek için, tıklandı tıklanmadı boolean değişkeni hazırladık, eşittir (ve de percent) butonunda bu true yani tıklandı olacak
@@ -20,14 +25,24 @@
 
 //?*********** herhangi bir number a basılınca
 
+numberButtons.forEach((number)=>{
 
+ number.onclick=()=>{
+ekranaHazirlik(number.textContent)
+
+updateEkran()
+ }
+
+
+})
 
 
 
 
 //!EKRANA HAZIRLIK
 
-  
+const ekranaHazirlik=(num)=>{
+ 
 
 
 
@@ -55,21 +70,44 @@
 
 //?bütün şartları başarı ile geçtiyse basılan numaraları arka arkaya ekle
 
+altEkranText+=num
+
+
+}
+
+
+
 
 //!BURADA YAPILANLARI EKRANA BASTIRMA
 
+const updateEkran=()=>{
 
+currentDisplay.textContent=altEkranText
 
-  //todo işlem sonucu 8 haneyi geçmesin
-
-
-
-  //?işlem girilince
-
+ //todo işlem sonucu 8 haneyi geçmesin
 
 
 
+ //?işlem girilince
+
+if(islem){
+
+ //üstekranda alttaki sayı +işlem
+
+ previousDisplay.textContent=`${ustEkranText} ${islem}` //ustEkranText+islem
+}else{
+ //hiçbişey olmasın
+}
+
+
+
+}
 //?**************HERHANGİ BİR İŞLEME TIKLANDIĞINDA
+
+operationButtons.forEach((op)=>{
+  op.onclick=()=>{
+    
+
 
 
 
@@ -79,11 +117,16 @@
 
 
 
-    //todo eşittire basılmadan arka arkaya işleme basılırsa (alt ve üst ekran doluyken işleme basılmaya devam edilirse)
+   //todo eşittire basılmadan arka arkaya işleme basılırsa (alt ve üst ekran doluyken işleme basılmaya devam edilirse)
 
+   islem=op.textContent
 
+    ustEkranText=altEkranText
+    altEkranText=""
+    updateEkran()
+  };
 
-
+})
 //?**************eşittir butonuna tıklandığında
 
 
