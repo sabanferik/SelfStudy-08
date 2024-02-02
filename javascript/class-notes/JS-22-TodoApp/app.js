@@ -68,6 +68,13 @@ const createDeleteButon = () => {
       a.closest("li").remove();
       total = total - 1;
       totalSpan.textContent = total;
+
+      //!! Eger silinen isin classList inde checked varsa (bitirilmis yapilmis bir isse) completed sayisindanda bir eksiltme yap
+
+      if (a.parentElement.classList.contains("checked")) {
+        completed -= 1;
+        completeSpan.textContent = completed;
+      }
     };
   });
 };
@@ -84,14 +91,13 @@ const createCheckButon = () => {
         // }
 
         if (a.parentElement.classList.contains("checked")) {
-
           a.parentElement.classList.remove("checked");
-            completed-=1
+          completed -= 1;
         } else {
           a.parentElement.classList.add("checked");
-          completed+=1
+          completed += 1;
         }
-        completeSpan.textContent=completed
+        completeSpan.textContent = completed;
       })
   );
 };
