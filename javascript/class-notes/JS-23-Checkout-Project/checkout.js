@@ -61,7 +61,7 @@ function showScreen() {
                   </div>
 
                   <div class="ürün-removal mt-4">
-                    <button class="btn btn-danger btn-sm w-100 remove-ürün">
+                    <button class="btn btn-danger btn-sm w-100 remove-product">
                       <i class="fa-solid fa-trash-can me-2"></i>Remove
                     </button>
                   </div>
@@ -83,6 +83,26 @@ function showScreen() {
 //! browser daki toplam fiyatların olduğu table ın güncelleme fonksiyonu
 calculateCardTotal();
 
+removeButton();
+
+//!SİLME FONKSİYONU
+
+function removeButton() {
+  document.querySelectorAll(".remove-product").forEach((buton) => {
+    buton.onclick = () => {
+      //?ekrandan sildik
+      buton.closest(".card").remove();
+      // console.log(buton.closest(".card").querySelector("h5").textContent);
+      //?diziden de sil
+      sepettekiler = sepettekiler.filter(
+        (ürün) =>
+          ürün.name != buton.closest(".card").querySelector("h5").textContent
+      );
+      calculateCardTotal()
+    };
+  });
+}
+
 //! Card toplam değerlerini hesaplama
 function calculateCardTotal() {
   //! her bir card daki ürün toplam kısımları
@@ -96,7 +116,6 @@ function calculateCardTotal() {
 
   //? productsToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
   //?Reduce tam olarak Array istiyor, nodelist yeterli değil
-  
 
   // console.log(Array.from(a));
 
