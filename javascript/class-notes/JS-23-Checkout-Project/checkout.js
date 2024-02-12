@@ -11,6 +11,28 @@ let sepettekiler = [
   { name: "Antique Clock", price: 69.99, piece: 1, img: "./img/photo3.jpg" },
 ];
 
+//!!!!!!!!!!BUBLİNG!!!!!!!!!
+let flag = false;
+
+let h1 = document.querySelector("h1");
+
+h1.onclick = (e) => {
+  flag = !flag;
+  flag
+    ? (h1.textContent = "Checkout Project")
+    : (h1.textContent = "Shopping Site");
+
+    //!çalış ve sonra parent ını etkileme
+  e.stopPropagation();
+};
+
+let header = document.querySelector("header");
+
+header.onclick = () => {
+  flag = !flag;
+  flag ? (h1.textContent = "seni ezdim") : (h1.textContent = "tamam kızma");
+};
+
 //!EKRANA BASTIRMA
 showScreen();
 
@@ -85,6 +107,8 @@ calculateCardTotal();
 
 removeButton();
 
+pieceButton();
+
 //!SİLME FONKSİYONU
 
 function removeButton() {
@@ -98,7 +122,51 @@ function removeButton() {
         (ürün) =>
           ürün.name != buton.closest(".card").querySelector("h5").textContent
       );
-      calculateCardTotal()
+      calculateCardTotal();
+    };
+  });
+}
+
+//! ADET DEĞİŞTİRME VE ÜRÜNTOPLAM GÜNCELLEME
+
+function pieceButton() {
+  document.querySelectorAll(".adet-controller").forEach((kutu) => {
+    const plus = kutu.lastElementChild;
+    const minus = kutu.firstElementChild;
+    const adet = plus.previousElementSibling;
+    //  const adet=kutu.children[1]
+
+    //!plus butonuna basılınca olacaklar
+
+    plus.onclick = () => {
+      //ekranda güncelledik
+      adet.textContent = Number(adet.textContent) + 1;
+
+      //ürüntoplamın ekranda güncellenmesi
+
+      plus.closest(".card-body").querySelector(".product-total").textContent =
+        plus.closest(".card-body").querySelector(".indirim-price").textContent *
+        adet.textContent;
+
+      calculateCardTotal();
+    };
+    minus.onclick = () => {
+      //ekranda güncelledik
+      adet.textContent = Number(adet.textContent) - 1;
+
+      //ürüntoplamın ekranda güncellenmesi
+
+      minus.closest(".card-body").querySelector(".product-total").textContent =
+        minus.closest(".card-body").querySelector(".indirim-price")
+          .textContent * adet.textContent;
+
+      calculateCardTotal();
+
+      //!adet 1 iken minus a basılırsa ürün ekrandan silinsin
+      if (adet.textContent < 1) {
+        alert("ürünü sileyim mi?");
+        minus.closest(".card").remove();
+      }
     };
   });
 }
@@ -131,6 +199,7 @@ function calculateCardTotal() {
   document.querySelector(".kargo").textContent = productsTotal ? shipping : 0;
 
   document.querySelector(".toplam").textContent =
-    productsTotal > 0 &&
-    (productsTotal + productsTotal * tax + shipping).toFixed(2);
+    productsTotal > 0
+      ? (productsTotal + productsTotal * tax + shipping).toFixed(2)
+      : 0;
 }
