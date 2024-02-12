@@ -12,19 +12,16 @@ let sepettekiler = [
 ];
 
 //!EKRANA BASTIRMA
-showScreen()
+showScreen();
 
-function showScreen(){
-
+function showScreen() {
   //*toFixed metodu sayıyı string e çevirir
   sepettekiler.forEach(({ name, price, piece, img }) => {
-   
     //!DESTRUCTURING
     // const{name,price,piece,img}=ürün
 
-    document.querySelector(
-      "#product-rowlari"
-    ).innerHTML += ` <div class="card mb-3" style="max-width: 540px;">
+    document.querySelector("#product-rowlari").innerHTML += `
+ <div class="card mb-3" style="max-width: 540px;">
 
   <div class="row ">
 
@@ -40,7 +37,9 @@ function showScreen(){
         
              <div class="ürün-price">
                     <p class="text-warning h2">$
-                      <span class="indirim-price">${(price*0.7).toFixed(2)} </span>
+                      <span class="indirim-price">${(price * 0.7).toFixed(
+                        2
+                      )} </span>
                       <span class="h5 text-dark text-decoration-line-through">${price}</span>
                     </p>
                   </div>
@@ -68,13 +67,51 @@ function showScreen(){
                   </div>
 
                   <div class="mt-2">
-                    Ürün Toplam: $<span class="ürün-toplam">${(price*0.7*piece).toFixed(2)} </span>
+                    Ürün Toplam: $<span class="product-total">${(
+                      price *
+                      0.7 *
+                      piece
+                    ).toFixed(2)} </span>
                   </div>
       </div>
     </div>
   </div>
 </div>`;
   });
+}
 
+//! browser daki toplam fiyatların olduğu table ın güncelleme fonksiyonu
+calculateCardTotal();
 
+//! Card toplam değerlerini hesaplama
+function calculateCardTotal() {
+  //! her bir card daki ürün toplam kısımları
+  const a = document.querySelectorAll(".product-total");
+  //!   querySelectorAll(), statik bir NodeList döndürür.
+  //!burada netten https://softauthor.com/javascript-htmlcollection-vs-nodelist/
+  // Dizi Değil!
+  // Bir NodeList bir dizi gibi görünebilir ama öyle değildir.
+  // Bir NodeList içinde döngü yapabilir ve düğümlerine dizine göre başvurabilirsiniz.
+  // Ancak, bir NodeList'te reduce(), push(), pop() veya join() gibi Array yöntemlerini kullanamazsınız.
+
+  //? productsToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
+  //?Reduce tam olarak Array istiyor, nodelist yeterli değil
+  
+
+  // console.log(Array.from(a));
+
+  const productsTotal = Array.from(a).reduce(
+    (acc, item) => acc + Number(item.textContent),
+    0
+  );
+
+  document.querySelector(".productstoplam").textContent = productsTotal;
+
+  document.querySelector(".vergi").textContent = productsTotal * tax;
+
+  document.querySelector(".kargo").textContent = productsTotal ? shipping : 0;
+
+  document.querySelector(".toplam").textContent =
+    productsTotal > 0 &&
+    (productsTotal + productsTotal * tax + shipping).toFixed(2);
 }
