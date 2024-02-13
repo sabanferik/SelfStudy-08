@@ -22,3 +22,14 @@
 
 const defaultImage =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/220px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg";
+
+  const getData=async()=>{
+
+   const response= await fetch("https://api.tvmaze.com/search/shows?q=girls");
+   const veri= await response.json()
+
+   ekranaBastir(veri)
+
+  }
+
+  getData()
