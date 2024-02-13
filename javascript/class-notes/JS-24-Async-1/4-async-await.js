@@ -23,13 +23,61 @@
 const defaultImage =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/220px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg";
 
+
   const getData=async()=>{
 
-   const response= await fetch("https://api.tvmaze.com/search/shows?q=girls");
-   const veri= await response.json()
 
-   ekranaBastir(veri)
+try {
+
+const response = await fetch("https://api.tvmaze.com/search/shows?q=girls");
+
+//?error handling
+if (!response.ok) {
+  throw new Error(`url de hata var ${response.status}`);
+  console.log("hata");
+}
+
+const veri = await response.json();
+
+ekranaBastir(veri);
+
+
+    
+} catch (error) {
+    console.log(error);
+    console.log("try-catch sayesinde kod devam ediyor");
+    
+}
+
+
+   
+  }
+
+
+//! window yüklendiği zaman çalışsın
+// window.onload=()=>{}
+window.addEventListener("load", ()=>{
+      getData();
+})
+
+
+
+
+  const ekranaBastir=(data)=>{
+
+data.forEach((item)=>{
+
+document.querySelector("section").innerHTML+=`
+<h1 class="text-danger"> ${item.show.name} </h1>
+
+<img src="${item.show.image?.medium || defaultImage }"/>
+
+<h3 class="fst-italic">${item.show.genres} </h3>
+`
+
+
+})
 
   }
 
-  getData()
+//!   image de kullandığım yazım short circuit
