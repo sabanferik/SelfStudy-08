@@ -44,7 +44,7 @@ form.addEventListener("submit", (e)=>{
 
 locate.addEventListener("click", ()=>{
     navigator.geolocation?.getCurrentPosition(({coords})=>{
-        // console.log(coords)
+        console.log(coords)
 
         const {latitude, longitude} = coords
 
