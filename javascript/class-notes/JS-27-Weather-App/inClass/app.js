@@ -87,7 +87,14 @@ const getWeatherData = async () => {
       singleClearButton.forEach((button) => {
 
         button.addEventListener("click",(e)=> {
-            console.log(e.target.closest(".col").id)
+            // console.log(e.target.closest(".col").id)
+
+            // cities.splice(cities.indexOf(e.target.closest(".col").id), 1); //! Development aşamasında
+
+            delete cities[cities.indexOf(e.target.closest(".col").id)] //! Array den siler
+
+            e.target.closest(".col").remove() //! Dom'dan siler
+            console.log(cities)
 
         })
       })
@@ -103,20 +110,18 @@ const getWeatherData = async () => {
         }
 
 
-
-
-
-
-
-
-
-      
+    
 
 
 
 
     } catch (error) {
-        
+        alertMessage.textContent = `City Not Found!`;
+        alertMessage.classList.replace("d-none", "d-block")
+
+        setTimeout(()=>{
+            alertMessage.classList.replace("d-block","d-none")
+        },3000)
     }
 
 }
