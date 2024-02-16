@@ -4,10 +4,11 @@ const input =  document.querySelector("form input")
 const cardContainer = document.getElementById("card-container")
 const alertMessage = document.getElementById("alert")
 
+const searchButton = document.getElementById("search")
+
 
 
 //! Variables
-
 const apiKey = '4ed283ae2ece6cf1fe2fe7e75b2ea7a5';
 let url; //Api isteği için kullanılacak
 let cities = [] // Sergilenen şehirlerin isimleri tutulacak
@@ -15,12 +16,14 @@ let units = 'metric' // fahrenheit için 'imperial' yazılmalı
 let lang = 'en' //Almanca için 'de' yazılacak
 
 //& Location find
-
 const locate = document.getElementById("locate")
 const userLocationDiv = document.getElementById("userLocation")
 let userLocation = false
 
 
+//& Language
+
+const langButton = document.querySelector(".language")
 
 //! Event listeners
 
@@ -44,7 +47,7 @@ form.addEventListener("submit", (e)=>{
 
 locate.addEventListener("click", ()=>{
     navigator.geolocation?.getCurrentPosition(({coords})=>{
-        console.log(coords)
+        // console.log(coords)
 
         const {latitude, longitude} = coords
 
@@ -55,8 +58,32 @@ locate.addEventListener("click", ()=>{
 })
 
 
+langButton.addEventListener("click", (e)=>{
+    // console.log(e.target.textContent)
+
+    if (e.target.textContent == "DE") {
+        input.setAttribute("placeholder", "Suche nach einer Stadt" )
+        lang = 'de'
+    } else if(e.target.textContent == "EN"){
+        input.setAttribute("placeholder", "Search for a city" )
+        lang = 'en'
+    }
+})
 
 
+searchButton.addEventListener("click", (e)=>{
+    e.preventDefault() // Default özelliği kullanma yani submit etme
+    // console.log(city)
+
+    if (input.value) {
+        const city = input.value
+        url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&lang=${lang}&appid=${apiKey}`
+        getWeatherData()
+        
+    }
+
+    input.value = '' // formu sıfırlar
+})
 
 //^ Functions
 
@@ -134,7 +161,13 @@ const getWeatherData = async () => {
 
             
         } else {
-            alertMessage.textContent = `You already know the weather for ${name}, Please search for another city 😉`;
+
+            if (lang == "de") {
+                alertMessage.textContent = `Sie kennen das Wetter für die ${name} bereits. Bitte suchen Sie nach einer anderen Stadt 😉`;
+            } else {
+                
+                alertMessage.textContent = `You already know the weather for ${name}, Please search for another city 😉`;
+            }
             alertMessage.classList.replace("d-none", "d-block")
 
             setTimeout(()=>{
@@ -143,15 +176,17 @@ const getWeatherData = async () => {
         }
 
 
-    
-
-
-
-
     } catch (error) {
-        alertMessage.textContent = `City Not Found!`;
-        alertMessage.classList.replace("d-none", "d-block")
 
+        if (lang == "de") {
+            alertMessage.textContent = `Stadt nicht gefunden`;
+        } else {
+            
+            alertMessage.textContent = `City Not Found!`;
+        }
+
+        alertMessage.classList.replace("d-none", "d-block")
+  
         setTimeout(()=>{
             alertMessage.classList.replace("d-block","d-none")
         },3000)
