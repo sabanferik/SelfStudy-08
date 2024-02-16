@@ -1,6 +1,7 @@
 //! Selectors
 const form = document.querySelector("form")
 const input =  document.querySelector("form input")
+const cardContainer = document.getElementById("card-container")
 
 
 
@@ -32,17 +33,21 @@ form.addEventListener("submit", (e)=>{
 //^ Functions
 
 const getWeatherData = async () => {
-  
+
     try {
         
         const response = await fetch(url).then((response) => response.json()) //& fetch ile
 
-        console.log(response) // Api den gelen veri
+        // console.log(response) // Api den gelen veri
 
-            //? Data destructure
-        const {main, name, weather, sys}= response //& fetch
-         
-        let card = 
+        //? Data destructure
+
+        const {main, name, weather, sys} = response //& fetch
+
+        // console.log(weather[0].icon)
+        const iconUrl = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
+
+        let card =
         `       <div class="col" id="${name}">
 <div class="card mb-4 rounded-3 shadow-sm">
         <ul class="list-unstyled mt-2 mb-4">
@@ -59,9 +64,7 @@ const getWeatherData = async () => {
 
 
 
-
-
-
+      cardContainer.innerHTML = card  + cardContainer.innerHTML
 
 
 
