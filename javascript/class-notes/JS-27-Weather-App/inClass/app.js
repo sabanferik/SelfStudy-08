@@ -14,6 +14,12 @@ let cities = [] // Sergilenen şehirlerin isimleri tutulacak
 let units = 'metric' // fahrenheit için 'imperial' yazılmalı
 let lang = 'en' //Almanca için 'de' yazılacak
 
+//& Location find
+
+const locate = document.getElementById("locate")
+const userLocationDiv = document.getElementById("userLocation")
+let userLocation = false
+
 
 
 //! Event listeners
@@ -31,10 +37,25 @@ form.addEventListener("submit", (e)=>{
         
     }
 
-
-
     form.reset() // formu sıfırlar
 })
+
+
+
+locate.addEventListener("click", ()=>{
+    navigator.geolocation?.getCurrentPosition(({coords})=>{
+        // console.log(coords)
+
+        const {latitude, longitude} = coords
+
+        url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&lang=${lang}&appid=${apiKey}`
+        userLocation = true
+        getWeatherData()
+    })
+})
+
+
+
 
 
 //^ Functions
@@ -43,13 +64,16 @@ const getWeatherData = async () => {
 
     try {
         
-        const response = await fetch(url).then((response) => response.json()) //& fetch ile
+        // const response = await fetch(url).then((response) => response.json()) //& fetch ile
 
-        // console.log(response) // Api den gelen veri
+        const response = await axios(url) //^ Axios ile istek atma
+
+
+        console.log(response) // Api den gelen veri
 
         //? Data destructure
-
-        const {main, name, weather, sys} = response //& fetch
+        // const {main, name, weather, sys} = response //& fetch
+        const {main, name, weather, sys} = response.data //^ axios
 
         
 
@@ -78,7 +102,16 @@ const getWeatherData = async () => {
             </ul>
     </div>
     </div>`
-    cardContainer.innerHTML = card  + cardContainer.innerHTML
+    
+    if (userLocation) {
+        userLocationDiv.innerHTML = card
+        userLocation = false
+        
+    } else {
+        
+        cardContainer.innerHTML = card  + cardContainer.innerHTML
+    }
+
 
        //! Remove Cities
 
