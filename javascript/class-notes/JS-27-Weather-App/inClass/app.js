@@ -9,7 +9,7 @@ const searchButton = document.getElementById("search")
 
 
 //! Variables
-const apiKey = '4ed283ae2ece6cf1fe2fe7e75b2ea7a5';
+const apiKey = '4aeefe496c6135c4f6e218d3100b47ee';
 let url; //Api isteği için kullanılacak
 let cities = [] // Sergilenen şehirlerin isimleri tutulacak
 let units = 'metric' // fahrenheit için 'imperial' yazılmalı
