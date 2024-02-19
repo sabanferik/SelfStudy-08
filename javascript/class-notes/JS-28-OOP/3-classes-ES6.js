@@ -20,6 +20,10 @@ class Book {
     return 2024 - this.year;
   }
 }
+
+//? new keyword ü  Book Constructor ı parametrelerle çağırır.
+//? Constructor, Book object in bir örneğini kalıbını oluşturur.
+//? Constructor daki tüm variablelar ve functionlar, oluşturulan her  single örneğe (instance a cocuklara) eklenir
 const book1 = new Book("safahat", "M.Akif Ersoy", 1910);
 
 console.log(book1);
