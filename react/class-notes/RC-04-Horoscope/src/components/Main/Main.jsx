@@ -1,8 +1,16 @@
-import React from 'react'
+import {data} from "../../helper/data"
+import Card from "./Card"
 
 const Main = () => {
-  return (
-    <div>Main</div>
+ 
+    return (
+    <div className="card-container">
+
+{data.map((item)=>  <Card {...item}/>)}
+
+
+
+    </div>
   )
 }
 
