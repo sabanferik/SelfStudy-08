@@ -1,4 +1,5 @@
 @import "../../scss/variable";
+@import "../../scss/mixins";
 
 .navbar {
   background-color: $cardNavBgColor;
@@ -8,7 +9,7 @@
   position: fixed;
   top: 0;
   width: 100%;
- z-index:4;
+  z-index: 4;
   .links {
     display: flex;
     font-size: 1.5rem;
@@ -31,5 +32,16 @@
   img {
     width: 100px;
     height: 100px;
+  }
+
+  @include media-xsm {
+    .links {
+      flex-direction: column;
+    }
+  }
+  @include media-lg {
+    .links {
+      flex-direction: row;
+    }
   }
 }

@@ -3,6 +3,7 @@
 @import "./scss/mixins";
 
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap');
 
 body{
@@ -12,3 +13,6 @@ body{
 }
 
 
+p{
+    font-family: "Noto Sans", sans-serif;
+}

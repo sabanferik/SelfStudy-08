@@ -5,8 +5,9 @@ const Card = ({title,date,desc,image}) => {
 
 
   return (
-
-    <div className='cards'>
+<>
+{date.includes("February") && 
+(<div className='cards'>
 
 <div className='title'>
     <h1>{title} </h1>
@@ -20,7 +21,11 @@ const Card = ({title,date,desc,image}) => {
 <div className='desc'>
     <p>{desc}</p>
 </div>
-    </div>
+    </div>) }
+
+
+
+    </>
   )
 }
 
