@@ -3,11 +3,13 @@
 import React from "react";
 import Events from "./1-events-hookIntro/Events";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Hooks from "./2-hooks/Hooks";
 function App() {
   return (
     <div>
      
-    <Events/>
+    {/* <Events/> */}
+    <Hooks/>
     </div>
   );
 }
