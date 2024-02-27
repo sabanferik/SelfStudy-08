@@ -53,7 +53,7 @@ setToggle(!toggle)
   isim: "emre",
   meslek: "Full-stack",
   yas: 33,
-  renk: "blue",
+  renk: "orange",
 });
   }
 
@@ -104,6 +104,10 @@ const isimChange=()=>{
 
       <button onClick={arttir} className="btn btn-primary">
         ARTTIR
+      </button>
+
+      <button onClick={()=>sayac > 0 && setSayac(sayac-1)} className="btn btn-info">
+        AZALT
       </button>
 
       <h1>**********************************</h1>
