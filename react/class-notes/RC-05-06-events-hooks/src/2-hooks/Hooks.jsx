@@ -19,6 +19,7 @@
 //* =============================================================
 
 import React, { useState } from "react";
+import Events from "../1-events-hookIntro/Events"
 
 const Hooks = () => {
   //!usestate hook u her zaman en üste yazılmalı
@@ -79,7 +80,13 @@ setToggle(!toggle)
 //     }
 //   }
     
+const isimChange=()=>{
 
+  setKisi({...kisi,
+    isim:"emre",renk:"yellow"
+
+  })
+}
   //********* */
   const arttir = () => {
     // sayac+=1
@@ -112,9 +119,25 @@ setToggle(!toggle)
           style={{ backgroundColor: kisi.renk, fontSize: "25px" }}
           className="btn m-4 p-4"
         >
-          {" "}
-          ToggleDEĞİŞTİR{" "}
+          ToggleDEĞİŞTİR
         </button>
+        <button
+          onClick={isimChange}
+          style={{ backgroundColor: kisi.renk, fontSize: "25px" }}
+          className="btn m-4 p-4"
+        >
+          İsimDEĞİŞTİR
+        </button>
+
+        <button
+          onClick={() => setKisi({ ...kisi, yas: 30 })}
+          style={{ backgroundColor: "green", fontSize: "25px" }}
+          className="btn m-4 p-4"
+        >
+          yasDEGİSTİR
+        </button>
+        {/* Toggle true ise Events componentini goster aksi takdirde gosterme, alttakini yorumdan çıkarmak istersek App.js deki Events comp. yoruma almalıyız */}
+        {/* {toggle && <Events />} */}
       </div>
     </div>
   );
