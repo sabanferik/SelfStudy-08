@@ -3,13 +3,18 @@
 import React from "react";
 import Events from "./1-events-hookIntro/Events";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Hooks from "./2-hooks/Hooks";
+import Hooks from "./2-functionalCompHooks/Hooks";
+import Counter from "./2-classComponents/Counter";
 function App() {
   return (
     <div>
      
-    {/* <Events/> */}
+    <Events/>
     <Hooks/>
+
+    <Counter/>
+    <Counter count={20}/>
+
     </div>
   );
 }
