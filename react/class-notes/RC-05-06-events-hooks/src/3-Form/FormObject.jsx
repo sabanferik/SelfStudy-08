@@ -1,11 +1,30 @@
 import { useState } from "react";
 
 const FormObject = () => {
+  const [person, setPerson] = useState({
+    isim: "",
+    password: "",
+    email: "",
+  });
 
+  //?dest
+  const { isim, password, email } = person;
+
+  const handlePerson = (event) => {
+    // console.log([event.target.id]);
+    // console.log(event.target.value);
+
+    setPerson({ ...person, [event.target.id]: event.target.value });
+  };
 
   const getDatabase = (e) => {
     e.preventDefault();
-  
+    alert(`isim: ${isim}
+    email:${email}
+    `)
+
+    //?state i sil
+    setPerson({ isim: "", password: "", email: "" });
   };
   return (
     <div className="container text-center mt-4">
@@ -16,14 +35,16 @@ const FormObject = () => {
       <form onSubmit={getDatabase}>
         <div className="mb-3">
           <label className="form-label" htmlFor="isim">
-            NAME: <span className="text-danger">{} </span>
+            NAME: <span className="text-danger">{isim} </span>
           </label>
           <input
             className="form-control"
             id="isim"
             type="text"
-            // onInput={(a) => setIsim(a.target.value)}
-            // value={isim}
+            name="isim"
+            // onInput={(e)=>setPerson({ ...person, [e.target.id]: e.target.value })}
+            onInput={handlePerson}
+             value={isim}
           />
         </div>
         <div className="mb-3">
@@ -33,20 +54,22 @@ const FormObject = () => {
           <input
             className="form-control"
             id="password"
+            name="password"
             type="password"
-            // onChange={(e) => setPass(e.target.value)}
-            // value={pass}
+            onChange={handlePerson}
+            value={password}
           />
         </div>
 
         <div className="mb-3">
           <label className="form-label">
-            EMAIL: <span className="fw-bold">{}</span>
+            EMAIL: <span className="fw-bold">{email}</span>
           </label>
           <input
             type="email"
             className="form-control"
-            // value={email}
+            onChange={handlePerson}
+             value={email}
             id="email"
             name="email"
           />

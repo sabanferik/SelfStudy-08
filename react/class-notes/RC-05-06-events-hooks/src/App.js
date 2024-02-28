@@ -7,6 +7,7 @@ import Hooks from "./2-functionalCompHooks/Hooks";
 import Counter from "./2-classComponents/Counter";
 import Form from "./3-Form/Form";
 import FormObject from "./3-Form/FormObject";
+import MouseKeyboard from "./4-mouse-keyboard/MouseKeyboard";
 function App() {
   return (
     <div>
@@ -18,7 +19,8 @@ function App() {
     <Counter count={20}/> */}
 {/* <Form/> */}
 
-<FormObject/>
+{/* <FormObject/> */}
+<MouseKeyboard/>
     </div>
   );
 }
