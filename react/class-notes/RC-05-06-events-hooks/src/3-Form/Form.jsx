@@ -5,13 +5,18 @@ const Form = () => {
   const [pass, setPass] = useState("");
   const [country, setCountry] = useState("");
 
-  const getDatabase = () => {
+  const getDatabase = (e) => {
+    e.preventDefault()
     //? ileride bir submit islemin neticesinde verilerin nasıl post edilebileceğini gostermek adina eklenmistir.
     //? const res = axios.post("url", { isim, pass, country })
 
     alert(`name:${isim}
        password: ${pass}
        ülkeler: ${country} `);
+//!database e yollandıktan sonra değişkenlerin içini temizledik, bunu ekranda da temiz görmek için inputlarda value değişkenleri tanımladık
+      setIsim("")
+      setPass("")
+      setCountry("")
   };
   return (
     <div className="container text-center mt-4">
@@ -29,6 +34,7 @@ const Form = () => {
             id="isim"
             type="text"
             onInput={(a) => setIsim(a.target.value)}
+            value={isim}
           />
         </div>
         <div className="mb-3">
@@ -40,6 +46,7 @@ const Form = () => {
             id="password"
             type="password"
             onChange={(e) => setPass(e.target.value)}
+            value={pass}
           />
         </div>
 
