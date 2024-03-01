@@ -9,6 +9,7 @@ const PlayerCard = ({img,name,statistics}) => {
 
   return (
     <Card className='player-card m-auto'
+    role="button"
     onClick={()=>setShowImage(!showImage)}
     >
 
@@ -27,7 +28,7 @@ const PlayerCard = ({img,name,statistics}) => {
 
 
 
-<Card.Footer>
+<Card.Footer >
   <Card.Title>{name} </Card.Title>
 </Card.Footer>
 
