@@ -5,13 +5,19 @@ import PlayerCard from "./PlayerCard";
 
 const CardContainer = () => {
   return (
-    <div>
+    <>
       <Form.Control type="search" placeholder="Search Player" />
-      <Container>
-        <Row>
-          {data.map((player,index) => {
+      <Container className="card-container p-3 rounded-4 my-4">
+        <Row className="g-3 justify-content-center">
+          {data.map((player, index) => {
             return (
-              <Col key={index}>
+              <Col
+               
+                key={index}
+                md={6}
+                lg={4}
+                xl={3}
+              >
                 {/* <PlayerCard player={player}> */}
                 <PlayerCard {...player}></PlayerCard>
               </Col>
@@ -19,7 +25,7 @@ const CardContainer = () => {
           })}
         </Row>
       </Container>
-    </div>
+    </>
   );
 };
 
