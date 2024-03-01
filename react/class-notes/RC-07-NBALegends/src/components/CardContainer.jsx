@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { data } from "../helpers/data";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import PlayerCard from "./PlayerCard";
 
 const CardContainer = () => {
+    const[search,setSearch]=useState("")
+
+    let dizi=data
+
+dizi=dizi.filter((a)=>a.name.includes(search))
+console.log(data);
+
   return (
     <>
-      <Form.Control type="search" placeholder="Search Player" />
+      <Form.Control className="w-50 m-auto" type="search" placeholder="Search Player" 
+onChange={(e)=>setSearch(e.target.value)}
+
+      />
+
+
       <Container className="card-container p-3 rounded-4 my-4">
         <Row className="g-3 justify-content-center">
-          {data.map((player, index) => {
+          {dizi.map((player, index) => {
             return (
               <Col
                
@@ -21,6 +33,7 @@ const CardContainer = () => {
                 {/* <PlayerCard player={player}> */}
                 <PlayerCard {...player}></PlayerCard>
               </Col>
+              
             );
           })}
         </Row>

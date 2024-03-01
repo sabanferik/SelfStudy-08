@@ -19,6 +19,18 @@ body{
     height:400px;
     width:280px;
 }
+
+.player-card:hover{
+    box-shadow: 3px 3px 20px 5px rgb(0, 0, 0, 0.5);
+}
+
 .player-logo{
     height: 350px;
+    transition:transform 0.8s; 
+    /* alttaki scale olayı 0.8s içinde olsun */
+}
+
+.player-card:hover .player-logo {
+
+    transform:scale(0.95);
 }
