@@ -6,11 +6,11 @@ import Data from "../helper/Data"
 
 const Home = () => {
 
-const[todos,setTodos]=useState(Data)
+const[todos,setTodos]=useState(JSON.parse(localStorage.getItem("gorevler"))||Data)
  
   return (
     <div>
-     {/* <GorevEkle/> */}
+     <GorevEkle todos={todos} setTodos={setTodos}/>
      <GorevleriGoster todos={todos} setTodos={setTodos}/>
     </div>
   );
