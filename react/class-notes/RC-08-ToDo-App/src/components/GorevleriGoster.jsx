@@ -3,17 +3,40 @@ import { FaTimesCircle } from "react-icons/fa";
 const GorevleriGoster = ({ todos,setTodos }) => {
 
 const deleteTodo=(rmv)=>{
+  //!1.yol
 //  todos=todos.filter((i)=>i.id!==rmv)
 // setTodos(todos)
- setTodos(todos.filter((i) => i.id !== rmv));
+// localStorage.setItem("gorevler",JSON.stringify(todos))
+//!2.yol
+localStorage.setItem(
+  "gorevler",
+  JSON.stringify(todos.filter((i) => i.id !== rmv))
+);
+
+setTodos(JSON.parse(localStorage.getItem("gorevler")))
+
 }
 
+
+
+const styleStoroge=(x)=>{
+localStorage.setItem(
+  "gorevler",
+  JSON.stringify( todos.map((a) => (a.id === x.id ? { ...a, isDone: !a.isDone } : a))
+    
+  )
+);
+setTodos(JSON.parse(localStorage.getItem("gorevler")))
+
+
+
+}
 
   return <div>
     {todos.map((x)=>{
 return(
   <div className= {x.isDone?"done":"gorev"}
-  onDoubleClick={()=>setTodos(todos.map((a)=>a.id===x.id ? {...a,isDone:!a.isDone}:a))}
+  onDoubleClick={()=>styleStoroge(x)}
   >
     <h3>{x.text} <FaTimesCircle style={{color:"red"}}
 onClick={()=>deleteTodo(x.id)}
