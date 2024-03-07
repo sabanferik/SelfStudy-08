@@ -47,7 +47,7 @@ setDoctors(show ? doctors.filter((a)=>a.id===idD): doctorData)
         {!show && <AddPatient hastalar={hastalar} setHastalar={setHastalar} />}
       </div>
 
-      <PatientList hastalar={hastalar} setHastalar={setHastalar} />
+      <PatientList hastalar={hastalar} setHastalar={setHastalar} doctors={doctors}/>
     </div>
   );
 };
