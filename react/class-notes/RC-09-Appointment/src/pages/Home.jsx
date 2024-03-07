@@ -34,7 +34,7 @@ const Home = () => {
         {/* hastaekle */}
       </div>
 
-      <PatientList/>
+      <PatientList hastalar={hastalar} setHastalar={setHastalar}/>
     </div>
   );
 };
