@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { hastaData, doctorData } from "../helper/Data";
 import PatientList from "../components/PatientList";
+import AddPatient from "../components/AddPatient";
 
 const Home = () => {
   const [doctors, setDoctors] = useState(doctorData);
@@ -12,7 +13,7 @@ const Home = () => {
           <h1>HOSPITAL</h1>
           <div className="dr">
             {doctors.map((dr) => (
-              <div key={dr.id} >
+              <div key={dr.id}>
                 <img
                   src={dr.doctorImg}
                   width="180px"
@@ -31,10 +32,10 @@ const Home = () => {
           </div>
         </header>
 
-        {/* hastaekle */}
+        <AddPatient hastalar={hastalar} setHastalar={setHastalar} />
       </div>
 
-      <PatientList hastalar={hastalar} setHastalar={setHastalar}/>
+      <PatientList hastalar={hastalar} setHastalar={setHastalar} />
     </div>
   );
 };
