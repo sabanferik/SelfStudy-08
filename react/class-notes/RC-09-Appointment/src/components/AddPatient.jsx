@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-const AddPatient = ({ hastalar, setHastalar }) => {
+const AddPatient = ({ hastalar, setHastalar, doctors }) => {
+
+
   const [hastaName, setHstName] = useState("");
   const [date, setDate] = useState("");
 
@@ -46,7 +48,7 @@ const AddPatient = ({ hastalar, setHastalar }) => {
 
         <div>
           <button className="doc" type="submit">
-            <span>oya başar</span> için kayıt oluştur
+            <span>{doctors[0].doctorName} </span> için kayıt oluştur
           </button>
         </div>
       </form>

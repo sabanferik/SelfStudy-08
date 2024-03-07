@@ -15,9 +15,11 @@ setShow(!show)
 setDoctors(show ? doctors.filter((a)=>a.id===idD): doctorData)
 
 
+// setHastalar(show? hastalar.filter((a)=>a.myDoctor===doctors[0].doctorName):hastaData)}
+
 }
   return (
-    <div style={{display: show ? "block":"flex"}}>
+    <div style={{ display: show ? "block" : "flex" }}>
       <div>
         <header>
           <h1>HOSPITAL</h1>
@@ -29,13 +31,15 @@ setDoctors(show ? doctors.filter((a)=>a.id===idD): doctorData)
                   width="180px"
                   height="150px"
                   className="btn"
-                  style={{ background: show ? "aqua" :"lightgreen" }}
+                  style={{ background: show ? "aqua" : "lightgreen" }}
                   alt=""
-                  onClick={()=>doctorClick(dr.id)}
+                  onClick={() => doctorClick(dr.id)}
                 />
                 <h4
-                  style={{ background:show ? "aqua" : "lightgreen", 
-                  borderLeft: `10px solid ${show? "blue": "green"}` }}
+                  style={{
+                    background: show ? "aqua" : "lightgreen",
+                    borderLeft: `10px solid ${show ? "blue" : "green"}`,
+                  }}
                 >
                   {dr.doctorName}{" "}
                 </h4>
@@ -44,10 +48,20 @@ setDoctors(show ? doctors.filter((a)=>a.id===idD): doctorData)
           </div>
         </header>
 
-        {!show && <AddPatient hastalar={hastalar} setHastalar={setHastalar} />}
+        {!show && (
+          <AddPatient
+            hastalar={hastalar}
+            setHastalar={setHastalar}
+            doctors={doctors}
+          />
+        )}
       </div>
 
-      <PatientList hastalar={hastalar} setHastalar={setHastalar} doctors={doctors}/>
+      <PatientList
+        hastalar={hastalar}
+        setHastalar={setHastalar}
+        doctors={doctors}
+      />
     </div>
   );
 };
