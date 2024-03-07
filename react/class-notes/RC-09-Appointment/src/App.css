@@ -113,7 +113,7 @@ body {
 /* btn className li img den sonraki h4 */
   
 }
-/* ilk sayfadaki 4 doktor resmi */
+/* ilk sayfadaki 4 doktor resmi ve isimlerinin div i*/
 .dr {
   display: flex;
   gap: 2rem 1rem;
