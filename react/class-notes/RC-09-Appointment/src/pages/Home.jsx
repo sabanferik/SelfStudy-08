@@ -6,8 +6,18 @@ import AddPatient from "../components/AddPatient";
 const Home = () => {
   const [doctors, setDoctors] = useState(doctorData);
   const [hastalar, setHastalar] = useState(hastaData);
+const [show,setShow]=useState(true)
+
+const doctorClick=(idD)=>{
+
+setShow(!show)
+
+setDoctors(show ? doctors.filter((a)=>a.id===idD): doctorData)
+
+
+}
   return (
-    <div>
+    <div style={{display: show ? "block":"flex"}}>
       <div>
         <header>
           <h1>HOSPITAL</h1>
@@ -19,11 +29,13 @@ const Home = () => {
                   width="180px"
                   height="150px"
                   className="btn"
-                  style={{ background: "aqua" }}
+                  style={{ background: show ? "aqua" :"lightgreen" }}
                   alt=""
+                  onClick={()=>doctorClick(dr.id)}
                 />
                 <h4
-                  style={{ background: "aqua", borderLeft: "10px solid blue" }}
+                  style={{ background:show ? "aqua" : "lightgreen", 
+                  borderLeft: `10px solid ${show? "blue": "green"}` }}
                 >
                   {dr.doctorName}{" "}
                 </h4>
@@ -32,7 +44,7 @@ const Home = () => {
           </div>
         </header>
 
-        <AddPatient hastalar={hastalar} setHastalar={setHastalar} />
+        {!show && <AddPatient hastalar={hastalar} setHastalar={setHastalar} />}
       </div>
 
       <PatientList hastalar={hastalar} setHastalar={setHastalar} />
