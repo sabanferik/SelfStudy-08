@@ -1,25 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
 const UseEffectAxiosFetch = () => {
-const[people,setPeople]=useState([])
+  const [people, setPeople] = useState([]);
 
-//!1.yol fetch then yapısı (chain)
-useEffect(() => {
-fetch("https://jsonplaceholder.typicode.com/users")
-  .then((res) => res.json())
-  .then((data) => setPeople(data));
-}, [])
+  //!1.yol fetch then yapısı (chain)
+  // useEffect(() => {
+  // fetch("https://jsonplaceholder.typicode.com/users")
+  //   .then((res) => res.json())
+  //   .then((data) => setPeople(data));
+ 
+  // }, [])
 
-//!2.yol fetch async await
+  //!2.yol fetch async await
 
-const getData=
+  const getData = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await res.json();
 
+    setPeople(data);
+  };
+  useEffect(() => {
+    getData();
+    
+  }, []);
+
+ 
 
   return (
     <div className="container text-center mt-4">
       <div className="row">
         {people.map(({ name, username, id, phone }) => {
-         
           return (
             <div key={id} className="col-12 col-sm-6 col-md-4">
               {/* https://www.dicebear.com/styles/avataaars/ */}
@@ -36,6 +46,6 @@ const getData=
       </div>
     </div>
   );
-}
+};
 
-export default UseEffectAxiosFetch
+export default UseEffectAxiosFetch;
