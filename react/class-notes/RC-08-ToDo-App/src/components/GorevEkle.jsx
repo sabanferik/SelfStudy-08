@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faAnchor} from 'fortawesome/free-solid-svg-icons'
 
 const GorevEkle = ({todos,setTodos}) => {
  const[texT,setText]=useState("")
@@ -31,7 +29,6 @@ setTodos(JSON.parse(localStorage.getItem("gorevler")))
   return (
     <div>
       <header className="header">
-      <FontAwesomeIcon icon={faAnchor} />
         <h1>TO DO APP</h1>
         <button
           className="btn"
