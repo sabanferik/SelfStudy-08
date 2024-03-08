@@ -9,35 +9,45 @@
 body {
   height: 100vh;
   font-family: "Poppins", sans-serif;
-  background-image: linear-gradient(to top, #baafd9 0%, #97d9e1 100%);
+  /* background-image: linear-gradient(to top, #baafd9 0%, #97d9e1 100%); */
+  background-image: url(https://cdn.pixabay.com/photo/2020/05/02/03/14/beach-5119723_1280.jpg);
+  background-repeat: no-repeat; 
+  background-size: cover;
+  border:5px solid #7ACFF5;
+  background-position: center;
+  
 
 }
 .container {
   background-image: linear-gradient(
-    to bottom right,
-    rgb(204, 16, 119),
-    rgb(231, 191, 213)
+    to bottom ,
+    #7ACFF5,
+    #013059
+  
   );
   margin: 3rem auto;
   max-width: 600px;
   padding: 2rem;
-  border-radius: 5px;
+  border-radius: 15px;
+  opacity: 0.8;
 }
 
 .header {
   text-align: center;
   margin: 1rem;
+   
 }
 
 .btn {
-  border: none;
+  border: 1px solid #fff;
+  background: transparent;
   cursor: pointer;
   color: #fff;
   font-weight: 700;
   font-size: 15px;
   padding: 1rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .form-control {
@@ -51,13 +61,14 @@ body {
   height: 40px;
   padding: 1rem;
   font-size: 17px;
-  border-radius: 5px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
   border: none;
 }
 
 .btn-submit {
   width: 100%;
-  background-color: purple;
+  background-color: rgb(98, 37, 24);
   margin: 2rem 0;
 }
 
