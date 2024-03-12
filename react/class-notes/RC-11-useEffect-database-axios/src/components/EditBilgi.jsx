@@ -1,20 +1,44 @@
-import React from 'react'
-import axios from "axios"
-const EditBilgi = ({item,setItem,getTutorials}) => {
-  const{id,title,description}=item
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+const EditBilgi = ({ item, setItem, getTutorials }) => {
+  const { id, title: eskiTitle, description: eskiDesc } = item;
+  const [title, setTitle] = useState(eskiTitle);
+  const [description, setDescription] = useState(eskiDesc);
 
+  console.log(title, description);
+  //? https://react.dev/reference/react/useState#usestate
+  //! State degiskeninin degeri, 1.render ile initialState
+  //! parametresinin ilk degerini alir. Dolayisiyle bu durumda
+  //! prop'tan gelen ilk deger state'e aktarilir.
+  //! Sonradan degisen props degerleri useState'e aktarilmaz.
+  //! Eger props'tan gelen degerleri her degisimde useState'e
+  //! aktarmak istersek useEffect hook'unu componentDidUpdate
+  //! gibi kullanabiriz.
+
+  //* componentDidUpdate => gelişim/güncelleme
+  useEffect(() => {
+    setTitle(eskiTitle);
+    setDescription(eskiDesc);
+  }, [eskiDesc, eskiTitle]);
 
   const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
- 
 
-
-  const putTutorial=async(eleman)=>{
-await axios.put(`${url}${eleman.id}/`,eleman)
-
-getTutorials()
-
-
-  }
+  // const putTutorial = async () => {
+  //   try {
+  //     await axios.put(`${url}${id}/`, { title, description });
+  //     getTutorials();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const putTutorial = async (eleman) => {
+    try {
+      await axios.put(`${url}${eleman.id}/`, eleman);
+      getTutorials();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div
@@ -48,6 +72,7 @@ getTutorials()
                 className="form-control"
                 id="title"
                 value={title || ""}
+                // onChange={(e) => setTitle(e.target.value)}
                 onChange={(e) => setItem({ ...item, title: e.target.value })}
               />
             </div>
@@ -58,7 +83,10 @@ getTutorials()
                 id="desc"
                 className="form-control"
                 value={description || ""}
-                onChange={(e) => setItem({ ...item, description: e.target.value })}
+                // onChange={(e) => setDescription(e.target.value)}
+                onChange={(e) =>
+                  setItem({ ...item, description: e.target.value })
+                }
               />
             </div>
           </div>
@@ -67,7 +95,7 @@ getTutorials()
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
-              onClick={()=>putTutorial(item)}
+              onClick={() => putTutorial(item)}
             >
               Save
             </button>
@@ -76,6 +104,6 @@ getTutorials()
       </div>
     </div>
   );
-}
+};
 
-export default EditBilgi
+export default EditBilgi;
