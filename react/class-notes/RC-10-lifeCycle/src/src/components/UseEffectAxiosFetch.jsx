@@ -34,7 +34,12 @@ const UseEffectAxiosFetch = () => {
 
   //!4.yol axios async await
 
-
+//   const getData = async () => {
+//     const res = await axios("https://jsonplaceholder.typicode.com/users");
+    
+// setPeople(res.data)
+    
+//   };
 
 
   const getData = async () => {
