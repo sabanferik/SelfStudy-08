@@ -5,6 +5,7 @@ import Buton from '../components/Buton'
 const Home = () => {
   return (
     <div>
+    
       <Slider/>
       <Buton/>
     </div>

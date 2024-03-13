@@ -1,28 +1,40 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import data from "../data"
 const CardDetails = () => {
   //router dan path olarak gelen namee burada useParams hook u ile yakalandı
  const {namee}=   useParams()
 
 
+ //tekrar bir önceki sayfaya dönebilmek için useNavigate
+const navigate=useNavigate()
   return (
-    <div className='container text-center mt-4'>
-
-    {data.map((i)=>i.name===namee  && (
- <div>
- <h3>{i.name}</h3>
-      <img src={i.img} alt="" width="300px" />
-      <h3>{i.text} </h3>
-      <h4>{i.yorum} </h4>
-      <div>
-        <button className='btn btn-warning'>a</button>
-        <button className='btn btn-primary'>b</button>
-      </div>
-
-</div>
-    ))}
-     
+    <div className="container text-center mt-4">
+      {data.map(
+        ({ name, text, yorum, img }) =>
+          name === namee && (
+            <div>
+              <h3>{name}</h3>
+              <img src={img} alt="" width="300px" />
+              <h3>{text} </h3>
+              <h4>{yorum} </h4>
+              <div>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => navigate(-1)}
+                >
+                  GO BACK
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate("/")}
+                >
+                  GO HOME
+                </button>
+              </div>
+            </div>
+          )
+      )}
     </div>
   );
 }

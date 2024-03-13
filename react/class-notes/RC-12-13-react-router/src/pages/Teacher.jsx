@@ -27,6 +27,7 @@ const Teacher = () => {
               <img
                 src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${name}`}
                 alt=""
+                
               />
               <h5>{name}</h5>
               <h6>{username} </h6>
