@@ -7,6 +7,7 @@ import Teacher from './pages/Teacher';
 import CourseCard from './pages/CourseCard';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ContactForm from './pages/ContactForm';
+import Login from './pages/Login';
 const App = () => {
   return (
     <div>
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/teacher" element={<Teacher />} />
           <Route path="/courses" element={<CourseCard />} />
           <Route path="/contact" element={<ContactForm />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
 
         <Footer />
