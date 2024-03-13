@@ -5,19 +5,23 @@ import MyNavbar from './components/MyNavbar';
 import Footer from './components/Footer';
 import Teacher from './pages/Teacher';
 import CourseCard from './pages/CourseCard';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ContactForm from './pages/ContactForm';
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
+      <Router>
         <MyNavbar />
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/teacher" element={<Teacher />} />
+          <Route path="/courses" element={<CourseCard />} />
+          <Route path="/contact" element={<ContactForm />} />
         </Routes>
 
         <Footer />
-      </BrowserRouter>
+      </Router>
 
       {/* <MyNavbar/>
       <Home/>
