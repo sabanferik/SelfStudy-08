@@ -7,6 +7,7 @@ import about from "../img/about.jpeg"
 const Slider = () => {
   // !!!!!!!!!!!
   //! fade=soluklaşarak diğer resme geç, autoPlay={true} otomatik resim değiş, interval={5000} 5 saniyede bir değiş. slide={false} otomatik geçişi iptal et
+ 
   return (
     <Carousel variant="dark" fade autoPlay={true} interval={5000}>
       <Carousel.Item >
