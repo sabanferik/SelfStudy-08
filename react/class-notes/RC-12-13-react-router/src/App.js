@@ -1,19 +1,23 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from './pages/Home';
-import MyNavbar from './components/MyNavbar';
-import Footer from './components/Footer';
-import Teacher from './pages/Teacher';
-import TeacherDetails from './pages/TeacherDetails';
-import CourseCard from './pages/CourseCard';
-import CardDetails from './pages/CardDetails';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ContactForm from './pages/ContactForm';
-import Login from './pages/Login';
+// import Home from './pages/Home';
+// import MyNavbar from './components/MyNavbar';
+// import Footer from './components/Footer';
+// import Teacher from './pages/Teacher';
+// import TeacherDetails from './pages/TeacherDetails';
+// import CourseCard from './pages/CourseCard';
+// import CardDetails from './pages/CardDetails';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import ContactForm from './pages/ContactForm';
+// import Login from './pages/Login';
+// import NotFound from './pages/NotFound';
+import AppRouter from './router/AppRouter';
 const App = () => {
   return (
     <div>
-      <Router>
+<AppRouter/>
+
+      {/* <Router>
         <MyNavbar />
 
         <Routes>
@@ -26,18 +30,16 @@ const App = () => {
 
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+
+        
 
         </Routes>
 
         <Footer />
-      </Router>
+      </Router> */}
 
-      {/* <MyNavbar/>
-      <Home/>
-<Teacher/>
-<CourseCard/>
-
-      <Footer/> */}
+     
     </div>
   );
 }
