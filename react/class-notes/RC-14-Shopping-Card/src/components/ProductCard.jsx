@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 // parseFloat; komutu tam sayıyı virgüllü sayıya çevirir
 const ProductCard = ({product,getData}) => {
  const {id,image,price,name,dampingRate,amount}=product
+
+ const navigate=useNavigate()
 // parseFloat=kullanıcı tam sayı bile girse virgüllü sayıya çevirir,ekrana öyle basar
  const BASE_URL = "https://63f4e5583f99f5855db9e941.mockapi.io/products";
 
@@ -45,8 +47,11 @@ getData()
         </div>
         <div className="col-md-7">
           <div className="card-body">
-            <h5 className="card-title" role="button">
+            <h5 className="card-title" role="button"
+            onClick={()=>navigate("/update-product",{state:{product}})}
+            >
               {name}
+
             </h5>
             <div className="product-price d-flex flex-wrap align-items-center">
               <span className="damping-price text-warning h2">

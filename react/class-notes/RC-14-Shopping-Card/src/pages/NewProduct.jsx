@@ -5,14 +5,23 @@ import axios from "axios"
 
 const NewProduct = () => {
  
-const [formData,setFormData]=useState({
-name:"",
-price:0,
-amount:0,
-image:"",
-dampingRate:0.8
+const initialValue = {
+  name: "",
+  price: 0,
+  amount: 0,
+  image: "",
+  dampingRate: 0.8,
+};
 
-})
+const [formData,setFormData]=useState(initialValue)
+
+const handleSubmit=async(e)=>{
+e.preventDefault()
+await axios.post("https://63f4e5583f99f5855db9e941.mockapi.io/products",formData);
+
+setFormData(initialValue);
+}
+
 
   return (
     <div className="container">
@@ -22,7 +31,7 @@ dampingRate:0.8
       >
         <h1 className="text-center"> New Product</h1>
 
-        <form className="p-2">
+        <form onSubmit={handleSubmit} className="p-2">
           <div className="mb-3">
             <label htmlFor="add-name" className="form-label">
               Product Name
