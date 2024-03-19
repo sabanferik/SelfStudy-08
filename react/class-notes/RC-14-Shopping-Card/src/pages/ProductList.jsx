@@ -29,6 +29,9 @@ const [loading,setLoading]=useState(true)
 useEffect(()=>{getData()},[])
 
 
+
+
+
 if(error){
   return <p>Something went wrong.....</p>
 }
@@ -43,7 +46,7 @@ if(error){
             <article id="product-panel" className="col-md-6">
               {produkte.map((product) => (
                 
-                <ProductCard key={product.id} product={product}/>
+                <ProductCard key={product.id} product={product} getData={getData}/>
               ))}
             </article>
           </>
