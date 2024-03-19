@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 
 import axios from "axios"
+import ProductForm from "../components/ProductForm";
 
 const NewProduct = () => {
  
@@ -31,7 +32,7 @@ setFormData(initialValue);
       >
         <h1 className="text-center"> New Product</h1>
 
-        <form onSubmit={handleSubmit} className="p-2">
+        {/* <form onSubmit={handleSubmit} className="p-2">
           <div className="mb-3">
             <label htmlFor="add-name" className="form-label">
               Product Name
@@ -104,7 +105,13 @@ setFormData(initialValue);
               <i className="fa-solid fa-cart-plus me-2"></i>Save To Product
             </button>
           </div>
-        </form>
+        </form> */}
+
+        <ProductForm
+          handleSubmit={handleSubmit}
+          formData={formData}
+          setFormData={setFormData}
+        />
       </article>
     </div>
   );

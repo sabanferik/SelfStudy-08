@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios"
+import ProductForm from "../components/ProductForm";
 
 
 const UpdateProduct = () => {
@@ -24,7 +25,7 @@ navigate(-1)//database de update yapıldıktan sonra bir önceki product list sa
       >
         <h1 className="text-center">update Product</h1>
 
-        <form onSubmit={handleSubmit} className="p-2">
+        {/* <form onSubmit={handleSubmit} className="p-2">
           <div className="mb-3">
             <label htmlFor="add-name" className="form-label">
               Product Name
@@ -93,7 +94,11 @@ navigate(-1)//database de update yapıldıktan sonra bir önceki product list sa
               <i className="fa-solid fa-cart-plus me-2"></i>Save To Product
             </button>
           </div>
-        </form>
+        </form> */}
+        <ProductForm handleSubmit={handleSubmit} 
+           formData={produkt}
+          setFormData={setProdukt}
+        />
       </article>
     </div>
   );
