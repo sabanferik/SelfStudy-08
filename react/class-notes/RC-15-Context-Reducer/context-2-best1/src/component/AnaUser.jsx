@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { KullaniciContext } from '../context/KullaniciContext'
 
 
-const AnaUser = () => {
+const AnaUser = ({users}) => {
+// const {users}=useContext(KullaniciContext)
+ const {changeWidth}=useContext(KullaniciContext)
 
- 
   return (
     <div>
-{[].map((i)=>{
+{users.map((i)=>{
     return(<div>
 
         <h3>{i.login} </h3>
@@ -15,7 +17,7 @@ const AnaUser = () => {
         <div>
             <label htmlFor="">Image width(px)</label>
             <input type="number" 
-               
+               onChange={(e)=>changeWidth(i.id,e.target.value)}
             />
         </div>
 
