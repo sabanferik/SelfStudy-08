@@ -1,16 +1,18 @@
-import {  useState } from "react";
+import {  createContext, useState } from "react";
 import data from "./data";
 import Home from "./components/Home";
 
-
+//!1- context alanı açıyoruz
+export const StudentContext=createContext()
 
 const App = () => {
 
 
   return (
-    <div>
+    //!2- bütün projeye gönderilmek üzere ilk Home u, gönderilecek elemanlarla sarmallayalım
+    <StudentContext.Provider value={{}}>
       <Home />
-    </div>
+    </StudentContext.Provider>
   );
 };
 
