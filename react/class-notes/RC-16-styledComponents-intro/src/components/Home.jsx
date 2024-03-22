@@ -1,9 +1,12 @@
 import React from 'react'
 import HeaderS, { LinkS } from './style/HeaderStyle'
+import DivStyle from './style/ContainerStyle'
+import ButtonS, { TomatoButton } from './style/ButonStyle'
 
 const Home = () => {
+
   return (
-    <div>
+    <DivStyle>
      
      <HeaderS>STYLED COMPONENTS</HeaderS>
 
@@ -11,12 +14,13 @@ const Home = () => {
      
 
 
-     <button>TIKLA1</button>
-     <button>TIKLA2</button>
-     <button>TIKLA3</button>
-     <button>TIKLA4</button>
-     <button>TIKLA5</button>
-    </div>
+     <ButtonS saban>TIKLA1</ButtonS>
+     <ButtonS elif>TIKLA2</ButtonS>
+     <ButtonS>TIKLA3</ButtonS>
+
+     <TomatoButton>TIKLA4</TomatoButton>
+     <TomatoButton asiye>TIKLA5</TomatoButton>
+    </DivStyle>
   )
 }
 

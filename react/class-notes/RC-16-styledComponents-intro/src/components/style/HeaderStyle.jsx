@@ -11,6 +11,8 @@ export const LinkS = styled.a`
 
   font-size: 2rem;
   text-decoration: none;
+
+
 `;
 
 export default HeaderS;
