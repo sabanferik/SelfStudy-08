@@ -10,6 +10,13 @@ const KartSSS = styled.div`
   padding: 60px;
   display: flex;
   flex-direction: ${({nida})=>nida };
+
+box-shadow: ${({theme})=>theme};
+
+  @media screen and (max-width: ${({theme})=>theme.responsive}) {
+    flex-direction: column;
+background-color: pink;
+  }
 `;
 
 export default KartSSS;

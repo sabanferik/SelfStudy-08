@@ -7,7 +7,8 @@ import { ThemeProvider } from "styled-components";
 
 const style={
   responsive:"724px",
-  golge:"0 0 10px rgba(0,0,0,0.15)"
+ 
+  golge:"0 10px 10px rgba(0,0,0,0.15)"
 }
 
 

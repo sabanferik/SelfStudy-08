@@ -2,15 +2,16 @@
 import styled from 'styled-components';
 
 const DisplaySSS = styled.div`
-background-color: lightblue;
-display:flex;
+  background-color: lightblue;
+  display: flex;
 
-justify-content: space-between;
-align-items: center;
+  justify-content: space-between;
+  align-items: center;
 
-
-/* flex-direction: column; */
-
+  @media screen and (max-width: ${({ theme }) => theme.responsive}) {
+    flex-direction: column;
+  }
+  /*  */
 `;
 
 export default DisplaySSS;
