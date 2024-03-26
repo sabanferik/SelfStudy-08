@@ -59,8 +59,7 @@ export const Button = styled.button`
 export const ImgDiv = styled.div`
   /* anasayfadaki aşçı resminin en dış kutusu */
 
-  display: flex;
-  justify-content: center;
+ text-align: center;
   margin: 50px;
   /* background-color: #00adb5; */
   background-color: red;
