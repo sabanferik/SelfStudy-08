@@ -18,7 +18,7 @@ const RecipeProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [query, setQuery] = useState("");
   const [mealType, setMealType] = useState("Breakfast");
-
+console.log(mealType);
 const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&mealType=${mealType}`;
 
 

@@ -8,11 +8,11 @@ import {
   Select,
 } from "./HeaderStyles";
 import { RecipeContext } from "../../context/RecipeProvider";
-import Login from "../../pages/login/Login";
+
 
 const Header = () => {
 
-const {setQuery,setMealtype,getData}=useContext(RecipeContext)
+const {setQuery,setMealType,getData}=useContext(RecipeContext)
 
 const handleSubmit=(e)=>{
 e.preventDefault()
@@ -26,7 +26,7 @@ getData()
         <FoodInput
           type="text"
           placeholder="Search"
-          onChange={(e)=>setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
         />
 
         <Button type="submit">Search</Button>
@@ -34,12 +34,12 @@ getData()
         <Select
           name="ogunTypes"
           id="ogunTypes"
-
-          onChange={(e)=>setMealtype(e.target.value)}
+          onChange={(e) => setMealType(e.target.value)}
         >
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="TeaTime">TeaTime</option>
+         <option>Breakfast</option>
+         <option >Lunch</option>
+         <option >TeaTime</option>
+        
         </Select>
       </FormContainer>
     </HeaderContainer>
