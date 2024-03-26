@@ -17,6 +17,7 @@ const {recipes}=useContext(RecipeContext)
 
       {recipes.length > 0 ? (
         <div>
+      
           <RecipeCard />
         </div>
       ) : (
