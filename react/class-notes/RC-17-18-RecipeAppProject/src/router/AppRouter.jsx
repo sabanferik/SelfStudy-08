@@ -5,6 +5,9 @@ import Home from '../pages/home/Home'
 import PrivateRouter from "./PrivateRouter"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import About from "../pages/about/About"
+import Footer from '../components/footer/Footer'
+import Details from '../pages/details/Details'
+import NotFound from '../pages/errorPage/NotFound'
 
 const AppRouter = () => {
   return (
@@ -19,7 +22,12 @@ const AppRouter = () => {
 
         {/* <Route path="/home" element={<Home/>} /> */}
         <Route path="/about" element={<About />} />
+        <Route path="/details" element={<Details />} />
+        <Route path="*" element={<NotFound />} />
+
+
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
