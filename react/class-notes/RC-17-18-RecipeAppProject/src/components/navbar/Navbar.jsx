@@ -1,24 +1,26 @@
 import React from 'react'
-import {  Hamburger, Logo, Menu, MenuLink, Nav } from './NavbarStyles'
+ import {  Hamburger, Logo, Menu, MenuLink, Nav } from './NavbarStyles'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from 'react';
 const Navbar = () => {
-
+const [open,setOpen]=useState(false)
 
   return (
     <Nav>
-      <Logo to="/home">
+      <Logo to="/home" onClick={() => setOpen(false)}>
         <i>{"<Clarusway/>"} </i>
         <span>recipe</span>
       </Logo>
 
-      <Hamburger >
+      <Hamburger onClick={() => setOpen(!open)}>
         <GiHamburgerMenu />
       </Hamburger>
 
-      <Menu >
+      <Menu fatma={open} onClick={() => setOpen(false)}>
         <MenuLink to="/about"> about</MenuLink>
-        <a href="https://github.com/" target='blank'>github</a>
+        <a href="https://github.com/" target="blank">
+          github
+        </a>
         <MenuLink to="/">logout</MenuLink>
       </Menu>
     </Nav>

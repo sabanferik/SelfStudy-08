@@ -36,9 +36,9 @@ getData()
           id="ogunTypes"
           onChange={(e) => setMealType(e.target.value)}
         >
-         <option>Breakfast</option>
-         <option >Lunch</option>
-         <option >TeaTime</option>
+         <option value="Breakfast">Breakfast</option>
+         <option value="Lunch">Lunch</option>
+         <option value="Teatime">TeaTime</option>
         
         </Select>
       </FormContainer>
