@@ -4,11 +4,13 @@ import { useAuthContext } from "../context/AuthContext";
 
 const Register = () => {
   const {register} = useAuthContext();
+  //* ayrı stateler
   // const [email,setEmail] = useState("")
   // const [password,setPassword] = useState("")
   // const [firstName,setFirstName] = useState("")
   // const [lastName,setLastName] = useState("")
-
+//! inputlarla çalışıyorsak statelerin ilk değeri null veya undefined olmamalı
+  //* birleştirilmiş state
   const [info,setInfo] = useState({
     email:"",
     password:"",
@@ -18,7 +20,7 @@ const Register = () => {
 
   const handleChange = (e) => {
     console.log(e.target.name)
-    console.log(e.target.id)
+    console.log(e.target.id) //* inputdan gelen id veya name parametresini yakalayıp state deki obje ile eşleştirmemiz lazım
     setInfo({...info, [e.target.name]:e.target.value })// setter metodu asenkron çalışır
     //setInfo({...info, "email":e.target.value })
     //setInfo({...info, "password":e.target.value })
