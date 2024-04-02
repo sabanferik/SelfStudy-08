@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
 
@@ -21,13 +21,18 @@ const AuthContextProvider = ({ children }) => {
       })
     console.log(userCredential);
   };
+  const login = async (email, password) => {
+     await signInWithEmailAndPassword(auth, email, password)
+  };
 
   const userObserver = () => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/auth.user
+          console.log(user)
           const {email,displayName,photoURL} = user;
+          console.log(user.displayName)
           setCurrentUser({email,displayName,photoURL})
         } else {
           // User is signed out
@@ -36,13 +41,14 @@ const AuthContextProvider = ({ children }) => {
         }
       });
   }
+
   console.log(currentUser)
   useEffect(()=>{
     userObserver()
   },[])
 
   return (
-    <AuthContext.Provider value={{ currentUser,register }}>
+    <AuthContext.Provider value={{ currentUser,register,login }}>
       {children}
     </AuthContext.Provider>
   );
