@@ -1,16 +1,17 @@
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 import Switch from "./Switch";
-import { useAuthContext } from "../context/AuthContext";
+import { AuthContext, useAuthContext} from "../context/AuthContext";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
-  const {currentUser,logout} = useAuthContext()
+  // const {currentUser,logout} = useContext(AuthContext)
+  const {currentUser,logout} = useAuthContext() //? custom hook sayesinde bu şekilde tek importla daha kolay kullanabiliyoruz.
   return (
     <Disclosure
       as="nav"

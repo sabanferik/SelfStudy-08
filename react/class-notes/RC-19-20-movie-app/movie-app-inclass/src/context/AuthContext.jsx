@@ -4,7 +4,7 @@ import { auth } from "../auth/firebase";
 import {useNavigate} from "react-router-dom"
 
 //! create context
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 //? context provider
 
@@ -68,6 +68,7 @@ const AuthContextProvider = ({ children }) => {
   );
 };
 
+//! zorunlu değil kullanım kolaylığı olması nedeniyle yazılabilir. İlgili yerlerde importları azaltıyor.
 //* consumer with custom hook
 export const useAuthContext = () => {
   return useContext(AuthContext);
