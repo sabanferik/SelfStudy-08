@@ -1,5 +1,6 @@
 import React from "react";
 import MovieCard from "../components/MovieCard";
+import SearchInput from "../components/SearchInput";
 import { useMovieContext } from "../context/MovieContext";
 
 const Main = () => {
@@ -8,6 +9,7 @@ const Main = () => {
 
   return (
     <>
+    <SearchInput/>
       <div className="flex justify-center flex-wrap">
         {loading ? (
           <h2 className="text-2xl text-red-700 ">Loading...</h2>

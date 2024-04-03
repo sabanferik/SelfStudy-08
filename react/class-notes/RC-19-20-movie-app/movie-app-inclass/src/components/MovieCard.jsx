@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 
 const defaultImage =
@@ -6,8 +7,15 @@ const defaultImage =
 
 const MovieCard = ({ id, poster_path, overview, vote_average, title }) => {
   const { currentUser } = useAuthContext();
+  const navigate = useNavigate();
+  const tagColor =
+    vote_average >= 8 ? "green" : vote_average >= 6 ? "orange" : "red";
   return (
-    <div className="movie" id="container">
+    <div
+      className="movie"
+      id="container"
+      onClick={() => navigate("/details/" + id)}
+    >
       <img
         loading="lazy"
         src={
@@ -19,7 +27,9 @@ const MovieCard = ({ id, poster_path, overview, vote_average, title }) => {
       />
       <div className="flex align-baseline justify-between p-1 text-white">
         <h5>{title}</h5>
-        {currentUser && <span>{vote_average.toFixed(1)}</span>}
+        {currentUser && (
+          <span className={`tag ${tagColor}`}>{vote_average.toFixed(1)}</span>
+        )}
       </div>
       <div className="movie-over">
         <h2>Overview</h2>
