@@ -13,9 +13,10 @@ export default function Navbar() {
   // const {currentUser,logout} = useContext(AuthContext)
   const {currentUser,logout} = useAuthContext() //? custom hook sayesinde bu şekilde tek importla daha kolay kullanabiliyoruz.
   return (
+    <>
     <Disclosure
       as="nav"
-      className="bg-neutral-100 dark:bg-gray-800 py-3 dark:text-white fixed top-0 z-30 w-full"
+      className="bg-neutral-100 dark:bg-gray-800 py-3 dark:text-white h-[80px] fixed top-0 z-30 w-full"
     >
       <div className="mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
@@ -99,5 +100,7 @@ export default function Navbar() {
         </div>
       </div>
     </Disclosure>
+    <div className="h-[80px]"></div>
+    </>
   );
 }
