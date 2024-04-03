@@ -10,7 +10,7 @@ import {
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../auth/firebase";
-import { toastSuccessNotify } from "../helpers/toastNotify";
+import { toastErrorNotify, toastSuccessNotify } from "../helpers/toastNotify";
 
 //! create context
 export const AuthContext = createContext();
@@ -22,32 +22,41 @@ const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const register = async (email, password, displayName) => {
-    //? yeni bir kullanıcı oluşturmak için kullanılan firebase metodu
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    //? kullanıcı profilini güncellemek için kullanılan firebase metodu
-    await updateProfile(auth.currentUser, {
-      displayName: displayName,
-    });
-    navigate("/");
-    toastSuccessNotify("Registered!")
-    console.log(userCredential);
+    try {
+      //? yeni bir kullanıcı oluşturmak için kullanılan firebase metodu
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      //? kullanıcı profilini güncellemek için kullanılan firebase metodu
+      await updateProfile(auth.currentUser, {
+        displayName: displayName,
+      });
+      navigate("/");
+      toastSuccessNotify("Registered!");
+      console.log(userCredential);
+    } catch (error) {
+      console.log(error);
+      toastErrorNotify(error.message);
+    }
   };
   //* https://console.firebase.google.com/
   //* => Authentication => sign-in-method => enable Email/password
   //! Email/password ile girişi enable yap
   const login = async (email, password) => {
-    await signInWithEmailAndPassword(auth, email, password);
-    navigate("/");
-    toastSuccessNotify("Logged in!")
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
+      toastSuccessNotify("Logged in!");
+    } catch (error) {
+      toastErrorNotify(error.message);
+    }
   };
   const logout = () => {
     //*https://firebase.google.com/docs/auth/web/password-auth#next_steps
     signOut(auth); //! sadece signOut metodunu çağırmamız yeterli
-    toastSuccessNotify("Logged out!")
+    toastSuccessNotify("Logged out!");
   };
 
   //* https://console.firebase.google.com/
@@ -61,9 +70,11 @@ const AuthContextProvider = ({ children }) => {
       const provider = new GoogleAuthProvider();
       //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
       await signInWithPopup(auth, provider);
-      navigate("/")
+      navigate("/");
+      toastSuccessNotify("Logged in!")
     } catch (error) {
-      console.log(error)
+      console.log(error);
+      toastErrorNotify(error.message)
     }
   };
 
@@ -91,7 +102,9 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser, register, login, logout,signGoogleProvider }}>
+    <AuthContext.Provider
+      value={{ currentUser, register, login, logout, signGoogleProvider }}
+    >
       {children}
     </AuthContext.Provider>
   );
