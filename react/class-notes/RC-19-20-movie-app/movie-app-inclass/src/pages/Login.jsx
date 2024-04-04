@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import GoogleIcon from "../assets/icons/GoogleIcon";
 import { useAuthContext } from "../context/AuthContext";
+import { toastWarnNotify } from "../helpers/toastNotify";
 
 const Login = () => {
-  const {login,signGoogleProvider} = useAuthContext();
+  const {login,signGoogleProvider,forgotPassword} = useAuthContext();
 
   const [info,setInfo] = useState({
     email:"",
@@ -53,6 +54,12 @@ const Login = () => {
             />
             <label htmlFor="password">Password</label>
           </div>
+          <span
+              onClick={() =>info.email ? forgotPassword(info.email): toastWarnNotify("Please enter email")}
+              className="py-3 font-[0.75em] cursor-pointer underline text-gray-500 hover:text-[#ff4b45]"
+            >
+              Forgot Password
+            </span>
           <button className="btn-danger" type="submit">
             Login
           </button>

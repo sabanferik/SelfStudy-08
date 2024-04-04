@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -10,7 +11,7 @@ import {
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../auth/firebase";
-import { toastErrorNotify, toastSuccessNotify } from "../helpers/toastNotify";
+import { toastErrorNotify, toastSuccessNotify, toastWarnNotify } from "../helpers/toastNotify";
 
 //! create context
 export const AuthContext = createContext();
@@ -18,7 +19,7 @@ export const AuthContext = createContext();
 //? context provider
 
 const AuthContextProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || "");
   const navigate = useNavigate();
 
   const register = async (email, password, displayName) => {
@@ -78,6 +79,22 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const forgotPassword = (email) => {
+    //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // Password reset email sent!
+        toastWarnNotify("Please check your mail box!");
+        // alert("Please check your mail box!");
+      })
+      .catch((err) => {
+        toastErrorNotify(err.message);
+        // alert(err.message);
+        // ..
+      });
+  };
+
+
   const userObserver = () => {
     //? Kullanıcının signin olup olmadığını takip eden ve kullanıcı değiştiğinde yeni kullanıcıyı response olarak dönen firebase metodu
     onAuthStateChanged(auth, (user) => {
@@ -88,10 +105,12 @@ const AuthContextProvider = ({ children }) => {
         const { email, displayName, photoURL } = user;
         console.log(user.displayName);
         setCurrentUser({ email, displayName, photoURL });
+        localStorage.setItem("user", JSON.stringify({ email, displayName, photoURL })) //* user bilgisinin refresh de kaybolmaması için locale kaydettik
       } else {
         // User is signed out
         // ...
         setCurrentUser(false);
+        localStorage.removeItem("user")
       }
     });
   };
@@ -101,9 +120,11 @@ const AuthContextProvider = ({ children }) => {
     userObserver(); //* Kullanıcı giriş çıkışlarını takip ettirmesi için userObserverı tetikliyoruz
   }, []);
 
+  
+
   return (
     <AuthContext.Provider
-      value={{ currentUser, register, login, logout, signGoogleProvider }}
+      value={{ currentUser, register, login, logout, signGoogleProvider,forgotPassword }}
     >
       {children}
     </AuthContext.Provider>

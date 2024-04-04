@@ -20,16 +20,14 @@ export default function Navbar() {
     >
       <div className="mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex flex-shrink-0 items-center">
+
               <Link to="/" className="text-2xl font-semibold">
                 {" "}
                 React Movie App{" "}
               </Link>
-            </div>
-          </div>
+
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            {currentUser && <h5>{currentUser.displayName}</h5>}
+            {currentUser && <h5 className="mr-2">{currentUser.displayName}</h5>}
             <Switch />
 
             {/* Profile dropdown */}
@@ -38,7 +36,7 @@ export default function Navbar() {
                 <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Open user menu</span>
-                  <img className="h-8 w-8 rounded-full" src={avatar} alt="" />
+                  <img className="h-8 w-8 rounded-full" src={currentUser?.photoURL || avatar} alt="" />
                 </Menu.Button>
               </div>
               <Transition
