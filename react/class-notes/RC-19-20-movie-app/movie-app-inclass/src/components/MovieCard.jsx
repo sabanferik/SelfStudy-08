@@ -31,7 +31,13 @@ const MovieCard = ({ id, poster_path, overview, vote_average, title }) => {
           <span className={`tag ${tagColor}`}>{vote_average.toFixed(1)}</span>
         )}
       </div>
-      <div className="movie-over">
+      {/* Overview in resmin sag altindan sola dogru gelmesi icin kod */}
+      {/* <div className="movie-over">
+        <h2>Overview</h2>
+        <p>{overview}</p>
+      </div> */}
+      {/* Overview in remin sag üstünden sola dogru gelmesini saglayan kod */}
+      <div className="movie-over" style={{ position: "absolute", top: "0", left: "0", backgroundColor: "rgba(0, 0, 0, 0.7)", padding: "10px", color: "white" }}>
         <h2>Overview</h2>
         <p>{overview}</p>
       </div>
