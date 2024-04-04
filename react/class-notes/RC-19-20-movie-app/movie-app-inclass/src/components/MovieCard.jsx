@@ -37,7 +37,7 @@ const MovieCard = ({ id, poster_path, overview, vote_average, title }) => {
         <p>{overview}</p>
       </div> */}
       {/* Overview in remin sag üstünden sola dogru gelmesini saglayan kod */}
-      <div className="movie-over" style={{ position: "absolute", top: "0", left: "0", backgroundColor: "rgba(0, 0, 0, 0.7)", padding: "10px", color: "white" }}>
+      <div className="movie-over" style={{ position: "absolute", top: "0", left: "0", backgroundColor: "rgba(0, 0, 0, 0.7)", padding: "10px", color: "white", textAlign: "center" }}>
         <h2>Overview</h2>
         <p>{overview}</p>
       </div>
