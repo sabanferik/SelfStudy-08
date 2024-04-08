@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Counter.css";
+import { INC } from "../../redux/types/counterTypes";
 
 const Counter = () => {
   // useSelector(state => state.reducer)
@@ -17,7 +18,8 @@ const Counter = () => {
           className="counter-button positive"
           // onClick={() => dispatch("INC")} //! action obje olmak zorunda o nedenle argüman gönderirken obje olarak göndermek zorundayız. Bu şekilde hata alırız.
           // onClick={() => dispatch({ tip: "INC" })}//? obje içerisinde gönderdiğimiz property type adında olmalı 
-          onClick={() => dispatch({ type: "INC" })} //* dispatch içerisinde verdiğimiz argüman reducer içerisindeki action parametresine karşılık gelir.
+          //onClick={() => dispatch({ type: "inc" })} //* dispatch içerisinde verdiğimiz argüman reducer içerisindeki action parametresine karşılık gelir.
+          onClick={() => dispatch({ type: INC })}
         >
           increase
         </button>
