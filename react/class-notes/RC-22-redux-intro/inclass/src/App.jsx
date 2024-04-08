@@ -8,7 +8,7 @@ function App() {
     <div className="app">
       <ErrorBoundary>
       <Counter />
-      <Todo />
+      {/* <Todo /> */}
       </ErrorBoundary>
     </div>
   );
