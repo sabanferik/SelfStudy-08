@@ -13,7 +13,8 @@ const Counter = () => {
   // useSelector(state => state.reducer)
   // useSelector; Reducer içerisinde tanımlanan state bilgisine erişmek ve değişikliklerden haberdar olmak için kullanılır.
   // const {count} = useSelector(state => state)
-  const count = useSelector((state) => state.count); //state in kendisne
+  // const count = useSelector((state) => state.count); //state in kendisne
+  const count = useSelector((state) => state.counter.count); //combineReducerstan sonra
   const dispatch = useDispatch(); // setter
   return (
     <div className="app">
