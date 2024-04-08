@@ -7,7 +7,9 @@ const TodoList = () => {
   const todoList = useSelector(state=> state.todo.todoList)
   const dispatch = useDispatch()
   const handleClearList = () => {
-    dispatch(clearTodo())
+    if(confirm("Emin misin ?")){
+      dispatch(clearTodo())
+    }
   }
 
   return (

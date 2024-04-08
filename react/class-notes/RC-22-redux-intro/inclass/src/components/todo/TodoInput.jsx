@@ -9,6 +9,7 @@ const TodoInput = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(addTodo(text))
+    // dispatch(addTodo({text:text,completed:false,id: crypto.randomUUID()}))
     setText("")
   }
 
