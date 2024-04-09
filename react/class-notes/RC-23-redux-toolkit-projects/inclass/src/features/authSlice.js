@@ -14,6 +14,7 @@ const authSlice = createSlice({
     initialState, //initialState:initialState
     reducers: {  //? action creator fonks. ve reducer icin
         loginSuccess : (state,action) => {
+            // console.log(action.payload)
             state.user = action.payload
         },
         logoutSuccess : (state) => {
