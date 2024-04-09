@@ -17,7 +17,7 @@ const initialState = {
 // action type’larını oluşturur.
 
 export const getProductsData = createAsyncThunk("getProducts", async () => {
-  const { data } = await axios("https://dummyjson.com/productsasdasdasdasd");
+  const { data } = await axios("https://dummyjson.com/products");
   console.log(data);
   return data.products;
 });
@@ -28,7 +28,7 @@ const productSlice = createSlice({
   reducers: {
     clearProductsData: (state) => {
       state.productsData = [];
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
