@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'//? Slice ile bir global state'in hem action type'lari , hem action creator fonksiyonlarini hem de reducer'i tek bir hamlede olusturabiliriz.
+//? Slice ile bir global state'in hem action type'lari , hem action creator fonksiyonlarini hem de reducer'i tek bir hamlede olusturabiliriz.
 import { createSlice } from '@reduxjs/toolkit';
 
 // const myState = {
@@ -22,7 +22,7 @@ const authSlice = createSlice({
     }
 })
 
-//?Slice yapısı ile Action'lar otomatik olarak oluşturuluyor. olusan action fonksiyonları sliceAdi.actions 'dan destructure edilerek export edilir.
+//?Slice yapısı ile Action’lar otomatik olarak oluşturuluyor. olusan action fonksiyonları sliceAdi.actions 'dan destructure edilerek export edilir.
 export const {loginSuccess,logoutSuccess} = authSlice.actions;
 
 //? yazilan slice'in reducer'i sliceAdi.reducer seklinde export edilmelidir.
