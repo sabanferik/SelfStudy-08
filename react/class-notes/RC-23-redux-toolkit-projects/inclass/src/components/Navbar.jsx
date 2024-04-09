@@ -10,11 +10,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutSuccess } from "../features/authSlice";
 
 function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch()
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -23,6 +25,10 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogout =()=> {
+    dispatch(logoutSuccess())
+  }
 
   return (
     <AppBar
@@ -75,7 +81,7 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {user?.email ? (
-                <MenuItem>
+                <MenuItem onClick={handleLogout}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
               ) : (
