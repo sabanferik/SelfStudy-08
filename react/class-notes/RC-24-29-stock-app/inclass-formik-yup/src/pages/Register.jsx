@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import image from "../assets/regi.avif";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
+import useAuthCall from "../hooks/useAuthCall";
 
 //! Yup ile istediğimiz alanlara istediğimiz validasyon koşullarını
 //  oluşturuyoruz. Sonra oluşturduğumuz bu şemayı formike tanımlayarak
@@ -32,13 +33,19 @@ const SignupSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, "Er muss mindestens 8 Zeichen lang sein!")
     .max(50, "Er darf maximal 50 Zeichen lang sein!")
-    .matches(/\d+/,"Muss mindestens eine Ziffer enthalten!")
+    .matches(/\d+/, "Muss mindestens eine Ziffer enthalten!")
+    .matches(/[a-z]/, "Muss mindestens einen Kleinbuchstaben enthalten!")
     .matches(/[A-Z]/, "Muss mindestens einen Großbuchstaben enthalten!")
-    .matches(/[@$?!%&*]+/, "Muss mindestens ein Sonderzeichen (@$!%*?&) enthalten!")
-    .required()
+    .matches(
+      /[@$?!%&*]+/,
+      "Muss mindestens ein Sonderzeichen (@$!%*?&) enthalten!"
+    )
+    .required(),
 });
 
 const Register = () => {
+  const {register} = useAuthCall()
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -85,6 +92,7 @@ const Register = () => {
             onSubmit={(values) => {
               // same shape as initial values
               console.log(values);
+              register(values)
             }}
           >
             {({
@@ -98,7 +106,7 @@ const Register = () => {
               /* and other goodies */
             }) => (
               <Form>
-                <Box sx={{ display:"flex",flexDirection:"column",gap:2}}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
                     id="username"
                     name="username" //formik name attributedından eşleştirme yapıyor.
@@ -111,7 +119,7 @@ const Register = () => {
                     helperText={touched.username && errors.username} //validationda verdiğimiz kalıba uymazsa ilgili mesajları göstermesi için errors dan gelen mesajı yakalıyoruz.
                   />
                   {/* error ve helperText propertyleri Textfield componentine ait propertyler. */}
-                {/* mui textfield kullanmadığımzda <span>{touched.username && errors.username}</span> */}
+                  {/* mui textfield kullanmadığımzda <span>{touched.username && errors.username}</span> */}
                   <TextField
                     id="firstName"
                     name="firstName"
@@ -155,7 +163,9 @@ const Register = () => {
                     error={touched.password && Boolean(errors.password)}
                     helperText={touched.password && errors.password}
                   />
-                  <Button variant="contained" type="submit">Sign Up</Button>
+                  <Button variant="contained" type="submit">
+                    Sign Up
+                  </Button>
                 </Box>
               </Form>
             )}
