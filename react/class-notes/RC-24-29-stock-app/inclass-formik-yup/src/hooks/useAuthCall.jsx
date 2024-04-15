@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchFail, fetchStart } from '../features/authSlice'
+import { fetchFail, fetchStart, registerSuccess } from '../features/authSlice'
 import axios from 'axios'
 
 const useAuthCall = () => {
@@ -11,6 +11,7 @@ const useAuthCall = () => {
     try {
         const {data} = await axios.post("https://10002.fullstack.clarusway.com/users/",userInfo)
         console.log(data)
+        dispatch(registerSuccess(data))
     } catch (error) {
         dispatch(fetchFail())
         console.log(error)
