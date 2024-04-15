@@ -11,6 +11,13 @@ import image from "../assets/regi.avif";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 
+//! Yup ile istediğimiz alanlara istediğimiz validasyon koşullarını
+//  oluşturuyoruz. Sonra oluşturduğumuz bu şemayı formike tanımlayarak
+//  kullanıyoruz. Böylelikle formik hem formumuzu yönetiyor hem de verdiğimiz
+//  validationSchema yı uyguluyor. Dikkat edilmesi gereken husus; formikte
+//  tanımladığımız initialValues daki keylerle, Yupta tanımladığımız keylerin
+//  aynı olması. Eğer bir harf bile farklı olsa o alanla ilgili yazdığınız
+//  validation çalışmaz.
 const SignupSchema = Yup.object().shape({
   username: Yup.string().min(3).max(15).required("Required!"),
   firstName: Yup.string()
@@ -94,14 +101,17 @@ const Register = () => {
                 <Box sx={{ display:"flex",flexDirection:"column",gap:2}}>
                   <TextField
                     id="username"
-                    name="username"
+                    name="username" //formik name attributedından eşleştirme yapıyor.
                     label="Username"
                     value={values.username}
                     onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={touched.username && Boolean(errors.username)}
-                    helperText={touched.username && errors.username}
+                    onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
+                    error={touched.username && Boolean(errors.username)} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
+                    // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
+                    helperText={touched.username && errors.username} //validationda verdiğimiz kalıba uymazsa ilgili mesajları göstermesi için errors dan gelen mesajı yakalıyoruz.
                   />
+                  {/* error ve helperText propertyleri Textfield componentine ait propertyler. */}
+                {/* mui textfield kullanmadığımzda <span>{touched.username && errors.username}</span> */}
                   <TextField
                     id="firstName"
                     name="firstName"
