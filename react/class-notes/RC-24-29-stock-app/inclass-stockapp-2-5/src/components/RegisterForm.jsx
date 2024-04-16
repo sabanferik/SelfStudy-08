@@ -119,7 +119,7 @@ const SignUpForm = ({
             size="large"
             disabled={isSubmitting}
           >
-            Sign Up
+            {isSubmitting ? "Loading..." : "Sign Up"}
           </Button>
         </Box>
       </Form>
