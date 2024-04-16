@@ -114,7 +114,7 @@ const Register = () => {
                     value={values.username}
                     onChange={handleChange}
                     inputProps={{
-                      "auto-complete": "off"
+                      autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
                     }}
                     onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
                     error={touched.username && Boolean(errors.username)} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
