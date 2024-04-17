@@ -4,13 +4,16 @@ import {
   fetchFail,
   fetchStart,
   registerSuccess,
+  loginSuccess,
+  logoutSuccess,
 } from "../features/authSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { token } = useSelector((store) => store.auth);
   const register = async (userInfo) => {
     dispatch(fetchStart());
     try {
@@ -25,8 +28,43 @@ const useAuthCall = () => {
       dispatch(fetchFail());
     }
   };
+  const login = async (userInfo) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios.post(
+        `https://10002.fullstack.clarusway.com/auth/login/`,
+        userInfo
+      );
+      dispatch(loginSuccess(data));
+      toastSuccessNotify("Login performed");
+      navigate("/stock");
+      console.log(data);
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+      toastErrorNotify("Login can not be performed");
+    }
+  };
 
-  return { register};
+  const logout = async () => {
+    dispatch(fetchStart());
+    try {
+      await axios.get(`https://10002.fullstack.clarusway.com/auth/logout/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      dispatch(logoutSuccess());
+      toastSuccessNotify("Logout performed");
+      navigate("/");
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+      toastErrorNotify("Logout can not be performed");
+    }
+  };
+
+  return { register, login , logout };
 };
 
 export default useAuthCall;
