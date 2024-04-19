@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
+import FirmCard from "../components/Cards/FirmCard";
 
 const Firms = () => {
   //? firms verileri bana birden fazla yerde lazım olduğu için fonksiyonu burada değil de her yerden erişebileceğim bir noktada tanımlıyorum. İçerisinde react hookları lazım olduğu için de bu ortak nokta en iyi custom hook olmuş oluyor.
@@ -53,10 +54,10 @@ const Firms = () => {
         Firms
       </Typography>
       <Button variant="contained">New Firm</Button>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} mt={3}>
         {firms.map((firm) => (
-          <Grid item xs={6} md={8}>
-            xs=6 md=8
+          <Grid item xs={12} md={6} lg={4} xl={3} key={firm._id}>
+            <FirmCard {...firm} />
           </Grid>
         ))}
       </Grid>

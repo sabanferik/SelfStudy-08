@@ -5,27 +5,45 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditIcon from '@mui/icons-material/Edit';
 
-export default function FirmCard() {
+export default function FirmCard({_id,name,address,image,phone}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
-      />
-      <CardContent>
+    <Card sx={{ 
+        height: 390,
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:"space-between",
+        padding:"0.5rem"
+     }}>
+        <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {address}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <CardMedia
+        sx={{ height: 140, objectFit:"contain" }}
+        component="img"
+        image={image}
+        title={name}
+      />
+       <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          Phone : {phone}
+        </Typography>
+      </CardContent>
+      
+      <CardActions sx={{
+        justifyContent:"center",
+        alignItems:"center",
+        gap:2
+      }}>
+        <EditIcon />
+        <DeleteOutlineIcon />
       </CardActions>
     </Card>
   );
