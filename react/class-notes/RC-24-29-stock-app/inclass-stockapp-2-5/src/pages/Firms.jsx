@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 // import {useDispatch, useSelector} from "react-redux";
 // import { fetchFail, fetchStart, firmsSuccess } from '../features/stockSlice';
 // import axios from "axios";
-import useStockCall from '../hooks/useStockCall';
-
+import useStockCall from "../hooks/useStockCall";
 
 const Firms = () => {
   //? firms verileri bana birden fazla yerde lazım olduğu için fonksiyonu burada değil de her yerden erişebileceğim bir noktada tanımlıyorum. İçerisinde react hookları lazım olduğu için de bu ortak nokta en iyi custom hook olmuş oluyor.
@@ -27,15 +26,17 @@ const Firms = () => {
   //   }
   // }
 
-  const {getFirms} = useStockCall()
+  const {
+    // getFirms,
+    getStockData,
+  } = useStockCall();
 
   useEffect(() => {
-    getFirms()
-  }, [])
+    // getFirms()
+    getStockData("firms");
+  }, []);
 
-  return (
-    <div>Firms</div>
-  )
-}
+  return <div>Firms</div>;
+};
 
-export default Firms
+export default Firms;

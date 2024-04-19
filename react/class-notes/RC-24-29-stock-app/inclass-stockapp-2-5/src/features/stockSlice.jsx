@@ -4,29 +4,40 @@ const stockSlice = createSlice({
   name: "stock",
 
   initialState: {
-    categories:[],
+    categories: [],
     brands: [],
     firms: [],
-    products:[],
-    purchases:[],
-    sales:[],
-    loading:false,
-    error:false
+    products: [],
+    purchases: [],
+    sales: [],
+    loading: false,
+    error: false,
   },
   reducers: {
-    fetchStart: state => {
+    fetchStart: (state) => {
       state.loading = true;
       state.error = false;
     },
-    firmsSuccess : (state, {payload}) => {
-        state.loading = false;
-        state.firms = payload;
-    },
-    brandsSuccess : (state, {payload}) => {
+    // firmsSuccess: (state, { payload }) => {
+    //   state.loading = false;
+    //   state.firms = payload;
+    // },
+    // brandsSuccess: (state, { payload }) => {
+    //   state.loading = false;
+    //   state.brands = payload;
+    // },
+    // getSuccess: (state, { payload }) => {
+    //   console.log(payload);
+    //   state.loading = false;
+    //   // state.brands = payload;
+    //   state[payload.url] = payload.data
+    // },
+    getSuccess: (state, { payload:{data,url} }) => {
+      // console.log(payload);
       state.loading = false;
-      state.brands = payload;
-  },
-    fetchFail: state => {
+      state[url] = data; // state["brands"] - state["firms"]
+    },
+    fetchFail: (state) => {
       state.loading = false;
       state.error = true;
     },
@@ -35,8 +46,9 @@ const stockSlice = createSlice({
 
 export const {
   fetchStart,
-  firmsSuccess,
-  brandsSuccess,
+  // firmsSuccess,
+  getSuccess,
+  // brandsSuccess,
   fetchFail,
 } = stockSlice.actions;
 export default stockSlice.reducer;
