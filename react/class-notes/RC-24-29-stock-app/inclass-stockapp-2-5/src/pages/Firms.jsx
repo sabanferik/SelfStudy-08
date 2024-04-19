@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 // import {useDispatch, useSelector} from "react-redux";
 // import { fetchFail, fetchStart, firmsSuccess } from '../features/stockSlice';
 // import axios from "axios";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
 
 const Firms = () => {
@@ -30,13 +35,33 @@ const Firms = () => {
     // getFirms,
     getStockData,
   } = useStockCall();
-
+  const { firms } = useSelector((state) => state.stock);
+  console.log("firms:", firms);
   useEffect(() => {
     // getFirms()
     getStockData("firms");
   }, []);
 
-  return <div>Firms</div>;
+  return (
+    <Container>
+      <Typography
+        align="center"
+        variant="h4"
+        component="h1"
+        color="secondary.second"
+      >
+        Firms
+      </Typography>
+      <Button variant="contained">New Firm</Button>
+      <Grid container spacing={2}>
+        {firms.map((firm) => (
+          <Grid item xs={6} md={8}>
+            xs=6 md=8
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
+  );
 };
 
 export default Firms;
