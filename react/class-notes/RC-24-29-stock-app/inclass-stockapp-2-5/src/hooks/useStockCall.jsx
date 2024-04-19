@@ -1,6 +1,12 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { brandsSuccess, fetchFail, fetchStart, firmsSuccess, getSuccess } from "../features/stockSlice";
+import {
+  // brandsSuccess,
+  fetchFail,
+  fetchStart,
+  // firmsSuccess,
+  getSuccess,
+} from "../features/stockSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const useStockCall = () => {
@@ -56,19 +62,18 @@ const useStockCall = () => {
       console.log(data);
       // dispatch(brandsSuccess(data.data));
       // dispatch(getSuccess({data:data.data,url:url}));//* action creatorlar her zaman tek bir parametre kabul ederler
-      dispatch(getSuccess({data:data.data,url}));//* action creatorlar her zaman tek bir parametre kabul ederler
+      dispatch(getSuccess({ data: data.data, url })); //* action creatorlar her zaman tek bir parametre kabul ederler
     } catch (error) {
       console.log(error);
       dispatch(fetchFail());
     }
   };
-  
-
 
   return {
     // getFirms,
     // getBrands,
-    getStockData};
+    getStockData,
+  };
 };
 
 export default useStockCall;
