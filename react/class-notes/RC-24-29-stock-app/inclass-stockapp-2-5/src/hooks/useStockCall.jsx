@@ -69,9 +69,27 @@ const useStockCall = () => {
     }
   };
 
+  const deleteStockData = async (url,id) => {
+    dispatch(fetchStart());
+    try {
+      await axios.delete(`${BASE_URL}${url}/${id}`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      // getStockData(url)
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    } finally {
+      getStockData(url);
+    }
+  };
+
   return {
     // getFirms,
     // getBrands,
+    deleteStockData,
     getStockData,
   };
 };
