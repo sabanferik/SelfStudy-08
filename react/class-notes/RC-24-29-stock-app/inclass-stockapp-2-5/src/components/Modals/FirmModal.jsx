@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import * as React from "react";
+import useStockCall from "../../hooks/useStockCall";
 
 const style = {
   position: "absolute",
@@ -26,6 +27,7 @@ export default function FirmModal({ open, handleClose }) {
     address: "",
     image: "",
   });
+  const {postStockData} = useStockCall()
 
   const handleChange = (e) => {
     console.log(e.target.id)
@@ -38,6 +40,7 @@ export default function FirmModal({ open, handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submit",info)
+    postStockData("firms",info)
   }
 
   return (
