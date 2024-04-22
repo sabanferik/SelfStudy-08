@@ -17,26 +17,32 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({ open, handleClose,initialState }) {
+export default function FirmModal({ open, handleClose, initialState }) {
   //   const [open, setOpen] = React.useState(false);
   //   const handleOpen = () => setOpen(true);
   //   const handleClose = () => setOpen(false);
   const [info, setInfo] = React.useState(initialState);
-  const {postStockData} = useStockCall()
+  const { postStockData, putStockData } = useStockCall();
 
   const handleChange = (e) => {
-    console.log(e.target.id)
-    console.log(e.target.name)
+    console.log(e.target.id);
+    console.log(e.target.name);
     // setInfo({...info,[e.target.id]:e.target.value})
-    setInfo({...info,[e.target.name]:e.target.value})
+    setInfo({ ...info, [e.target.name]: e.target.value });
     //console.log(info)//*setter asenkron çalışır o nedenle güncel çıktıyı yakalayamam
-  }
-  console.log(info)
+  };
+  console.log(info);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit",info)
-    postStockData("firms",info)
-  }
+    console.log("submit", info);
+
+    if (info._id) {//* id varsa edit işlemi
+      putStockData("firms", info);
+    } else {//* id yoksa create işlemi
+      postStockData("firms", info);
+    }
+    handleClose()
+  };
 
   return (
     <div>
@@ -59,8 +65,8 @@ export default function FirmModal({ open, handleClose,initialState }) {
               type="text"
               variant="outlined"
               value={info.name}
-            //   onChange={(e)=> setInfo({...info, name:e.target.value})}
-            onChange={handleChange}
+              //   onChange={(e)=> setInfo({...info, name:e.target.value})}
+              onChange={handleChange}
             />
             <TextField
               label="Firm Address"
@@ -69,7 +75,7 @@ export default function FirmModal({ open, handleClose,initialState }) {
               type="text"
               variant="outlined"
               value={info.address}
-            //   onChange={(e)=> setInfo({...info, address:e.target.value})}
+              //   onChange={(e)=> setInfo({...info, address:e.target.value})}
               onChange={handleChange}
             />
             <TextField
@@ -91,7 +97,7 @@ export default function FirmModal({ open, handleClose,initialState }) {
               onChange={handleChange}
             />
             <Button type="submit" variant="contained">
-              Submit Firm
+             { info._id ? "Update Firm" : "Submit Firm"}
             </Button>
           </Box>
         </Box>

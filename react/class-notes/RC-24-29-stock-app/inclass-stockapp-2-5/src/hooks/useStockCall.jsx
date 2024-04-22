@@ -101,11 +101,24 @@ const useStockCall = () => {
       getStockData(url);
     }
   };
+  const putStockData = async (url,info) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.put(`${url}/${info._id}`,info);
+      // getStockData(url)
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    } finally {
+      getStockData(url);
+    }
+  };
 
   return {
     // getFirms,
     // getBrands,
     deleteStockData,
+    putStockData,
     postStockData,
     getStockData,
   };
