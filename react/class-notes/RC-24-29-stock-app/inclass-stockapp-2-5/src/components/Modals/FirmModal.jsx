@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { TextField } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -30,12 +31,37 @@ export default function FirmModal({open,handleClose}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <Box component="form">
+          <TextField
+            label="Firm Name"
+            name="name"
+            id="name"
+            type="text"
+            variant="outlined"
+          />  
+          <TextField
+            label="Firm Address"
+            name="address"
+            id="address"
+            type="text"
+            variant="outlined"
+          /> 
+          <TextField
+            label="Firm Phone"
+            name="phone"
+            id="phone"
+            type="text"
+            variant="outlined"
+          /> 
+          <TextField
+            label="Firm Logo"
+            name="image"
+            id="image"
+            type="text"
+            variant="outlined"
+          /> 
+          <Button type="submit">Submit Firm</Button>
+          </Box>
         </Box>
       </Modal>
     </div>
