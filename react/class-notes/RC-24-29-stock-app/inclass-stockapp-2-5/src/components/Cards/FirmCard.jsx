@@ -8,17 +8,28 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import useStockCall from "../../hooks/useStockCall";
 
-export default function FirmCard({_id,name,address,image,phone,handleOpen,setInitialState}) {
-  const {deleteStockData} = useStockCall()
+export default function FirmCard({_id, name, address, image, phone, handleOpen, setInitialState}) {
+  const {deleteStockData} = useStockCall();
+  
+  const [hovered, setHovered] = React.useState(false);
+
   return (
-    <Card sx={{ 
+    <Card
+      sx={{
         height: 390,
-        display:"flex",
-        flexDirection:"column",
-        justifyContent:"space-between",
-        padding:"0.5rem"
-     }}>
-        <CardContent>
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "0.5rem",
+        "&:hover": {
+          boxShadow: hovered ? "0 4px 8px 0 rgba(0, 0, 0, 0.2)" : "none",
+          transform: hovered ? "scale(1.03)" : "none",
+        },
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
@@ -27,27 +38,26 @@ export default function FirmCard({_id,name,address,image,phone,handleOpen,setIni
         </Typography>
       </CardContent>
       <CardMedia
-        sx={{ height: 140, objectFit:"contain" }}
+        sx={{ height: 140, objectFit: "contain" }}
         component="img"
         image={image}
         title={name}
       />
-       <CardContent>
+      <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Phone : {phone}
+          Phone: {phone}
         </Typography>
       </CardContent>
-      
       <CardActions sx={{
-        justifyContent:"center",
-        alignItems:"center",
-        gap:2
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 2
       }}>
-        <EditIcon onClick={()=> {
+        <EditIcon onClick={() => {
           handleOpen();
-          setInitialState({_id,name,phone,image,address})
+          setInitialState({_id, name, phone, image, address})
         }} />
-        <DeleteOutlineIcon onClick={()=> deleteStockData("firms",_id)} />
+        <DeleteOutlineIcon onClick={() => deleteStockData("firms", _id)} />
       </CardActions>
     </Card>
   );
