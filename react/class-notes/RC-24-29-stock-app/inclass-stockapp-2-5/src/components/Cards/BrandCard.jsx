@@ -10,7 +10,7 @@ import useStockCall from "../../hooks/useStockCall";
 
 export default function BrandCard({_id, name, image, handleOpen, setInitialState}) {
   const {deleteStockData} = useStockCall();
-
+  
   const [hovered, setHovered] = React.useState(false);
 
   return (
@@ -29,7 +29,7 @@ export default function BrandCard({_id, name, image, handleOpen, setInitialState
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <CardContent>
+      <CardContent sx={{ boxShadow: hovered ? "0 4px 8px 0 rgba(0, 0, 0, 0.2)" : "none" }}>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
