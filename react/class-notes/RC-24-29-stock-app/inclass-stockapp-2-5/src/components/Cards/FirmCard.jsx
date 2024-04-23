@@ -29,7 +29,7 @@ export default function FirmCard({_id, name, address, image, phone, handleOpen, 
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <CardContent>
+      <CardContent sx={{ boxShadow: hovered ? "0 4px 8px 0 rgba(0, 0, 0, 0.2)" : "none" }}>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
