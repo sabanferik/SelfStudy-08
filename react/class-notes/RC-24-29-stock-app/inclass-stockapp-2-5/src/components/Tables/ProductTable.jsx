@@ -69,7 +69,8 @@ const columns = [
 
 function getRowId(row) {
   console.log(row);
-  return row._id;
+//   return row.name;
+return row._id
 }
 export default function ProductTable() {
   const { products } = useSelector((state) => state.stock);
@@ -117,6 +118,7 @@ export default function ProductTable() {
       renderCell: (params) => (
           // console.log(params)
           <DeleteOutlineIcon
+            // onClick={() => deleteStockData("products", params.row._id)}
             onClick={() => deleteStockData("products", params.id)}
             sx={btnStyle}
           />
