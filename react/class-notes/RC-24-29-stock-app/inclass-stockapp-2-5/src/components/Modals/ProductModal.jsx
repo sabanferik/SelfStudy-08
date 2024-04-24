@@ -80,7 +80,7 @@ export default function ProductModal({ open, handleClose }) {
               onChange={handleChange}
             />
             <Button type="submit" variant="contained">
-              {info._id ? "Update Product" : "Submit Product"}
+              Submit Product
             </Button>
           </Box>
         </Box>
