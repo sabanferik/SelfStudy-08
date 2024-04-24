@@ -85,7 +85,7 @@ export default function ProductTable() {
       editable: true,
       valueGetter: (value) => {
         // console.log(value)
-        return value.name;
+        return value?.name ?? "-No Category-";
       },
     },
     {
@@ -93,7 +93,7 @@ export default function ProductTable() {
       headerName: "Brand",
       width: 150,
       editable: true,
-      valueGetter: (value) => value.name,
+      valueGetter: (value) => value?.name ?? "-No Brand-",
     },
     {
       field: "name",
