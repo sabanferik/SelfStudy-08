@@ -77,12 +77,15 @@ export default function ProductTable() {
   const {deleteStockData} = useStockCall()
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", minWidth:40,maxWidth:70,headerAlign:"center",align:"center", flex:0.8},
     {
       field: "categoryId",
       headerName: "Category",
-      width: 150,
-      editable: true,
+      headerAlign:"center",
+      align:"center",
+      minWidth: 150,
+      editable: false,
+      flex:2,
       valueGetter: (value) => {
         // console.log(value)
         return value?.name ?? "-No Category-";
@@ -91,30 +94,38 @@ export default function ProductTable() {
     {
       field: "brandId",
       headerName: "Brand",
-      width: 150,
-      editable: true,
+      minWidth: 150,
+      flex:2,
+      headerAlign:"center",
+      align:"center",
       valueGetter: (value) => value?.name ?? "-No Brand-",
     },
     {
       field: "name",
       headerName: "Name",
-      type: "number",
-      width: 110,
-      editable: true,
+      minWidth: 150,
+      flex:2,
+      headerAlign:"center",
+      align:"center",
     },
     {
       field: "quantity",
       headerName: "Stock",
       type: "number",
       width: 110,
-      editable: true,
+      headerAlign:"center",
+      align:"center",
+      flex:0.8,
     },
     {
       field: "actions",
       headerName: "Actions",
+      headerAlign:"center",
+      align:"center",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
-      width: 160,
+      minWidth:40,
+      flex:1,
       renderCell: (params) => (
           // console.log(params)
           <DeleteOutlineIcon
