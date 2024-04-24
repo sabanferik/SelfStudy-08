@@ -115,6 +115,8 @@ const useStockCall = () => {
     }
   };
 
+  //!Promise.all()
+  //* eş zamanlı istek atma. aynı anda istek atılıyor aynı anda responselar gelmeye başlıyor. Zaman noktasında da avantajlı. En uzun hangi istek sürdüyse veriler ondan sonra valid olur. Birbirine bağımlı isteklerde en büyük avantajı hata durumu. İsteklerden biri bile hatalı olursa hepsi iptal olur.
   const getProCatBrand = async () => {
     dispatch(fetchStart());
     try {
@@ -124,7 +126,7 @@ const useStockCall = () => {
         axiosWithToken("categories"),
         axiosWithToken("brands"),
       ])
-      dispatch(getProCatBrandSuccess([products,categories,brands]))
+      dispatch(getProCatBrandSuccess([products?.data?.data,categories?.data?.data,brands?.data?.data]))
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -142,3 +144,8 @@ const useStockCall = () => {
 };
 
 export default useStockCall;
+
+
+//* promise.all
+// Eğer sayfanın yüklenmesi için birbirine bağımlı olmayan birden fazla asenkron işlemi tamamlamanız gerekiyorsa, Promise.all() bu durum için ideal bir yöntemdir. Promise.all() kullanarak birden fazla bağımsız işlemi paralel olarak başlatabilir ve tüm işlemlerin tamamlanmasını bekleyebilirsiniz. Bu, sayfanızın daha hızlı yüklenmesine yardımcı olur çünkü işlemler eş zamanlı olarak gerçekleştirilir ve en uzun süren işlem kadar beklersiniz.
+// API isteğini eş zamanlı olarak yapar ve hepsi tamamlandığında sonuçları alır. Herhangi bir hata durumunda, işlemlerden birinde hata oluşursa, catch bloğu hatayı yakalar. Bu yöntemle, sayfanın yüklenme süresi, tek tek sırayla yüklemek yerine, en uzun süren isteğin süresi ile sınırlı kalır, bu da genel performansı artırır.
