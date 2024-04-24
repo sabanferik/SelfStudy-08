@@ -4,6 +4,7 @@ import {
   // brandsSuccess,
   fetchFail,
   fetchStart,
+  getProCatBrandSuccess,
   // firmsSuccess,
   getSuccess,
 } from "../features/stockSlice";
@@ -114,6 +115,21 @@ const useStockCall = () => {
     }
   };
 
+  const getProCatBrand = async () => {
+    dispatch(fetchStart());
+    try {
+      // const [a,b] = [1,2] // array destructuring
+      const [products,categories,brands] = await Promise.all([
+        axiosWithToken("products"),
+        axiosWithToken("categories"),
+        axiosWithToken("brands"),
+      ])
+      dispatch(getProCatBrandSuccess([products,categories,brands]))
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  }
+
   return {
     // getFirms,
     // getBrands,
@@ -121,6 +137,7 @@ const useStockCall = () => {
     putStockData,
     postStockData,
     getStockData,
+    getProCatBrand,
   };
 };
 
