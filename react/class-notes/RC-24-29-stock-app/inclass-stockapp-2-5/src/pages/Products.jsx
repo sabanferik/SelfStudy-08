@@ -13,19 +13,9 @@ const Products = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setInitialState({
-      categoryId: "",
-      brandId: "",
-      name: "",
-    });
   };
-  const [initialState, setInitialState] = useState({
-    categoryId: "",
-    brandId: "",
-    name: "",
-  });
+
   console.log("products:", products);
-  console.log("products:", initialState);
   useEffect(() => {
     getStockData("products");
   }, []);
@@ -47,7 +37,6 @@ const Products = () => {
         <ProductModal
           open={open}
           handleClose={handleClose}
-          initialState={initialState}
         />
       )}
     </Container>

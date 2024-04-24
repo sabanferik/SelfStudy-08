@@ -6,9 +6,13 @@ import * as React from "react";
 import useStockCall from "../../hooks/useStockCall";
 import { flexColumn, modalStyle } from "../../styles/globalStyle";
 
-export default function ProductModal({ open, handleClose, initialState }) {
-  const [info, setInfo] = React.useState(initialState);
-  const { postStockData, putStockData } = useStockCall();
+export default function ProductModal({ open, handleClose }) {
+  const [info, setInfo] = React.useState({
+    categoryId: "",
+    brandId: "",
+    name: "",
+  });
+  const { postStockData } = useStockCall();
 
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
@@ -16,12 +20,8 @@ export default function ProductModal({ open, handleClose, initialState }) {
   console.log(info);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (info._id) {//* id varsa edit işlemi
-      putStockData("firms", info);
-    } else {//* id yoksa create işlemi
-      postStockData("firms", info);
-    }
-    handleClose()
+    postStockData("products", info);
+    handleClose();
   };
 
   return (
@@ -33,23 +33,18 @@ export default function ProductModal({ open, handleClose, initialState }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            sx={flexColumn}
-          >
-            
+          <Box component="form" onSubmit={handleSubmit} sx={flexColumn}>
             <TextField
-              label="Firm Logo"
-              name="image"
-              id="image"
+              label="Product Name"
+              name="name"
+              id="name"
               type="text"
               variant="outlined"
-              value={info.image}
+              value={info.name}
               onChange={handleChange}
             />
             <Button type="submit" variant="contained">
-             { info._id ? "Update Product" : "Submit Product"}
+              {info._id ? "Update Product" : "Submit Product"}
             </Button>
           </Box>
         </Box>
