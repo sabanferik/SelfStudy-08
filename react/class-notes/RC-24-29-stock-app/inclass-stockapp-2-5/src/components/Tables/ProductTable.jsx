@@ -1,6 +1,6 @@
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid,GridToolbar  } from "@mui/x-data-grid";
 import * as React from "react";
 import { useSelector } from "react-redux";
 import useStockCall from "../../hooks/useStockCall";
@@ -161,6 +161,9 @@ export default function ProductTable() {
         pageSizeOptions={[5, 10, 25]}
         // checkboxSelection
         disableRowSelectionOnClick
+        slots={{
+            toolbar: GridToolbar,
+          }}
       />
     </Box>
   );
