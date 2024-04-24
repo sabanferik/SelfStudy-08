@@ -1,43 +1,57 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
-import { useSelector } from 'react-redux';
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
+import * as React from "react";
+import { useSelector } from "react-redux";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { btnStyle } from "../../styles/globalStyle";
+import useStockCall from "../../hooks/useStockCall";
 
 const columns = [
-  { field: '_id', headerName: 'ID', width: 90 },
+  { field: "_id", headerName: "ID", width: 90 },
   {
-    field: 'categoryId',
-    headerName: 'Category',
+    field: "categoryId",
+    headerName: "Category",
     width: 150,
     editable: true,
+    valueGetter: (value) => {
+      // console.log(value)
+      return value.name;
+    },
   },
   {
-    field: 'brandId',
-    headerName: 'Brand',
+    field: "brandId",
+    headerName: "Brand",
     width: 150,
     editable: true,
+    valueGetter: (value) => value.name,
   },
   {
-    field: 'name',
-    headerName: 'Name',
-    type: 'number',
+    field: "name",
+    headerName: "Name",
+    type: "number",
     width: 110,
     editable: true,
   },
   {
-    field: 'quantity',
-    headerName: 'Stock',
-    type: 'number',
+    field: "quantity",
+    headerName: "Stock",
+    type: "number",
     width: 110,
     editable: true,
   },
   {
-    field: 'actions',
-    headerName: 'Actions',
-    description: 'This column has a value getter and is not sortable.',
+    field: "actions",
+    headerName: "Actions",
+    description: "This column has a value getter and is not sortable.",
     sortable: false,
     width: 160,
-    valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
+    renderCell: (params) => (
+        // console.log(params)
+        <DeleteOutlineIcon
+          onClick={() => deleteStockData("products", params.id)}
+          sx={btnStyle}
+        />
+      ),
   },
 ];
 
@@ -54,13 +68,63 @@ const columns = [
 // ];
 
 function getRowId(row) {
-    console.log(row)
-    return row._id;
-  }
+  console.log(row);
+  return row._id;
+}
 export default function ProductTable() {
-    const {products} = useSelector(state=> state.stock)
+  const { products } = useSelector((state) => state.stock);
+  const {deleteStockData} = useStockCall()
+
+  const columns = [
+    { field: "_id", headerName: "ID", width: 90 },
+    {
+      field: "categoryId",
+      headerName: "Category",
+      width: 150,
+      editable: true,
+      valueGetter: (value) => {
+        // console.log(value)
+        return value.name;
+      },
+    },
+    {
+      field: "brandId",
+      headerName: "Brand",
+      width: 150,
+      editable: true,
+      valueGetter: (value) => value.name,
+    },
+    {
+      field: "name",
+      headerName: "Name",
+      type: "number",
+      width: 110,
+      editable: true,
+    },
+    {
+      field: "quantity",
+      headerName: "Stock",
+      type: "number",
+      width: 110,
+      editable: true,
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      description: "This column has a value getter and is not sortable.",
+      sortable: false,
+      width: 160,
+      renderCell: (params) => (
+          // console.log(params)
+          <DeleteOutlineIcon
+            onClick={() => deleteStockData("products", params.id)}
+            sx={btnStyle}
+          />
+        ),
+    },
+  ];
   return (
-    <Box sx={{ height: 400, width: '100%' }}>
+    <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={products}
         columns={columns}
@@ -72,7 +136,7 @@ export default function ProductTable() {
           },
         }}
         getRowId={getRowId}
-        pageSizeOptions={[5,10,25]}
+        pageSizeOptions={[5, 10, 25]}
         // checkboxSelection
         disableRowSelectionOnClick
       />

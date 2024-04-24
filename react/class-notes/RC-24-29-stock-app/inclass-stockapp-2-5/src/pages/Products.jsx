@@ -43,7 +43,7 @@ const Products = () => {
           handleClose={handleClose}
         />
       )}
-      <ProductTable/>
+      <ProductTable />
     </Container>
   );
 };
