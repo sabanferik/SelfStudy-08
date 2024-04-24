@@ -1,10 +1,10 @@
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import * as React from "react";
 import { useSelector } from "react-redux";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { btnStyle } from "../../styles/globalStyle";
 import useStockCall from "../../hooks/useStockCall";
+import { btnStyle } from "../../styles/globalStyle";
 
 const columns = [
   { field: "_id", headerName: "ID", width: 90 },
@@ -46,12 +46,12 @@ const columns = [
     sortable: false,
     width: 160,
     renderCell: (params) => (
-        // console.log(params)
-        <DeleteOutlineIcon
-          onClick={() => deleteStockData("products", params.id)}
-          sx={btnStyle}
-        />
-      ),
+      // console.log(params)
+      <DeleteOutlineIcon
+        onClick={() => deleteStockData("products", params.id)}
+        sx={btnStyle}
+      />
+    ),
   },
 ];
 
@@ -69,23 +69,31 @@ const columns = [
 
 function getRowId(row) {
   console.log(row);
-//   return row.name;
-return row._id
+  //   return row.name;
+  return row._id;
 }
 export default function ProductTable() {
   const { products } = useSelector((state) => state.stock);
-  const {deleteStockData} = useStockCall()
+  const { deleteStockData } = useStockCall();
 
   const columns = [
-    { field: "_id", headerName: "ID", minWidth:40,maxWidth:70,headerAlign:"center",align:"center", flex:0.8},
+    {
+      field: "_id",
+      headerName: "ID",
+      minWidth: 40,
+      maxWidth: 70,
+      headerAlign: "center",
+      align: "center",
+      flex: 0.8,
+    },
     {
       field: "categoryId",
       headerName: "Category",
-      headerAlign:"center",
-      align:"center",
+      headerAlign: "center",
+      align: "center",
       minWidth: 150,
       editable: false,
-      flex:2,
+      flex: 2,
       valueGetter: (value) => {
         // console.log(value)
         return value?.name ?? "-No Category-";
@@ -95,50 +103,51 @@ export default function ProductTable() {
       field: "brandId",
       headerName: "Brand",
       minWidth: 150,
-      flex:2,
-      headerAlign:"center",
-      align:"center",
+      flex: 2,
+      headerAlign: "center",
+      align: "center",
       valueGetter: (value) => value?.name ?? "-No Brand-",
     },
     {
       field: "name",
       headerName: "Name",
       minWidth: 150,
-      flex:2,
-      headerAlign:"center",
-      align:"center",
+      flex: 2,
+      headerAlign: "center",
+      align: "center",
     },
     {
       field: "quantity",
       headerName: "Stock",
       type: "number",
       width: 110,
-      headerAlign:"center",
-      align:"center",
-      flex:0.8,
+      headerAlign: "center",
+      align: "center",
+      flex: 0.8,
     },
     {
       field: "actions",
       headerName: "Actions",
-      headerAlign:"center",
-      align:"center",
+      headerAlign: "center",
+      align: "center",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
-      minWidth:40,
-      flex:1,
+      minWidth: 40,
+      flex: 1,
       renderCell: (params) => (
-          // console.log(params)
-          <DeleteOutlineIcon
-            // onClick={() => deleteStockData("products", params.row._id)}
-            onClick={() => deleteStockData("products", params.id)}
-            sx={btnStyle}
-          />
-        ),
+        // console.log(params)
+        <DeleteOutlineIcon
+          // onClick={() => deleteStockData("products", params.row._id)}
+          onClick={() => deleteStockData("products", params.id)}
+          sx={btnStyle}
+        />
+      ),
     },
   ];
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ width: "100%", mt: 2 }}>
       <DataGrid
+        autoHeight
         rows={products}
         columns={columns}
         initialState={{
