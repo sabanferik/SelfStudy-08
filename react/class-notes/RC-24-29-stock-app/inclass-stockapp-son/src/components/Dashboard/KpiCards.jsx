@@ -5,34 +5,37 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-const data = [
-  {
-    name: 'Sales',
-    value: '€ 34.1K',
-    change: '+6.1%',
-    changeType: 'positive',
-    color:"indigo"
-  },
-  {
-    name: 'Cash',
-    value: '€ 34.5',
-    change: '+19.2%',
-    changeType: 'positive',
-    color:"amber"
-  },
-  {
-    name: 'Purchases',
-    value: '€ 34.5',
-    change: '-1.2%',
-    changeType: 'negative',
-    color:"fuchsia"
-  },
-];
+
 
 export default function KpiCards() {
     const {sales,purchases} = useSelector(state=> state.stock)
     const totalSales = sales?.reduce((acc,item) => acc + item.amount,0)
     console.log(totalSales)
+    const totalPurchases = purchases?.reduce((acc,item) => acc + item.amount,0)
+    console.log(totalPurchases)
+    const data = [
+        {
+          name: 'Sales',
+          value: `€ ${totalSales}`,
+        //   change: '+6.1%',
+        //   changeType: 'positive',
+          color:"indigo"
+        },
+        {
+          name: 'Cash',
+          value: `€ ${totalSales - totalPurchases}`,
+        //   change: '+19.2%',
+        //   changeType: 'positive',
+          color:"amber"
+        },
+        {
+          name: 'Purchases',
+          value: `€ ${totalPurchases}`,
+        //   change: '-1.2%',
+        //   changeType: 'negative',
+          color:"fuchsia"
+        },
+      ];
   return (
     <>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
