@@ -21,6 +21,7 @@ export default function FirmCard({
   const { deleteStockData } = useStockCall();
   return (
     <Card
+    elevation={10}
       sx={{
         height: 390,
         display: "flex",
