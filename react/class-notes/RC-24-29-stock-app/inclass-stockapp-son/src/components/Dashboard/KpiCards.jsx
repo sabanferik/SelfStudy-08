@@ -38,7 +38,7 @@ export default function KpiCards() {
       ];
   return (
     <>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-3">
         {data.map((item) => (
           <Card key={item.name} decoration="top"
           decorationColor={item.color}>
