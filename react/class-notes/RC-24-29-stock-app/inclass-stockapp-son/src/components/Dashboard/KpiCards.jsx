@@ -5,13 +5,15 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-
+const getTotals = (arr) => arr.reduce((acc,item) => acc + item.amount,0);
 
 export default function KpiCards() {
     const {sales,purchases} = useSelector(state=> state.stock)
-    const totalSales = sales?.reduce((acc,item) => acc + item.amount,0)
+    // const totalSales = sales?.reduce((acc,item) => acc + item.amount,0)
+    const totalSales = getTotals(sales)
     console.log(totalSales)
-    const totalPurchases = purchases?.reduce((acc,item) => acc + item.amount,0)
+    // const totalPurchases = purchases?.reduce((acc,item) => acc + item.amount,0)
+    const totalPurchases = getTotals(purchases)
     console.log(totalPurchases)
     const data = [
         {
