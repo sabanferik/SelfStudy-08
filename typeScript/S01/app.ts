@@ -1,4 +1,4 @@
-console.log('Hello  TS')
+// console.log('Hello  TS')
 
 
 // De-08 ile typescript dersindeyiz
@@ -74,10 +74,11 @@ myTuple3.push(false) */
 //! enum 
 
 
-const enum Role {
-    User = 100,
+/* const enum Role {
+    User,
     Admin,
-    DbAdmin,
+    DbAdmin = Admin * 3 ,
+    Tester 
     
 
 }
@@ -85,3 +86,123 @@ const enum Role {
 let currentUser: Role = Role.Admin
 
 console.log(currentUser)
+
+enum StatusCodes {
+    NotFound = 404,
+    Success = 200,
+    Accepted = 202,
+    BadRequest = 400
+}
+
+const rsp: StatusCodes = StatusCodes.NotFound
+
+enum Tshirts  {
+    Small = 'S',
+    Medium = 'M',
+    Large = 'L'
+}
+
+
+enum Jackets  {
+    Small = 'S',
+    Medium = 46,
+    Large = Medium + 2, 
+    XLarge 
+}
+
+//? örnek
+
+enum PrintMedia {
+    Newspaper = 1,
+    Newsletter = getPrintMediaCode('newsletter'),
+    Magazine = Newsletter * 3,
+    Book = 10
+}
+
+function getPrintMediaCode(mediaName: string): number {
+    if (mediaName === 'newsletter') {
+        return 5;
+    }
+}
+
+PrintMedia.Newsletter; // returns 5
+PrintMedia.Magazine; // returns 15
+
+// enum elemanlarına erişim yöntemleri
+enum PrintMedia2 {
+    Newspaper = 1,
+    Newsletter,
+    Magazine,
+    Book
+  }
+  
+  PrintMedia2.Magazine;   // returns  3
+  PrintMedia2["Magazine"];// returns  3
+  PrintMedia2[3];         // returns  Magazine */
+
+
+//! Any Type
+
+/* 
+let h : any = 1
+h = 'Hello'
+h = false
+
+let k:boolean = h */
+
+
+//! Unknown Type
+
+/* let j:unknown = 5
+
+let l : any = j
+let m : number = j
+let n : number = j as number
+let o : number = j */
+
+//! void Type
+
+/* function warnUser(): void {
+    console.log("3");
+    return 3
+   }
+ 
+let t = warnUser() + 2  */
+
+
+//! never Type
+
+/* function error(message: string): never{
+    throw new Error(message);
+}
+
+let output = error('New Error')
+console.log('Hello world')  //return nothing - printing nothing  */
+
+//! Union Type
+// iki veya daha fazla tipi birleştirmek için kullanılır
+let aa : number | string  = 'a'
+
+aa = 5
+
+aa = false //hata
+
+
+//! Type Aliases
+
+type Mark = number | string
+
+
+let bb : Mark = 1
+bb = 'Hello'
+bb = false
+
+
+//! String Literals
+
+type Car = 'BMW' | 'Audi' | 44
+
+let car1:Car = "BMW"
+let car2:Car = "Audi"
+let car3:Car = "Mercedes"
+let car4:Car = 44
