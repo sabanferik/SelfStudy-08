@@ -7,3 +7,12 @@ interface ITodoType {
 }
 
 type AddFn = (text:string) => Promise<void>;
+
+type ToggleFn = (todo:ITodoType) => Promise<void>;
+
+type DeleteFn = (id:string | number) => Promise<void>;
+
+interface ITodoListFn {
+    deleteTodo:DeleteFn;
+    toggleTodo:ToggleFn;
+}
