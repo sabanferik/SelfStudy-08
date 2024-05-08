@@ -1,5 +1,7 @@
-function error(message) {
-    throw new Error(message);
+function selamla3(mesaj, ...isimler) {
+    console.log(isimler);
+    return `${mesaj + ' ' + isimler.join(",") + '!'}`;
 }
-let output = error('New Error');
-console.log('Hello world');
+console.log(selamla3('Hello'));
+console.log(selamla3('Hello', 'Mark'));
+console.log(selamla3('Hello', 'Mark', 'Harvey', 'Ashley'));
