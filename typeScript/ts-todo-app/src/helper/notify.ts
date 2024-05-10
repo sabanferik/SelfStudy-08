@@ -1,15 +1,28 @@
 import Swal from "sweetalert2";
 
+//! enum olarak tanımladıkki bizden ne bekliyorsa yanlış yazmayalım diye.
 export enum SweetAlertIcons {
-    WARNING = "warning",
-    SUCCESS = "success"
+  WARNING = "warning",
+  ERROR = "error",
+  SUCCESS = "success",
+  INFO = "info",
+  QUESTION = "question",
 }
-
-export const notify = (msg:string,icon:SweetAlertIcons) =>
+export enum SweetPosition {
+  TopStart = "top-start",
+  Center = "center",
+  BottomEnd = "bottom-end",
+}
+export const notify = (
+  msg: string,
+  icon: SweetAlertIcons,
+  position: SweetPosition
+) =>
   Swal.fire({
-    title: "Anthony Todo App",
+    title: "Anthony Todo App!",
     text: msg,
     icon: icon,
-    timer:3000,
-    confirmButtonText: "Cool",
+    timer: 3000,
+    timerProgressBar: true,
+    position: position,
   });
