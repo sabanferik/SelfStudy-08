@@ -25,13 +25,14 @@ https://docs.google.com/presentation/d/1ABvXuGOV33jxVCw1Etl8AmLB9yUxD4Dceqq7XI9e
     $ npm list # $ npm ls
     
     $ npm install express --save # dependencies # package.json/scripts -> "start": "node index.js"
-    $ npm i express
+    $ npm i express 
     
     $ npm i nodemon --save-dev # devDependencies # package.json/scripts -> "devStart": "nodemon index.js"
     # $ npm run devStart # yarn devStart
     # $ npm i nodemon --save-optional # optionalDependencies # package.json/scripts -> "optionalStart": "nodemon index.js"
     
     $ npm install # install all packages from package.json
+    $ npm i
     $ npm i --omit=dev # $ npm i --omit dev # install packages without devDependencies list.
 
     # GLOBAL
