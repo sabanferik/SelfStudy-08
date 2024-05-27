@@ -2,7 +2,7 @@
 
 * Installation Notes:
 
-    *https://www.enterprisedb.com/downloads/postgres-postgresql-downloads 
+    * https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
     * 'Stack Builder' will NOT be selected in the installation options.
     * Windows: 'Add to Path' will be selected. 'Run as administrator' for installing in Windows. 
     * MacOS: After uninstalling, the folder and user must be deleted.
