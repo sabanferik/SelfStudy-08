@@ -20,7 +20,7 @@ SELECT "Country" as ulke FROM "Customer" HAVING ulke="USA";
 
 SELECT "GenreId","Name" FROM "Genre"; -- Okuma
 
-INSERT INTO "Genre" ("GenreId", "Name") VALUES (26, "Halk Müziği"); -- Yeni kayıt işlemi yapıyoruz
+INSERT INTO "Genre" ("GenreId", "Name") VALUES (26, "Halk Müziği")(27, "Yeni Halk Müziği"); -- Yeni kayıt işlemi yapıyoruz
 UPDATE "Genre" SET "Name"="Türk Halk Müziği" WHERE "GenreId"=26; --  Veriyi güncelliyoruz
 
 delete from "Genre" where "GenreId" = 26; -- veriyi siliyoruz

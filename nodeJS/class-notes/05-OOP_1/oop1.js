@@ -156,16 +156,16 @@ const obj = JSON.parse(json)
 //console.log('obj >> ', obj);
 
 //? Object to Array
-// Keys
+// Keys // obje içinde map ile dönmek isterseniz 
 const keysInArray = Object.keys(newCarDetail)
-console.log('keysInArray >> ', keysInArray);
-// Values
+//console.log('keysInArray >> ', keysInArray);
+// Values // obje içinde map ile dönmek isterseniz 
 const valuesInArray = Object.values(newCarDetail)
-console.log('valuesInArray >> ', valuesInArray);
-// Keys-Value Array
+//console.log('valuesInArray >> ', valuesInArray);
+// Keys-Value Array // obje içinde map ile dönmek isterseniz 
 const objInArray = Object.entries(newCarDetail)
-console.log('obj', newCarDetail);
-console.log('objInArray', objInArray);
+//console.log('obj', newCarDetail);
+//console.log('objInArray', objInArray);
 // ---------
 const person = {
     firstName:"John",
@@ -180,7 +180,7 @@ const person = {
     year: 50
   }
   let fullName = person.fullName.bind(member);
-  console.log(fullName(),'-----', person.fullName());
+  //console.log(fullName(),'-----', person.fullName());
   // Hege Nilsen 50 ----- John Doe undefined
 // ----------
 
@@ -203,9 +203,20 @@ const CarConstructor = function(brand, model, year = 1973) {
 }
 
 const newCar = new CarConstructor('toyota', 'yaris')
-console.log('newCar >> ', newCar);
-console.log('full text >> ', newCar.fullText());
+//console.log('newCar >> ', newCar);
+//console.log('full text >> ', newCar.fullText());
 // full text >>  toyota yaris 1973
 const newNewCar = new CarConstructor('toyota', 'yaris', 2011)
-console.log('full text >> ', newNewCar.fullText());
+//console.log('full text >> ', newNewCar.fullText());
 
+let year
+year = 101
+if (year && year > 100){ // birinci koşul uygun ikinci koşula bakar.
+    console.log('year >> ', year);
+}
+
+let day
+day = 7
+if (day || day > 10) {
+    console.log('day >> ', day);
+}
