@@ -109,7 +109,7 @@ console.log(colorList);
 const newColors = [...colorList, 'gray', 'chin']
 console.log('new colors >> ', newColors);
 */
-
+/*
 const home = {
     name: 'Home Test',
     surname: 'User',
@@ -123,8 +123,89 @@ const user = {
         brand: 'toyota'
     }
 }
+*/
 //? Rest Operator (Key isimleri önemli)
+/*
 const {name} = home
 const {name: adi} = user
 //const adi = name
 console.log('name >> ', name, adi);
+*/
+
+const Car = {
+    brand: 'toyota',
+    model: 'yaris'
+}
+
+const Detail = {
+    year: 2011,
+    color: 'red'
+}
+
+const CarDetail = {...Car, ...Detail}
+//console.log('CarDetail >> ',CarDetail);
+// CarDetail >>  { brand: 'toyota', model: 'yaris', year: 2011, color: 'red' }
+const newCarDetail = {...CarDetail, gear: 'automatic'}
+//console.log('NewCarDetail >> ', newCarDetail);
+
+//? Object to JSON
+const json = JSON.stringify(newCarDetail)
+//console.log('json >> ', json);
+//* JSON to Object
+const obj = JSON.parse(json)
+//console.log('obj >> ', obj);
+
+//? Object to Array
+// Keys
+const keysInArray = Object.keys(newCarDetail)
+console.log('keysInArray >> ', keysInArray);
+// Values
+const valuesInArray = Object.values(newCarDetail)
+console.log('valuesInArray >> ', valuesInArray);
+// Keys-Value Array
+const objInArray = Object.entries(newCarDetail)
+console.log('obj', newCarDetail);
+console.log('objInArray', objInArray);
+// ---------
+const person = {
+    firstName:"John",
+    lastName: "Doe",
+   fullName: function () {
+      return this.firstName + " " + this.lastName + " " + this.year;
+    }
+  }
+  const member = {
+    firstName:"Hege",
+    lastName: "Nilsen",
+    year: 50
+  }
+  let fullName = person.fullName.bind(member);
+  console.log(fullName(),'-----', person.fullName());
+  // Hege Nilsen 50 ----- John Doe undefined
+// ----------
+
+/* --------------------------------
+  Object Constructor
+---------------------------------*/
+const ConstructorFunction = function() {
+    this.property = 'value'
+}
+
+/* -------------------------------*/
+//? NEW KEYWORD
+const CarConstructor = function(brand, model, year = 1973) {
+    this.brand = brand,
+    this.model = model,
+    this.year = year,
+    this.fullText = function() {
+        return this.brand + ' ' + this.model + ' ' + this.year
+    }
+}
+
+const newCar = new CarConstructor('toyota', 'yaris')
+console.log('newCar >> ', newCar);
+console.log('full text >> ', newCar.fullText());
+// full text >>  toyota yaris 1973
+const newNewCar = new CarConstructor('toyota', 'yaris', 2011)
+console.log('full text >> ', newNewCar.fullText());
+
