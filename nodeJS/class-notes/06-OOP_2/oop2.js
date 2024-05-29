@@ -171,9 +171,10 @@ class Car extends Vehicle {
     getDetails() {
         console.log('Car/getDetails started');
     }
+    
 
     getType(vehicleType, brand){
-        console.log(`Vehicle/Brand type ${vehicleType} ${brand}`);
+        console.log(`Car/Brand type ${vehicleType} ${brand}`);
     }
 }
 
@@ -284,7 +285,7 @@ Toyota.setColor('mavi')
 console.log(Toyota.getPrice);
 console.log(Toyota.getColor());
 */
-
+/*
 class KdvHesaplama {
     static staticProp = 'static value'
     #kdv
@@ -310,12 +311,12 @@ const hesap = new KdvHesaplama(100)
 
 hesap.setKdv = 20
 
-//console.log(hesap.getKdvMiktari);
-//console.log(hesap.getKdvliFiyat);
+console.log(hesap.getKdvMiktari);
+console.log(hesap.getKdvliFiyat);
 
 console.log(hesap.staticProp);
 console.log(KdvHesaplama.staticProp);
-
+*/
 /* --------------------------------------------- */
 //? ABSTRACTION: Soyutlama/Modelleme (Class ile obje üretebilme. Aynı amaç için kullanılan değişken ve methodların bir class içinde yazıyor olması)
 //? ENCAPCULLATION: Kapsülleme/Ayrıştırma (Kodların gizliliği, private değişkenlere erişilemiyor olması ve birbirinden bağımsız çalışmaları.)
