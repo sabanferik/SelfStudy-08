@@ -285,3 +285,38 @@ console.log(Toyota.getPrice);
 console.log(Toyota.getColor());
 */
 
+class KdvHesaplama {
+    static staticProp = 'static value'
+    #kdv
+
+    constructor(fiyat){
+        this.fiyat = fiyat
+    }
+
+    set setKdv(kdvOrani){
+        this.#kdv = kdvOrani
+    }
+
+    get getKdvMiktari(){
+        return (this.fiyat / 100) * this.#kdv
+    }
+
+    get getKdvliFiyat(){
+        return ((this.fiyat / 100) * this.#kdv) + this.fiyat
+    }
+}
+
+const hesap = new KdvHesaplama(100)
+
+hesap.setKdv = 20
+
+//console.log(hesap.getKdvMiktari);
+//console.log(hesap.getKdvliFiyat);
+
+console.log(hesap.staticProp);
+console.log(KdvHesaplama.staticProp);
+
+/* --------------------------------------------- */
+//? ABSTRACTION: Soyutlama/Modelleme (Class ile obje üretebilme. Aynı amaç için kullanılan değişken ve methodların bir class içinde yazıyor olması)
+//? ENCAPCULLATION: Kapsülleme/Ayrıştırma (Kodların gizliliği, private değişkenlere erişilemiyor olması ve birbirinden bağımsız çalışmaları.)
+/* ------------------------------------------------------- */
