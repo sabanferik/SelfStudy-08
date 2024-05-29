@@ -133,7 +133,8 @@ const fordClimate = new Accessory('Bosh Climate', 'Ford', 'Mustang', 1993, false
 //? Override: Üst metodla aynı isim ve yapıda yeni bir metod yazma. (ezme / iptal etme / önceliğini alma)
 //? Overload: Üst metodla aynı isimde ama farklı yapıda (farklı adet/tip) yeni method oluşturma. (aynı anda ikisi de aktif) (JS desteklemez)
 
-/*class Vehicle {
+/*
+class Vehicle {
     vehicleActive = false
 
     constructor(vehicleType) {
@@ -187,3 +188,100 @@ Mercedes.getDetails()
 Mercedes.getType('Car')
 Mercedes.getType('Car', 'Ford')
 */
+
+
+/* --------------------------------------------- */
+//? PUBLIC/PRIVATE
+//? JS PUBLIC: Genel erişime açık.
+//? JS PRIVATE: Sadece tanımlı olduğu class içinde erişim var.
+//? JS PROTECTED: Sadece Tanımlı olduğu class ve Inherit edilen child-class erişebilir. (Genel erişime açık ama lütfen dokunmayın.)
+/*
+class Vehicle {
+    vehicleActive = false // PUBLIC
+    #privateProperty = 'no-access' // PRIVATE
+    _protectedProperty = 'limited-access' // PROTECTED
+
+    constructor(vehicleType) {
+        this.vehicleActive = vehicleType
+        console.log('Vehicle >> ',this.#privateProperty)
+        console.log('Vehicle >>' ,this._protectedProperty);
+    }
+}
+
+class Car extends Vehicle {
+    isRunning = false
+
+    constructor(brand, model, year, vehicleType = 'Car') {
+        super(vehicleType)
+        this.brand = brand
+        this.model = model
+        this.year = year
+    }
+
+    runEngine () {
+        this.isRunning = true
+        console.log('Start engine')
+        console.log('privateProperty >> ', this.vehicleActive);
+    }
+}
+
+const Mercedes = new Car('Mercedes', 'M300', 2010, 'Truck')
+//Mercedes.runEngine()
+
+const vehicle = new Vehicle('Car')
+console.log(vehicle.vehicleActive);
+console.log(vehicle.privateProperty);
+*/
+
+
+/* --------------------------------------------- */
+//? GETTER & SETTER METHODS: Görevi veri getirme (getter) ve veri güncelleme (setter) olan metodlardır.
+//? "STATIC" KEYWORD: Class'dan direkt erişim. (Instance erişemez.)
+/*
+class Car {
+    isRunning = false
+    #price
+    #color
+
+    constructor(brand, model, year) {
+        this.brand = brand
+        this.model = model
+        this.year = year
+    }
+
+    runEngine() {
+        this.isRunning = true
+        console.log('runEngine >> ','Start Engine')
+        //return this.isRunning
+    }
+
+    set setPrice(price) {
+        this.#price = price
+        console.log('price update');
+    }
+
+    get getPrice() {
+        return `price is ${this.#price}`
+    }
+
+    setColor(color) {
+        this.#color = color
+        console.log('color update');
+    }
+
+    getColor(){
+        return `color is ${this.#color}`
+    }
+}
+
+const Toyota = new Car('Toyota', 'Yaris', 2000)
+
+console.log(Toyota);
+
+Toyota.setPrice = 500
+Toyota.setColor('mavi')
+
+console.log(Toyota.getPrice);
+console.log(Toyota.getColor());
+*/
+
