@@ -35,3 +35,12 @@ t_A()
 testFunction_B()
 testFunction_C()
 console.log(message);
+
+//! buildin 
+require('http') // ilk once node modules klasörüne bakar yok ise globalde arar
+require('node:http') // direk globalde node a bakar
+
+require('dotenv').config() // dotenv modulunde config fonksiyonunu çalıştır
+// console.log(process.env);
+console.log(process.env.ENV_HOST);
+console.log(process.env.ENV_PORT);
