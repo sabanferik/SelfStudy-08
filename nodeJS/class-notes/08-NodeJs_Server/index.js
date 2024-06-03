@@ -2,12 +2,14 @@
 /*
     NODE JS SERVER
 */
-console.log("hi")
+// console.log("hi")
+
 const http=require('node:http') 
 
 // const dotenv=require(dotenv)
 // dotenv.config()
-const dotenv=require('dotenv').config()
+
+require('dotenv').config()
 
 //
 const PORT=process.env.PORT || 8000
@@ -77,8 +79,9 @@ const app=http.createServer((req,res)=>{
   */
     // with statuscode
         // if(req.url=='/' && req.method=='GET'){
+            //url anlamı path
         if(req.url=='/' ){
-            if(req.method=='GET'){
+            if(req.method=='GET'){ // default method GET
                 res.statusCode=200
                 res.end('welcome CW')
             }else{
@@ -87,18 +90,30 @@ const app=http.createServer((req,res)=>{
             }
     
         }else if(req.url=='/DS') {
+            const myObj={
+                username:"user",
+                email:"email@cw.com"
+            }
     
-            res.end('welcome DS')
+            // res.end('welcome DS')
+            res.end(JSON.stringify(myObj))
     
         }else if(req.url=='/FS') {
+
+            res.writeHead(200,'basirili',{'myheader1':'comment1','myheader2':'content2'})
+            res.write('welcome ')
+            res.write('Full Stack ')
+            res.write('Path ')
     
-            res.end('welcome FS')
+
+            res.end()
     
         }else if(req.url=='/CW/api') {
     
             res.end('welcome api page')
     
         }else{
+            
             res.statusCode=404
             res.statusMessage="aradiginiz sayfa yok!"
             // res.mymessage
@@ -107,5 +122,5 @@ const app=http.createServer((req,res)=>{
 
             
 })
-
+// zorunlu olan sadece port parametresi
 app.listen(PORT,()=>console.log(`server runned http://${HOST}:${PORT}`))
