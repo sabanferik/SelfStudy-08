@@ -56,6 +56,11 @@ app.get('/elbise/kadin', (req, res) => {res.send({message: 'GET method called'})
 //http://127.0.0.1:8000/test
 //http://127.0.0.1:8000/dcdxzczxatest
 
+// Route which matches /abc or /adc 
+// router.get(/\/a[b|d]c/, (req, res) => { 
+//     res.send("<h1>Route First</h1"); 
+// }) 
+
 //? url params
 // app.get('/:userId/:productId', (req, res) => {
 //     const {userId, productId} = req.params
