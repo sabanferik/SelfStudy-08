@@ -121,6 +121,7 @@ app.get('/', (req, res) => {
 // 5xx: Server Error – The server takes responsibility for these error status codes.
 
 //? EXTRA
+/*
 app.get('/', (req, res) => {
     //res.redirect('https://www.google.com')
     res.redirect(302, '/about')
@@ -129,6 +130,18 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.send('about')
 })
+*/
+
+//* file
+/*
+app.get('/file', (req, res) => {
+    res.sendFile(`${__dirname}/readme.md`)
+})
+
+app.get('/download', (req, res) => {
+    res.download('./readme.md', 'express-routing.txt')
+})
+*/
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port http://${HOST}:${PORT}`)
