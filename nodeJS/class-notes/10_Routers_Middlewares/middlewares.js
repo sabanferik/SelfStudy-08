@@ -154,12 +154,13 @@ app.get('/', middlewares, (req, res) => {
 /* ------------------------------------------------------- */
 
 //? Move to file:
-const middlewareOne = require('./middlewares/')
+const {middlewareOne, middlewareTwo} = require('./middlewares/')
 app.use(middlewareOne)
 
-app.get('/user', (req, res) => {
+app.get('/user', middlewareTwo, (req, res) => {
     res.send({
         messageOne: req.messageOne,
+        messageTwo: req.messageTwo,
         messageEnd: 'welcome clarusway'
     })
 })
