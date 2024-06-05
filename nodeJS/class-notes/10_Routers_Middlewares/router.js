@@ -34,10 +34,16 @@ const HOST = process.env.HOST || '127.0.0.1'
 // const router = require('./routers/index.js')
 // const router = require('./routers/index')
 // const router = require('./routers/')
-const router = require('./routers')
-app.use(router)
+//const router = require('./routers')
+//app.use(router)
 
 /* ------------------------------------------------------- */
+
+const {middlewareOne, middlewareTwo} = require('./middlewares/')
+const router = require('./routers')
+
+app.use(middlewareOne, middlewareTwo)
+app.use(router)
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port http://${HOST}:${PORT}`)

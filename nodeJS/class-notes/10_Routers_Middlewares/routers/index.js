@@ -10,7 +10,11 @@
 
 const router = require('express').Router()
 
-router.get('/', (req, res) => res.send({ message: "Hello World!" }))
+router.get('/', (req, res) => res.send({
+    messageOne: req.messageOne,
+    messageTwo: req.messageTwo,
+    message: "Hello World!"
+}))
 
 router.route('/user')
     .get((req, res) => res.send({ message: "User Hello World! GET" }))
