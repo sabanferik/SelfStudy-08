@@ -15,6 +15,7 @@ const HOST = process.env.HOST || '127.0.0.1'
 //? Last parameter is for next().
 
 // Middleware:
+// https://expressjs.com/en/guide/writing-middleware.html
 
 // app.get('/', (req, res, next) => {
 //     console.log('Middleware');
@@ -77,18 +78,90 @@ const HOST = process.env.HOST || '127.0.0.1'
 //     res.send('welcome clarusway')
 // })
 
+// const middlewareFunctionOne = (req, res, next) => {
+//     console.log('middleware one function called');
+//     next()
+// }
+
+// const middlewareFunctionTwo = (req, res, next) => {
+//     console.log('middleware two function called');
+//     next()
+// }
+
+// app.get('/', middlewareFunctionOne, middlewareFunctionTwo, (req, res) => {
+//     res.send('welcome clarusway')
+// })
+/*
 const middlewareFunctionOne = (req, res, next) => {
-    console.log('middleware one function called');
+    req.messageOne = 'middleware one function called'
     next()
 }
 
 const middlewareFunctionTwo = (req, res, next) => {
-    console.log('middleware two function called');
+    res.messageTwo = 'middleware two function called'
     next()
 }
 
-app.get('/', middlewareFunctionOne, middlewareFunctionTwo, (req, res) => {
-    res.send('welcome clarusway')
+const middlewares = [middlewareFunctionOne, middlewareFunctionTwo]
+
+app.get('/', middlewares, (req, res) => {
+    res.send({
+        messageOne: req.messageOne,
+        messageTwo: res.messageTwo,
+        messageEnd: 'welcome clarusway'
+    })
+})
+*/
+
+// const middlewareFunctionOne = (req, res, next) => {
+//     req.messageOne = 'middleware one function called'
+//     next()
+// }
+
+// const middlewareFunctionTwo = (req, res, next) => {
+//     res.messageTwo = 'middleware two function called'
+//     next()
+// }
+
+// const middlewareFunctionThree = (req, res, next) => {
+//     res.messageThree = 'middleware three function called'
+//     next()
+// }
+
+// const middlewares = [middlewareFunctionOne, middlewareFunctionTwo]
+
+// app.use(middlewares)
+// //app.use(middlewareFunctionOne)
+// //app.use(middlewareFunctionTwo)
+
+// app.get('/', (req, res) => {
+//     res.send({
+//         messageOne: req.messageOne,
+//         messageTwo: res.messageTwo,
+//         messageThree: res.messageThree,
+//         messageEnd: 'welcome clarusway'
+//     })
+// })
+
+// app.get('/user', middlewareFunctionThree, (req, res) => {
+//     res.send({
+//         messageOne: req.messageOne,
+//         messageTwo: res.messageTwo,
+//         messageThree: res.messageThree,
+//         messageEnd: 'welcome clarusway'
+//     })
+// })
+/* ------------------------------------------------------- */
+
+//? Move to file:
+const middlewareOne = require('./middlewares/')
+app.use(middlewareOne)
+
+app.get('/user', (req, res) => {
+    res.send({
+        messageOne: req.messageOne,
+        messageEnd: 'welcome clarusway'
+    })
 })
 /* ------------------------------------------------------- */
 
