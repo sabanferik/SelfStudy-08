@@ -24,11 +24,12 @@
 // server.listen(3000)
 
 const express = require("express");
-const app = express()
+const app = express();
+const products = require("./products.json");
 
-app.listen(3000,function(){
-    console.log("server başladı")
-})
+app.listen(3000, function () {
+  console.log("server başladı");
+});
 
 //* app.use() da okuma sırası önemlidir.
 // app.use("/products", (req, res) => {
@@ -50,8 +51,20 @@ app.listen(3000,function(){
 //   }
 // });
 
-app.get("/",(req,res)=>{
-    res.send({
-        message:"Hello World"
-    })
-})
+app.get("/", (req, res) => {
+  res.send({
+    message: "Hello World",
+  });
+});
+
+app.get("/products", (req, res) => {
+  console.log(req.query);
+  //   const page = req.query.page || 1
+  //   const limit = req.query.limit || 10
+  const { page = 1, limit = 10,category="" } = req.query;
+
+  res.send({
+    message: "Hello Products",
+    products: products.filter(item=>item.category == category).slice((page - 1) * limit, page * limit),
+  });
+});
