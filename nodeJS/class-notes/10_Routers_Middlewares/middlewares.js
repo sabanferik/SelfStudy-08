@@ -156,7 +156,6 @@ app.get('/', middlewares, (req, res) => {
 //? Move to file:
 const {middlewareOne, middlewareTwo} = require('./middlewares/')
 app.use(middlewareOne)
-
 app.get('/user', middlewareTwo, (req, res) => {
     res.send({
         messageOne: req.messageOne,
