@@ -51,6 +51,7 @@ app.listen(3000, function () {
 //   }
 // });
 
+app.use(express.json())// gelen body bilgisini parse edip anlaşılabilir yapıyı dönüştürür.
 app.get("/", (req, res) => {
   res.send({
     message: "Hello World",
@@ -61,10 +62,36 @@ app.get("/products", (req, res) => {
   console.log(req.query);
   //   const page = req.query.page || 1
   //   const limit = req.query.limit || 10
-  const { page = 1, limit = 10,category="" } = req.query;
-
+  const { page = 1, limit = 10, category = "" } = req.query;
+  // Album.findAll().limit(3) => Select * from album Limit 3
   res.send({
     message: "Hello Products",
-    products: products.filter(item=>item.category == category).slice((page - 1) * limit, page * limit),
+    products: products
+      .filter((item) => item.category.includes(category))
+      .slice((page - 1) * limit, page * limit),
+    page,
+    limit,
+    category,
   });
 });
+
+app.post("/products", (req, res) => {
+  console.log(req);
+  products.push(req.body);
+  res.send({
+    data: req.body,
+    products
+  });
+});
+
+app.get("/products/:id",(req,res)=>{
+    if (products.filter((item) => item.id == req.params.id).length){
+        res.send(products.find((item) => item.id == req.params.id));
+    }else{
+        res.status(404).send({
+            error:true,
+          message: "Not Found",
+        });
+    }
+      
+})
