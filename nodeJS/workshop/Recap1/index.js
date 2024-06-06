@@ -51,15 +51,45 @@ app.listen(3000, function () {
 //   }
 // });
 
-app.use(express.json())// gelen body bilgisini parse edip anlaşılabilir yapıyı dönüştürür.
+app.use(express.json()); // gelen body bilgisini parse edip anlaşılabilir yapıyı dönüştürür.
+app.use((req, res, next) => {
+  req.user = "Anthony";
+  next();
+});
 app.get("/", (req, res) => {
   res.send({
-    message: "Hello World",
+    message: `Hello ${req.user}`,
   });
 });
-
+app.use((req, res, next) => {
+  if (req.query.user) {
+    next();
+  } else {
+    // res.status(401).send("Not authorized");
+    req.query.user = {
+      login: false,
+    };
+    next();
+  }
+});
+app.use((req, res, next) => {
+  if (req.query.admin) {
+    next();
+  } else {
+    // res.status(401).send("Not authorized");
+    req.query = {
+      ...req.query,
+      admin: false,
+    };
+    next();
+  }
+});
 app.get("/products", (req, res) => {
   console.log(req.query);
+  //   if(!req.user){
+  //     res.send("Not Login")
+  //   }
+  console.log(req.user);
   //   const page = req.query.page || 1
   //   const limit = req.query.limit || 10
   const { page = 1, limit = 10, category = "" } = req.query;
@@ -80,18 +110,17 @@ app.post("/products", (req, res) => {
   products.push(req.body);
   res.send({
     data: req.body,
-    products
+    products,
   });
 });
 
-app.get("/products/:id",(req,res)=>{
-    if (products.filter((item) => item.id == req.params.id).length){
-        res.send(products.find((item) => item.id == req.params.id));
-    }else{
-        res.status(404).send({
-            error:true,
-          message: "Not Found",
-        });
-    }
-      
-})
+app.get("/products/:id", (req, res) => {
+  if (products.filter((item) => item.id == req.params.id).length) {
+    res.send(products.find((item) => item.id == req.params.id));
+  } else {
+    res.status(404).send({
+      error: true,
+      message: "Not Found",
+    });
+  }
+});
