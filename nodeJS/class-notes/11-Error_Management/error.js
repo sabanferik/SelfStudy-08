@@ -42,6 +42,7 @@ app.get('/', (req, res) => {
 const asyncFunction = async () => {
     throw new Error('Error is async-function', { cause: 'No reason :)' })
 }
+
 app.get('/async', async (req, res, next) => {
     res.errorStatusCode = 501
     
@@ -60,6 +61,8 @@ const errorHandler = (err, req, res, next) => {
     })
 }
 app.use(errorHandler)
+/* ------------------------------------------------------- */
+//app.use(require('./errorHandler'))
 /* ------------------------------------------------------- */
 
 app.listen(PORT, () => {
