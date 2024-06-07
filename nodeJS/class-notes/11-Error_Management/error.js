@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     throw new Error('error')
     res.send('true')
 })
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 const asyncFunction = async () => {
     throw new Error('Error is async-function', { cause: 'No reason :)' })
 }
@@ -49,7 +49,7 @@ app.get('/async', async (req, res, next) => {
     //await asyncFunction().then().catch((err) => { next(err) })
     await asyncFunction().then().catch(next)
 })
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 const errorHandler = (err, req, res, next) => {
     const errorStatusCode = res?.errorStatusCode || 500
     res.status(errorStatusCode).send({
@@ -62,7 +62,8 @@ const errorHandler = (err, req, res, next) => {
 }
 app.use(errorHandler)
 /* ------------------------------------------------------- */
-//app.use(require('./errorHandler'))
+/* ------------------------------------------------------- */
+app.use(require('./errorHandler'))
 /* ------------------------------------------------------- */
 
 app.listen(PORT, () => {
