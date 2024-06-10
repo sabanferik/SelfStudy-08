@@ -117,9 +117,8 @@ router.post('/todos', async (req,res)=>{
 // READ todo  (with id)
 router.get('/todos/:id', async (req,res)=>{
 
-
-    // const data=  await Todo.findOne({where:{id:req.params.id}})
-    const data=  await Todo.findByPk (req.params.id)
+    // const data=  await Todo.findOne({where:{id:req.params.id}})    
+    const data=  await Todo.findByPk(req.params.id)
         res.status(200).send({
             error:false,
             data:data    
@@ -127,7 +126,17 @@ router.get('/todos/:id', async (req,res)=>{
     
 })
 // UPDATE todo
+router.put('/todos/:id', async (req,res)=>{
+
+    const data=  await Todo.update(req.body ,{where:{id:req.params.id}})
+    // data=  await Todo.findByPk(req.params.id)
+    res.status(201).send({
+        error:false,
+        data:data
+    })
+})
 // DELETE todo
+
 
 app.use(router)
 // error control
