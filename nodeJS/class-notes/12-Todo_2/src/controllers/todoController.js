@@ -65,13 +65,19 @@ module.exports={
     delete:async (req,res)=>{
 
         const data=  await Todo.destroy({where:{id:req.params.id}})
-        console.log('****');
-    
-        console.log(data);
-        res.status(204).send({
-            error:false,
-            data
-        })
+        
+        //console.log(data);
+        if(data==1){
+            // res.sendStatus(204)
+
+            res.status(204).send({
+                error:false,
+                data
+            })
+        }else{
+            // res.errorStatusCode=404
+            throw new Error('not found tofo for delete')
+        }      
     }
     // bekleyen tasklar
     //getUnclosedTask:
