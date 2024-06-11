@@ -27,31 +27,14 @@ app.use('/todo',(req, res)=>{ // TODO + ALL url
     res.send('TODO APP')
 })
 */
-
-// json to obj  and obj to json 
+// json to obj  and obj to json  
+//! yeri onemli yukarıda kalsın
 app.use(express.json())
 
+// ROUTER
+app.use(require('./src/routers/todoRouter'))
 
 
-//? CRUD operations
-
-const router=express.Router()
-
-const todo=require('./src/controllers/todoController')
-
-// LIST todos (all)
-router.get('/todos',  todo.list )
-// CREATE todo
-router.post('/todos', todo.create)
-
-// READ todo  (with id)
-router.get('/todos/:id',todo.get )
-// UPDATE todo
-router.put('/todos/:id', todo.update)
-// DELETE todo
-router.delete('/todos/:id', todo.delete)
-
-app.use(router)
 // error control
 // const errorHandler = (err, req, res, next) => {
 //     const errorStatusCode = res?.errorStatusCode || 500

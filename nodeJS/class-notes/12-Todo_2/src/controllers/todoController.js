@@ -5,6 +5,7 @@
 */
 
 const Todo=require('../models/todoModel')
+//? CRUD operations
 
 module.exports={
     list: async (req,res)=>{
