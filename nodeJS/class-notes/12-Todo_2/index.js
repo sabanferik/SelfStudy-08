@@ -37,8 +37,8 @@ const sequelize=new Sequelize('sqlite:./db.sqlite3')
 // const Todo=sequelize.define('table / model name',{'model details'})
 const Todo=sequelize.define('todos',{
 
-    // id field auto generated
-    // id:{
+    
+    // fieldName:{
     //     type:DataTypes.BIGINT,
     //     primaryKey:true,    // deafult false
     //     unique:true,        // default false
@@ -48,6 +48,8 @@ const Todo=sequelize.define('todos',{
     //     field:'custom name',
     //     defaultValue:'default value'
     // }
+    
+    //id:{}   // id field auto generated
     title:{
         type:DataTypes.STRING,
         allowNull:false
@@ -68,11 +70,12 @@ const Todo=sequelize.define('todos',{
         defaultValue:false,
         // allowNull:false
     }
-    //createdDate & updatedDate auto generated
+    // createdDate & updatedDate auto generated
     // createdDate:{ type:DataTypes.DATE }
+    // updateddDate:{ type:DataTypes.DATE }
 })
 
-//  sequelize.sync() //! run once 
+// sequelize.sync() //! run once 
 // sequelize.sync({force:true}) // DROP tables then CREATE tables
 // sequelize.sync({alter:true}) // BACKUP DB then DROP tables then CREATE tables then RECOVER
 
@@ -89,7 +92,7 @@ router.get('/todos', async (req,res)=>{
 
     // const data=  await Todo.findAll()
     const data=  await Todo.findAndCountAll()
-    
+    //res.sendStatus(200)
     res.status(200).send({
         error:false,
         data:data    
@@ -127,16 +130,34 @@ router.get('/todos/:id', async (req,res)=>{
 })
 // UPDATE todo
 router.put('/todos/:id', async (req,res)=>{
-
+    let updatedDataBefore=await Todo.findByPk(req.params.id)
     const data=  await Todo.update(req.body ,{where:{id:req.params.id}})
-    // data=  await Todo.findByPk(req.params.id)
+   
+    let updatedDataNext
+
+    if (data==1){
+         updatedDataNext=  await Todo.findByPk(req.params.id)
+    }
     res.status(201).send({
         error:false,
-        data:data
+        data:data,// data:data key value eşit ise
+       
+        updatedDataBefore,
+        updatedDataNext
     })
 })
 // DELETE todo
+router.delete('/todos/:id', async (req,res)=>{
 
+    const data=  await Todo.destroy({where:{id:req.params.id}})
+    console.log('****');
+
+    console.log(data);
+    res.status(204).send({
+        error:false,
+        data
+    })
+})
 
 app.use(router)
 // error control
