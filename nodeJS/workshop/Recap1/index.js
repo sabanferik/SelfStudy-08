@@ -1,5 +1,8 @@
 //* http server
+
 // const http = require('http');
+//* nodejs 16.5 sürümüyle beraber builtin modulleri kurulum yapmadan alttaki gibi import ederek kullanabiliyoruz:
+// const http = require("node:http");
 // const url = require('url');
 
 // const routeHandler = (req,res)=>{
