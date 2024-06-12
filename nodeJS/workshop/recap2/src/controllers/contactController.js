@@ -1,4 +1,5 @@
 "use strict";
+const Contact = require("../models/contactModel")
 module.exports = {
   list: async (req, res) => {},
   create: async (req, res) => {},
