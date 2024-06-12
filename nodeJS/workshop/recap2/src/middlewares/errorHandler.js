@@ -5,9 +5,9 @@ module.exports = (err,req,res,next)=>{
     const errorStatusCode = res?.errorStatusCode || 500;
     res.status(errorStatusCode).send({
       error: true,
-      status: false,
+      status: errorStatusCode,
       message: err.message,
-      // cause: err.cause,
+      cause: err.cause,
       // stack: err.stack
     });
 }
