@@ -30,6 +30,6 @@ const Contact = sequelize.define("contacts", {
   }
 });
 
-sequelize.sync()
+// sequelize.sync()
 
-module.export = Contact;
+module.exports = Contact;

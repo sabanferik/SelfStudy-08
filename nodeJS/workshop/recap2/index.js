@@ -1,7 +1,7 @@
 "use strict";
 const express = require("express");
 const app = express();
-
+app.use(express.json())
 app.all("/", (req, res) => {
   res.send("Contact APP");
 });
