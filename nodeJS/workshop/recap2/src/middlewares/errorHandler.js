@@ -1,13 +1,17 @@
-//* Error Handler
+'use strict'
+/*
+    EXPRESSJS 
+    ! EROR HANDLER
+*/
 
-module.exports = (err,req,res,next)=>{
-    console.log(err)
-    const errorStatusCode = res?.errorStatusCode || 500;
+module.exports= (err, req, res, next) => {
+    const errorStatusCode = res?.errorStatusCode || 500
     res.status(errorStatusCode).send({
-      error: true,
-      status: errorStatusCode,
-      message: err.message,
-      cause: err.cause,
-      // stack: err.stack
-    });
+        error: true,
+        status: false,
+        message: err.message,
+        // cause: err.cause,
+        // stack: err.stack
+    })
 }
+// app.use(errorHandler)
