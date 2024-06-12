@@ -2,20 +2,25 @@
 const Contact = require("../models/contactModel");
 const { sequelize } = require("../configs/db");
 module.exports = {
-  list: async (req, res) => {
+  list: async (req, res,next) => {
     // const data = await sequelize.query("SELECT * FROM contacts") //* klasik sql sorguların yerine ORM kullanıyoruz.
     // const data = await Contact.findAndCountAll()
     // const data = await Contact.findAll()
-    const data = await Contact.findAll({
-      where: {
-        isActive: true,
-      },
-    });
-    console.log(data);
-    res.status(200).send({
-      error: false,
-      contacts: datas,
-    });
+    try {
+      const data = await Contact.findAll({
+        where: {
+          isActive: true,
+        },
+      });
+      // throw new Error("Hata fırlattım, yakala!")
+      console.log(data);
+      res.status(200).send({
+        error: false,
+        contacts: datas,
+      });
+    } catch (error) {
+      next(error)
+    }
   },
   create: async (req, res) => {
     // const { firstName, lastName, email, phone, address, isActive } = req.body;
