@@ -24,7 +24,6 @@ if(DB=='SQLITE'){
      sequelize = new Sequelize(`postgres://userDE08:${PSW}@127.0.0.1:5432/todo`)
 }
 
-
     sequelize.authenticate() // connect to db
     .then(()=>console.log('Todo DB connected'))
     .catch(()=>console.log('Todo DB NOT connected'))
