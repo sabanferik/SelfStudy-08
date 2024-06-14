@@ -1,4 +1,5 @@
 //*Blog Controller
+require("express-async-errors"); //* hata fırlatmak
 const { BlogPost } = require("../models/blogModel");
 
 module.exports.BlogPostController = {
@@ -29,12 +30,23 @@ module.exports.BlogPostController = {
     });
   },
   update: async (req, res) => {
-    const data = await BlogPost.findByIdAndUpdate(req.params.id,req.body,{new:true}) // return new data
+    // const data = await BlogPost.findByIdAndUpdate(req.params.id,req.body,{new:true}) // {new:true} => return new data
+    const data = await BlogPost.updateOne({ _id: req.params.id }, req.body); //* datayı döndürmez yaptığı işlemin özetini döner. O nedenle bu yöntemde newData şeklinde sorgu yazıp güncellenmiş halini gönderebiliriz
 
     res.status(202).send({
       error: false,
       blog: data,
+      newData: await BlogPost.findOne({ _id: req.params.id }),
     });
+  },
+
+  delete: async (req, res) => {
+    const data = await BlogPost.findByIdAndDelete(req.params.id);
+    if (data) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
   },
 
   createMany: async (req, res) => {
