@@ -13,6 +13,8 @@ app.all('/', (req, res) => {
     res.send("<h1 style='text-align:center;margin-top:150px'>WELCOME TO BLOG API</h1>");
 })
 
+app.use("/blog", require("./src/routes/blogRoute"))
+
 // errorHandler:
 app.use(require('./src/middlewares/errorHandler'))
 
