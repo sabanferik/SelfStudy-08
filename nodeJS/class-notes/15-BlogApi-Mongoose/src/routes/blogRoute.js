@@ -9,7 +9,10 @@ router
   .get(BlogPostController.list)
   .post(BlogPostController.create);
 router
-  .route("/post/createMany")
-  .post(BlogPostController.createMany);  
+  .route("/post/:id")
+  .get(BlogPostController.read)
+
+
+router.route("/post/createMany").post(BlogPostController.createMany);
 
 module.exports = router;
