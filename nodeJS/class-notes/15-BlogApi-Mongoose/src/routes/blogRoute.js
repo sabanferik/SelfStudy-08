@@ -11,6 +11,7 @@ router
 router
   .route("/post/:id")
   .get(BlogPostController.read)
+  .put(BlogPostController.update)
 
 
 router.route("/post/createMany").post(BlogPostController.createMany);
