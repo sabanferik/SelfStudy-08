@@ -54,24 +54,32 @@ module.exports.BlogPostController = {
     // }
 
     const data = await BlogPost.deleteOne({ _id: req.params.id });
-    console.log(data)
+    console.log(data);
     // res.sendStatus(data.deletedCount ? 204 : 404)
-    if(data.deletedCount){
-        res.sendStatus(204);
-    }else {
-        res.status(404).send({
-            error: true,
-            message: "Blog post not found",
-        })
+    if (data.deletedCount) {
+      res.sendStatus(204);
+    } else {
+      res.status(404).send({
+        error: true,
+        message: "Blog post not found",
+      });
     }
   },
 
-  deleteMany: async (req,res)=>{
-    const data = await BlogPost.deleteMany() //* optionda ekleyebilirsiniz.
-    res.status(200).send({
-        error:false,
-        message:"All blog posts deleted successfully",
-    })
+  deleteMany: async (req, res) => {
+    // const data = await BlogPost.deleteMany() //* optionda ekleyebilirsiniz.
+    const data = await BlogPost.deleteMany({ published: false });
+    if (data.deletedCount) {
+      res.status(200).send({
+        error: false,
+        message: "All not published blog posts deleted successfully",
+      });
+    } else {
+      res.status(404).send({
+        error: true,
+        message: "No blog not published",
+      });
+    }
   },
   createMany: async (req, res) => {
     const data = await BlogPost.insertMany(req.body.blogs); //* Çoklu veri create etmek için kullanılan yöntem

@@ -11,6 +11,7 @@ https://mongoosejs.com/
 ## BLOG API
 
 ### ERD:
+
 ```
 +-------------------+      +--------------------+
 |   BlogCategory    |      |     BlogPost       |
@@ -25,6 +26,7 @@ https://mongoosejs.com/
                            +--------------------+
 
 ```
+
 ![ERD](./erdBlogAPI.png)
 
 ### Folder/File Structure:
@@ -47,7 +49,8 @@ https://mongoosejs.com/
          ┃     ┗ 📜blogRoute.js
 ```
 
-
+```
+{
 "blogs": [
     {
       "_id": "666c087569dcaf7732bbc896",
@@ -104,3 +107,5 @@ https://mongoosejs.com/
       "__v": 0
     }
   ]
+}
+```
