@@ -17,6 +17,7 @@ const mongoose = require("mongoose");
 
 // passwordEncrpyt("123456")
 // passwordEncrpyt("1234576")
+//* bu işlemi daha temiz olması açısından ayrı bir dosyaya taşıdık
 const passwordEncrpyt = require("../helpers/passwordEncrpyt")
 
 const UserSchema = new mongoose.Schema(
@@ -43,7 +44,8 @@ const UserSchema = new mongoose.Schema(
       trim: true,
       required: true,
       // set: (password) => "anthony",
-      set: (password) => passwordEncrpyt(password),
+      set: (password) => passwordEncrpyt(password),//* set; db ye akydolurken veriyi işlemden geçirerk kaydolmasını sağlar
+      //! db ye şifre bilgileri güvenlik amaçlı doğrudan eklenmez. Hashlenmiş bir şekilde veritabanına eklenir.
     },
     firstName: String,
     lastName: String,
