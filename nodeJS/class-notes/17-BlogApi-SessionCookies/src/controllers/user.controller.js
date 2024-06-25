@@ -53,8 +53,8 @@ module.exports = {
       // const user = await User.findOne({email:email})
       const user = await User.findOne({email})
       if(user) {
-        console.log("db: ", user.password)
-        console.log("user: ",passwordEncrpyt(password));
+        // console.log("db: ", user.password)
+        // console.log("user: ",passwordEncrpyt(password));
         if(user.password == passwordEncrpyt(password)){
           res.status(200).send({
             error:false,
