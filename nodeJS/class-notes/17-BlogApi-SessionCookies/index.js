@@ -25,6 +25,7 @@ app.use(
 
 //? user control
 app.use(require("./src/middlewares/userControl"));
+
 // HomePage:
 // app.all('/', (req, res) => {
 //     res.send("<h1 style='text-align:center;margin-top:150px'>WELCOME TO BLOG API</h1>");
