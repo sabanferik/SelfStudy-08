@@ -47,7 +47,7 @@ module.exports = {
     }
   },
   login: async (req, res) => {
-    const {email,password} = req.body;
+    const {email,password,remindMe} = req.body;
 
     if(email && password) {
       // const user = await User.findOne({email:email})
@@ -56,11 +56,27 @@ module.exports = {
         // console.log("db: ", user.password)
         // console.log("user: ",passwordEncrpyt(password));
         if(user.password == passwordEncrpyt(password)){
-          res.status(200).send({
-            error:false,
-            message:"Login Ok!",
-            user
-          })
+
+          /*! Session */
+          //* oturum süresince erişim sağlanır
+          // req.session = {
+          //   email: user.email,
+          //   password:user.password
+          // }
+          req.session.email = user.email
+          req.session.password = user.password
+          req.session.id = user._id
+
+          if(remindMe) {
+            req.session.remindMe = remindMe
+            //* sessionu cookieye çeviriyoruz. Verdiğimiz süre kadar erişim sağlanır
+            req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3;
+          }
+            res.status(200).send({
+              error: false,
+              message: "Login Ok!",
+              user,
+            });
         }else {
           res.errorStatusCode = 401;
           throw new Error("Login parameters not true!");
