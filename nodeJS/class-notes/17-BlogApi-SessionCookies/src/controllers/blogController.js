@@ -64,6 +64,7 @@ module.exports.BlogPostController = {
     });
   },
   create: async (req, res) => {
+    // req.body.userId = req.session.id
     const data = await BlogPost.create(req.body);
 
     res.status(201).send({
