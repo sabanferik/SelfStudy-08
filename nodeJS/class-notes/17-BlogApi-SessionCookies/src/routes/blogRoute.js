@@ -28,9 +28,10 @@ router
   .delete(BlogPostController.deleteMany);  
 router
   .route("/post/:id")
+  // .all(isAuth)
   .get(BlogPostController.read)
   .put(BlogPostController.update)
-  .delete(isAuth,BlogPostController.delete);
+  .delete(isAuth, BlogPostController.delete);
 
 
 
