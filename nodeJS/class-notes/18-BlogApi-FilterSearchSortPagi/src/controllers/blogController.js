@@ -53,10 +53,18 @@ module.exports.BlogCategoryController = {
 
 module.exports.BlogPostController = {
   list: async (req, res) => {
-    const data = await BlogPost.find({ published: true }).populate(
-      "blogCategoryId",
-      "name -_id"
-    ); //* ilk parametre alanın adı. Eğer istemdğimiz alanlar varsa bunları belirtebiliriz. istedğimiz veya istemediğimiz alanları aralara boşluk koyarak ekleyebiliriz . İstemediğimiz alanların başına "-" koyarak bunları getirme diyebiliriz.
+    //! Filtering
+    // URL?filter[key1]=value1&filter[key2]=value2 => url array parameter
+    // console.log(req.query)
+    const filter = req.query?.filter || {};
+    console.log("filter: ", filter);
+
+    // const data = await BlogPost.find({}) = BlogPost.find()
+    const data = await BlogPost.find(filter);
+    // const data = await BlogPost.find({ published: true, }).populate(
+    //   "blogCategoryId",
+    //   "name -_id"
+    // ); //* ilk parametre alanın adı. Eğer istemdğimiz alanlar varsa bunları belirtebiliriz. istedğimiz veya istemediğimiz alanları aralara boşluk koyarak ekleyebiliriz . İstemediğimiz alanların başına "-" koyarak bunları getirme diyebiliriz.
 
     res.status(200).send({
       error: false,
