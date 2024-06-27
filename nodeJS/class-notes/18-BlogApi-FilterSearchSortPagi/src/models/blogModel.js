@@ -50,7 +50,11 @@ const blogCategorySchema = new mongoose.Schema({
 const blogPostSchema = new mongoose.Schema(
   {
     // _id
-    // userId
+    userId: {
+      type: mongoose.Schema.Types.ObjectId, //ForeingKey, relationalId
+      required: true,
+      ref: "User",
+    },
     blogCategoryId: {
       type: mongoose.Schema.Types.ObjectId, //ForeingKey, relationalId
       required: true,
