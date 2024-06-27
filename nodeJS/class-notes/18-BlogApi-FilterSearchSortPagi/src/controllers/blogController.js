@@ -78,6 +78,28 @@ module.exports.BlogPostController = {
     // asc:A-Z - desc:Z-A
     const sort = req.query?.sort || {};
 
+    //* Pagination
+    // url?page=3&limit=10
+
+    // =>mongoose =>  limit() ve skip()
+
+    //! Limit
+    let limit = Number(req.query?.limit); // limit() metodu number bekler diyelim
+    limit = limit > 0 ? limit : 20;
+    console.log(typeof limit, limit);
+
+    //? Page
+    let page = Number(req.query?.page);
+    // page = page > 0 ? page : 1
+    page = page > 0 ? page - 1 : 0; // Backend 'de sayfa sayısı her zmaan page-1 olarak hesaplanmalı. Kullanıcı yine page=1 olarak görecek ama hesaplama yapılruıken page-1 olarak hesaplama yapacağız. skip metodundan dolayı bunu yapıyoruz
+    console.log(typeof page, page);
+
+    //! Skip => atlanacak veri sayısı
+
+    let skip = Number(req.query?.skip);
+    skip = skip > 0 ? skip : page * limit;
+    console.log(typeof skip, skip);
+
     // const data = await BlogPost.find({}) = BlogPost.find()
     // const data = await BlogPost.find(filter);
     // const data = await BlogPost.find({filter,search}); => {filter:{ userId: '667d10dc03839026052691ab', published: '0' },search:{ title: { '$regex': 'Testuser1' }, content: { '$regex': 'Testuser' } }} // wrong
@@ -85,8 +107,10 @@ module.exports.BlogPostController = {
     // function(a,...x) => rest
     // const data = await BlogPost.find({ ...filter, ...search }); // spread => yayma
 
-    const data = await BlogPost.find({ ...filter, ...search }).sort(sort)
-
+    const data = await BlogPost.find({ ...filter, ...search })
+      .sort(sort)
+      .limit(limit)
+      .skip(skip);
 
     // const data = await BlogPost.find({ published: true, }).populate(
     //   "blogCategoryId",
