@@ -58,11 +58,12 @@ module.exports = (req,res,next) => {
     //   .skip(skip);
 
     //*biz ekliyoruz
-    res.getModelList = async function (Model) {
+    res.getModelList = async function (Model,populate=null) {
       return await Model.find({ ...filter, ...search })
         .sort(sort)
         .limit(limit)
-        .skip(skip);
+        .skip(skip)
+        .populate(populate);
     }
 
     next()

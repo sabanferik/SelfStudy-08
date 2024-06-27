@@ -1,6 +1,6 @@
 //*Blog Controller
 require("express-async-errors"); //* hata fırlatmak
-const { BlogPost,BlogCategory } = require("../models/blogModel");
+const { BlogPost, BlogCategory } = require("../models/blogModel");
 
 module.exports.BlogCategoryController = {
   list: async (req, res) => {
@@ -121,9 +121,18 @@ module.exports.BlogPostController = {
     //     { content: { $regex: query, $options: "i" } },
     //   ],
     // });
-    
-    const data = await res.getModelList(BlogPost)
 
+    // const data = await res.getModelList(BlogPost, "blogCategoryId");
+    const data = await res.getModelList(BlogPost, [
+      {
+        path: "blogCategoryId",
+        select: "name -_id",
+      },
+      { path: "userId" },
+    ]);
+    //! populate v2 => populate({path:"blogCategoryId",select:"name -id"})
+    //! multi populate => populate([ {path: "blogCategoryId", select: "name -_id", }, { path: "userId" }, ])
+    //! multi populate => populate({path: "blogCategoryId", select: "name -_id", }).populate({ path: "userId" })
     // const data = await BlogPost.find({ published: true, }).populate(
     //   "blogCategoryId",
     //   "name -_id"
@@ -147,7 +156,9 @@ module.exports.BlogPostController = {
     // const data = await BlogPost.findById(req.params.id); //* sadce id secenegini kabul eder.
     // const data = await BlogPost.findOne({published: false });
     // const data = await BlogPost.findOne({ _id: req.params.id }); //* diğer seçenekleri de kabul eder.
-    const data = await BlogPost.findOne({ _id: req.params.id }).populate("blogCategoryId");
+    const data = await BlogPost.findOne({ _id: req.params.id }).populate(
+      "blogCategoryId"
+    );
     res.status(200).send({
       error: false,
       blog: data,
