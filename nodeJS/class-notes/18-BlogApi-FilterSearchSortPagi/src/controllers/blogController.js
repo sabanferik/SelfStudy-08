@@ -4,7 +4,8 @@ const { BlogPost,BlogCategory } = require("../models/blogModel");
 
 module.exports.BlogCategoryController = {
   list: async (req, res) => {
-    const data = await BlogCategory.find();
+    // const data = await BlogCategory.find();
+    const data = await res.getModelList(BlogCategory);
 
     res.status(200).send({
       error: false,
@@ -53,52 +54,51 @@ module.exports.BlogCategoryController = {
 
 module.exports.BlogPostController = {
   list: async (req, res) => {
-    //! Filtering
-    // URL?filter[key1]=value1&filter[key2]=value2 => url array parameter
-    // console.log(req.query)
-    const filter = req.query?.filter || {};
-    console.log("filter: ", filter);
+    // //! Filtering
+    // // URL?filter[key1]=value1&filter[key2]=value2 => url array parameter
+    // // console.log(req.query)
+    // const filter = req.query?.filter || {};
+    // console.log("filter: ", filter);
 
-    //* Searching => gelen ifaade içerisinde geçiyor mu geçmiyor mu
-    // URL?search[key1]=value1&search[key2]=value2 => url array parameter
-    //https://www.mongodb.com/docs/manual/reference/operator/query/regex/
-    const search = req.query?.search || {};
-    console.log("search: ", search);
-    //* { title: 'Testuser1', content: 'Testuser' } => { title: {$regex:'Testuser1'}, content:{ $regex: 'Testuser'} }
-    for (let key in search) {
-      // search["title"] = {$regex : search["title"]}
-      search[key] = { $regex: search[key] };
-    }
-    console.log("search2: ", search);
+    // //* Searching => gelen ifaade içerisinde geçiyor mu geçmiyor mu
+    // // URL?search[key1]=value1&search[key2]=value2 => url array parameter
+    // //https://www.mongodb.com/docs/manual/reference/operator/query/regex/
+    // const search = req.query?.search || {};
+    // console.log("search: ", search);
+    // //* { title: 'Testuser1', content: 'Testuser' } => { title: {$regex:'Testuser1'}, content:{ $regex: 'Testuser'} }
+    // for (let key in search) {
+    //   // search["title"] = {$regex : search["title"]}
+    //   search[key] = { $regex: search[key] };
+    // }
+    // console.log("search2: ", search);
 
-    //? Sorting
-    //https://mongoosejs.com/docs/api/query.html#Query.prototype.sort()
-    // URL?sort[key1]=value1&sort[key2]=value2 => url array parameter
-    // 1:A-Z - -1:Z-A deprecated
-    // asc:A-Z - desc:Z-A
-    const sort = req.query?.sort || {};
+    // //? Sorting
+    // //https://mongoosejs.com/docs/api/query.html#Query.prototype.sort()
+    // // URL?sort[key1]=value1&sort[key2]=value2 => url array parameter
+    // // 1:A-Z - -1:Z-A deprecated
+    // // asc:A-Z - desc:Z-A
+    // const sort = req.query?.sort || {};
 
-    //* Pagination
-    // url?page=3&limit=10
+    // //* Pagination
+    // // url?page=3&limit=10
 
-    // =>mongoose =>  limit() ve skip()
+    // // =>mongoose =>  limit() ve skip()
 
-    //! Limit
-    let limit = Number(req.query?.limit); // limit() metodu number bekler diyelim
-    limit = limit > 0 ? limit : 20;
-    console.log(typeof limit, limit);
+    // //! Limit
+    // let limit = Number(req.query?.limit); // limit() metodu number bekler diyelim
+    // limit = limit > 0 ? limit : 20;
+    // console.log(typeof limit, limit);
 
-    //? Page
-    let page = Number(req.query?.page);
-    // page = page > 0 ? page : 1
-    page = page > 0 ? page - 1 : 0; // Backend 'de sayfa sayısı her zmaan page-1 olarak hesaplanmalı. Kullanıcı yine page=1 olarak görecek ama hesaplama yapılruıken page-1 olarak hesaplama yapacağız. skip metodundan dolayı bunu yapıyoruz
-    console.log(typeof page, page);
+    // //? Page
+    // let page = Number(req.query?.page);
+    // // page = page > 0 ? page : 1
+    // page = page > 0 ? page - 1 : 0; // Backend 'de sayfa sayısı her zmaan page-1 olarak hesaplanmalı. Kullanıcı yine page=1 olarak görecek ama hesaplama yapılruıken page-1 olarak hesaplama yapacağız. skip metodundan dolayı bunu yapıyoruz
+    // console.log(typeof page, page);
 
-    //! Skip => atlanacak veri sayısı
-
-    let skip = Number(req.query?.skip);
-    skip = skip > 0 ? skip : page * limit;
-    console.log(typeof skip, skip);
+    // //! Skip => atlanacak veri sayısı
+    // let skip = Number(req.query?.skip);
+    // skip = skip > 0 ? skip : page * limit;
+    // console.log(typeof skip, skip);
 
     // const data = await BlogPost.find({}) = BlogPost.find()
     // const data = await BlogPost.find(filter);
@@ -107,10 +107,11 @@ module.exports.BlogPostController = {
     // function(a,...x) => rest
     // const data = await BlogPost.find({ ...filter, ...search }); // spread => yayma
 
-    const data = await BlogPost.find({ ...filter, ...search })
-      .sort(sort)
-      .limit(limit)
-      .skip(skip);
+    // const data = await BlogPost.find({ ...filter, ...search })
+    //   .sort(sort)
+    //   .limit(limit)
+    //   .skip(skip);
+      const data = await res.getModelList(BlogPost)
 
     // const data = await BlogPost.find({ published: true, }).populate(
     //   "blogCategoryId",
