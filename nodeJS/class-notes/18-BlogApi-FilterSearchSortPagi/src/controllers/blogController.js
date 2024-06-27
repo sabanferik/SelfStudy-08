@@ -111,7 +111,18 @@ module.exports.BlogPostController = {
     //   .sort(sort)
     //   .limit(limit)
     //   .skip(skip);
-      const data = await res.getModelList(BlogPost)
+
+    //! operator kullanımı => https://www.mongodb.com/docs/manual/reference/operator/query/
+    // const query = req.query?.q || '';
+
+    // const data = await BlogPost.find({
+    //   $or: [
+    //     { title: { $regex: query, $options: "i" } }, //* i => insensitive
+    //     { content: { $regex: query, $options: "i" } },
+    //   ],
+    // });
+    
+    const data = await res.getModelList(BlogPost)
 
     // const data = await BlogPost.find({ published: true, }).populate(
     //   "blogCategoryId",
