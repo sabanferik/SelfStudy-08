@@ -20,6 +20,7 @@ const tutorialSchema = new mongoose.Schema(
   }
 );
 
+//! _id transform id and versionkey remove
 tutorialSchema.set("toJSON", {
   virtuals: true,
   versionKey: false,
@@ -27,6 +28,7 @@ tutorialSchema.set("toJSON", {
     delete ret._id;
   },
 });
+//*alternative
 // tutorialSchema.set("toJSON", {
 //   transform: function (doc, ret, options) {
 //     ret.id = ret._id;
