@@ -37,7 +37,7 @@ app.use(express.json())
 
 
 //*Filter,Search,Sort,Pagination(res.getModelList)
-require("./src/middlewares/findSearchSortPagi")
+app.use(require("./src/middlewares/findSearchSortPagi"))
 
 /* -------------------------------------------------------------------------- */
 /*                                   Routes                                   */
