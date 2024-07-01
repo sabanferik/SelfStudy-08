@@ -54,7 +54,7 @@ module.exports = {
 
     const data = await res.getModelList(Personnel, {
       departmentId: req.params.id,
-    });
+    },"departmentId");
 
     res.status(200).send({
       error: false,

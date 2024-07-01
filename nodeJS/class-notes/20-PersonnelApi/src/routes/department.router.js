@@ -11,9 +11,7 @@ const idValidation = require("../middlewares/idValidation");
 //* URL : /departments
 
 router.route("/").get(department.list).post(department.create);
-
 router.route("/:id/personnels").get(department.personnels)
-
 router
   .route("/:id")
   .all(idValidation)
