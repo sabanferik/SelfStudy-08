@@ -51,6 +51,13 @@ app.use("/departments", require("./src/routes/department.router"));
 
 app.use("/personnels", require("./src/routes/personnel.router"));
 
+//* eşleşmeyen routeları yakalar
+app.use((req,res,next)=> {
+    res.status(404).send({
+        error:true,
+        message: "Route not found!"
+    })
+})
 
 /* ------------------------------------------------------- */
 
