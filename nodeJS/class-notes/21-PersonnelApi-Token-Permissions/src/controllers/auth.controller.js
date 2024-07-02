@@ -4,6 +4,7 @@ EXPRESS - Personnel API
 ------------------------------------------------------- */
 
 const Personnel = require("../models/personnel.model");
+const Token = require("../models/token.model");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 
 module.exports = {
