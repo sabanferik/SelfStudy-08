@@ -38,5 +38,5 @@
 - [ ] Personel sadece kendi bilgilerini okuyabilir , güncelleyebilir ama silme yetkisi Adminde olacak.
 - [ ] Personeli silme yetkisi sadece admin olacak.
 active olmayan personel sisteme giriş yapamaz.
-- [ ] Departmentları login olan herkes okuyabilir, listeyelebilir ama Cud işlemlerini sadece admin yapacak.
+- [x] Departmentları login olan herkes okuyabilir, listeyelebilir ama Cud işlemlerini sadece admin yapacak.
 - [x] Token authentication kullanacağız. Kullanıcı logout olduğunda tokeni sileceğiz. Token işlemlerini sadece admin yapacak.

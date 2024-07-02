@@ -7,10 +7,14 @@ const router = require('express').Router()
 
 const personnel = require("../controllers/personnel.controller");
 const idValidation = require("../middlewares/idValidation");
+const permission = require("../middlewares/permissions")
 
 //* URL : /personnels
 
-router.route("/").get(personnel.list).post(personnel.create);
+router
+  .route("/")
+  .get(permission.isAdmin, personnel.list)
+  .post(permission.isAdmin, personnel.create);
 
 router
   .route("/:id")
@@ -18,7 +22,7 @@ router
   .get(personnel.read)
   .put(personnel.update)
   .patch(personnel.update)
-  .delete(personnel.delete);
+  .delete(permission.isAdmin, personnel.delete);
 
 /* ------------------------------------------------------- */
 module.exports = router
