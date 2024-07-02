@@ -39,12 +39,18 @@ app.use(express.json())
 //*Filter,Search,Sort,Pagination(res.getModelList)
 app.use(require("./src/middlewares/findSearchSortPagi"))
 
+app.use(require("./src/middlewares/authentication"))
+
 /* -------------------------------------------------------------------------- */
 /*                                   Routes                                   */
 /* -------------------------------------------------------------------------- */
 
 app.all("/",(req,res)=> {
-    res.send("Welcome to the Personnel API")
+    // res.send("Welcome to the Personnel API")
+    res.send({
+        message: "Welcome to the Personnel API",
+        user: req.user
+    })
 })
 // console.log("6682f675c85e532d286f602e"+Date.now())
 // app.use("/departments", require("./src/routes/department.router"));

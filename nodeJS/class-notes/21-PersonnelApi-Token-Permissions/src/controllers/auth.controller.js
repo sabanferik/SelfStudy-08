@@ -22,7 +22,7 @@ module.exports = {
             if(!tokenData) {
                 const tokenKey = passwordEncrypt(user._id + Date.now())
                 // console.log(user._id + Date.now());
-                tokenData = await Token.create({userId:user_id,token:tokenKey})
+                tokenData = await Token.create({userId:user._id,token:tokenKey})
             }
 
             res.status(200).send({
