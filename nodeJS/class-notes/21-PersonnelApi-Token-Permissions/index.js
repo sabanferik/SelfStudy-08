@@ -46,7 +46,7 @@ app.use(require("./src/middlewares/findSearchSortPagi"))
 app.all("/",(req,res)=> {
     res.send("Welcome to the Personnel API")
 })
-
+// console.log("6682f675c85e532d286f602e"+Date.now())
 // app.use("/departments", require("./src/routes/department.router"));
 
 // app.use("/personnels", require("./src/routes/personnel.router"));
