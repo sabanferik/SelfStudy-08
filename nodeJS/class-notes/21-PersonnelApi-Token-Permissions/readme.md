@@ -39,4 +39,4 @@
 - [ ] Personeli silme yetkisi sadece admin olacak.
 active olmayan personel sisteme giriş yapamaz.
 - [ ] Departmentları login olan herkes okuyabilir, listeyelebilir ama Cud işlemlerini sadece admin yapacak.
-- [ ] Token authentication kullanacağız. Kullanıcı logout olduğunda tokeni sileceğiz. Token işlemlerini sadece admin yapacak.
+- [x] Token authentication kullanacağız. Kullanıcı logout olduğunda tokeni sileceğiz. Token işlemlerini sadece admin yapacak.
