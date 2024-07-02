@@ -52,7 +52,8 @@ module.exports = {
       delete req.body.isLead;
       delete req.body.salary;
       delete req.body.title;
-      delete req.body.startedAt
+      delete req.body.startedAt;
+      delete req.body.isActive
     }
     const isLead = req.body?.isLead || false;
     if (isLead) {
