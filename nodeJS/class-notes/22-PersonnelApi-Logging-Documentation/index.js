@@ -93,6 +93,13 @@ app.use(
   })
 );
 
+//? REDOC
+const redoc = require("redoc-express");
+app.use("/documents/redoc", redoc({
+  title: "Personnel Api",
+  specUrl: '/documents/json'
+}))
+
 /* -------------------------------------------------------------------------- */
 /*                                 MiddleWares                                */
 /* -------------------------------------------------------------------------- */
