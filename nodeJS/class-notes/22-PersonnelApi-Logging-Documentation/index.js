@@ -74,8 +74,24 @@ dbConnection();
 // $ npm i swagger-ui-express
 // $ npm i redoc-express
 
+//* JSON
+app.use("/documents/json", (req, res) => {
+  res.sendFile("swagger.json", { root: "." });
+});
 
+//! SWAGGER
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
+app.use(
+  "/documents/swagger",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  })
+);
 
 /* -------------------------------------------------------------------------- */
 /*                                 MiddleWares                                */
@@ -84,7 +100,7 @@ dbConnection();
 //* accept json
 app.use(express.json());
 
-app.use(require("./src/middlewares/logging"))
+app.use(require("./src/middlewares/logging"));
 
 //*Filter,Search,Sort,Pagination(res.getModelList)
 app.use(require("./src/middlewares/findSearchSortPagi"));
