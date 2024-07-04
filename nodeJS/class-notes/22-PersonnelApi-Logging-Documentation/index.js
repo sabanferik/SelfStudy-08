@@ -118,11 +118,25 @@ app.use(require("./src/middlewares/authentication"));
 /*                                   Routes                                   */
 /* -------------------------------------------------------------------------- */
 
+// app.all("/", (req, res) => {
+//   // res.send("Welcome to the Personnel API")
+//   res.send({
+//     message: "Welcome to the Personnel API",
+//     user: req.user,
+//   });
+// });
 app.all("/", (req, res) => {
   // res.send("Welcome to the Personnel API")
   res.send({
     message: "Welcome to the Personnel API",
     user: req.user,
+    api: {
+      documents: {
+        swagger: "/documents/swagger",
+        redoc: "/documents/redoc",
+        json: "/documents/json",
+      },
+    },
   });
 });
 // console.log("6682f675c85e532d286f602e"+Date.now())

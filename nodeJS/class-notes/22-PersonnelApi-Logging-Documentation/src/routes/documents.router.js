@@ -15,26 +15,26 @@ const router = require("express").Router();
 
 //! SWAGGER & Redoc
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("../../swagger.json");
 const redoc = require("redoc-express");
 
-//* URL => /documents
-//* JSON
-router.get("/json", (req, res) => {
-  res.sendFile("swagger.json", { root: "." });
-});
 //*swagger
-router.get(
+router.use(
   "/swagger",
   swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument, {
+  swaggerUi.setup(require("../../swagger.json"), {
     swaggerOptions: {
       persistAuthorization: true,
     },
   })
 );
+//* URL => /documents
+//* JSON
+router.use("/json", (req, res) => {
+  res.sendFile("swagger.json", { root: "." });
+});
+
 //? REDOC
-router.get(
+router.use(
   "/redoc",
   redoc({
     title: "Personnel Api",
