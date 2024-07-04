@@ -38,6 +38,7 @@ module.exports = {
     }
   },
   isAdminOrLead: (req, res, next) => {
+    //* req.params.id => departmenta ait id bilgisini veriyor
     if (req.user && req.user.isActive && (req.user.isAdmin || (req.user.isLead && req.user.departmentId == req.params?.id))) {
       next();
     } else {
