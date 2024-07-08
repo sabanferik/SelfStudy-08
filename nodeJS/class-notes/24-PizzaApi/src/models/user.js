@@ -3,6 +3,7 @@
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 const { mongoose } = require('../configs/dbConnection');
+const { CustomError } = require('../errors/customError');
 const passwordEncrypt = require('../helpers/passwordEncrypt');
 /* ------------------------------------------------------- */
 
@@ -19,7 +20,27 @@ const UserSchema = new mongoose.Schema(
       trim: true,
       required: true,
       //   set: passwordEncrypt,
-      set: (password) => passwordEncrypt(password),
+      // validate: [
+      //   (password) =>
+      //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!-\*?+&%{}])[A-Za-z\d!-\*?+&%{}]{8,}$/.test(password),
+      //   "Password type is incorrect!"
+      // ],
+      // set: (password) => passwordEncrypt(password),//*validate set metodundan sonra çalışıyor o nedenle şifre her türlü valdiate işleminden geçmiyor. Bu durumun önüne geçmek için validasyonu set içinde yapabiliriz veya pre middlewarei kullanılabilir.
+      set: (password) => {
+        if (
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!-\*?+&%{}])[A-Za-z\d!-\*?+&%{}]{8,}$/.test(
+            password
+          )
+        ) {
+          return passwordEncrypt(password);
+        } else {
+          return "novalid"
+        }
+      },
+      validate: [
+        (password) => password != "novalid",
+        "Password type is incorrect!"
+      ]
     },
     email: {
       type: String,
