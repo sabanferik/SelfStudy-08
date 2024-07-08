@@ -34,19 +34,23 @@ const UserSchema = new mongoose.Schema(
         ) {
           return passwordEncrypt(password);
         } else {
-          return "novalid"
+          return "novalid";
         }
       },
       validate: [
         (password) => password != "novalid",
-        "Password type is incorrect!"
-      ]
+        "Password type is incorrect!",
+      ],
     },
     email: {
       type: String,
       trim: true,
       required: true,
       unique: true,
+      validate: [
+        (email) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email),
+        "Email type is not correct.",
+      ],
     },
     isActive: {
       type: Boolean,
