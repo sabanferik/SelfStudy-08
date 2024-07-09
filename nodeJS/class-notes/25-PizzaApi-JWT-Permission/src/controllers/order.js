@@ -21,13 +21,22 @@ module.exports = {
             `
         */
 
-    let customFilter= {}
+    let customFilter = {};
 
-    if(!req.user.isAdmin){
-      customFilter={userId: req.user._id}
+    if (!req.user.isAdmin) {
+      customFilter = { userId: req.user._id };
     }
-    console.log(req.user)
-    const data = await res.getModelList(Order, customFilter);
+    // console.log(req.user);
+
+    const data = await res.getModelList(Order, customFilter, [
+      "userId",
+      {
+        path: "pizzaId",
+        select: "-__v",
+        populate: { path: "toppingIds", select: "name" },
+      },
+    ]);
+
     res.status(200).send({
       error: false,
       details: await res.getModelListDetails,
@@ -42,12 +51,12 @@ module.exports = {
         */
     // delete req.body.amount - amount alanını db ye eklememek için
 
-    if(!req.user.isAdmin){
-      req.body.userId = req.user._id //* istek atan user 
+    if (!req.user.isAdmin) {
+      req.body.userId = req.user._id; //* istek atan user
     }
 
-    // req.body.userId = req.user._id //* istek atan user 
-    
+    // req.body.userId = req.user._id //* istek atan user
+
     const data = await Order.create(req.body);
     res.status(201).send({
       error: false,
@@ -59,7 +68,18 @@ module.exports = {
             #swagger.tags = ["Orders"]
             #swagger.summary = "Get Single Order"
         */
-    const data = await Order.findOne({ _id: req.params.id });
+
+    let customFilter = {};
+
+    if (!req.user.isAdmin) {
+      customFilter = { userId: req.user._id };
+    }
+    
+    const data = await Order.findOne({
+      _id: req.params.id,
+      ...customFilter,
+    }).populate("userId", "pizzaId");
+
     res.status(200).send({
       error: false,
       data,
