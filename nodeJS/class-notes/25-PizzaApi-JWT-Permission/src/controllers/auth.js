@@ -7,6 +7,7 @@ const User = require("../models/user");
 const Token = require("../models/token");
 const { CustomError } = require("../errors/customError");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   login: async (req, res) => {
@@ -30,6 +31,7 @@ module.exports = {
       const user = await User.findOne({ $or: [{ username }, { email }] });
       if (user && user.password == passwordEncrypt(password)) {
         if (user.isActive) {
+          /* Simple Token */
           let tokenData = await Token.findOne({ userId: user._id });
           if (!tokenData) {
             tokenData = await Token.create({
@@ -37,6 +39,43 @@ module.exports = {
               token: passwordEncrypt(user._id + Date.now()),
             });
           }
+          /* Simple Token */
+          /* JWT */
+          // accessToken
+          const accessInfo = {
+            key: process.env.ACCESS_KEY,
+            time: process.env.ACCESS_EXP || "5m",
+            data: {
+              _id: user._id,
+              id: user._id,
+              username: user.username,
+              email: user.email,
+              password: user.password,
+              isActive: user.isActive,
+              isAdmin: user.isAdmin,
+            },
+          };
+
+          // refreshtoken
+          const refreshInfo = {
+            key: process.env.REFRESH_KEY,
+            time: process.env.REFRESH_EXP || "3d",
+            data: {
+              _id: user._id,
+              id: user._id,
+              password: user.password,
+            },
+          };
+
+          // jwt.sign(data,secret_key,options)
+          const accessToken = jwt.sign(accessInfo.data, accessInfo.key, {
+            expiresIn: accessInfo.time,
+          });
+
+          const refreshToken = jwt.sign(refreshInfo.data, refreshInfo.key, {
+            expiresIn: refreshInfo.time,
+          });
+          /* JWT */
 
           res.status(200).send({
             error: false,
