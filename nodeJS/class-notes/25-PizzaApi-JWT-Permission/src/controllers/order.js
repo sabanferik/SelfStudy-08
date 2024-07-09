@@ -21,7 +21,13 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(Order);
+    let customFilter= {}
+
+    if(!req.user.isAdmin){
+      customFilter={userId: req.user._id}
+    }
+    console.log(req.user)
+    const data = await res.getModelList(Order, customFilter);
     res.status(200).send({
       error: false,
       details: await res.getModelListDetails,
@@ -35,6 +41,13 @@ module.exports = {
             #swagger.summary = "Create Order"
         */
     // delete req.body.amount - amount alanını db ye eklememek için
+
+    if(!req.user.isAdmin){
+      req.body.userId = req.user._id //* istek atan user 
+    }
+
+    // req.body.userId = req.user._id //* istek atan user 
+    
     const data = await Order.create(req.body);
     res.status(201).send({
       error: false,
