@@ -79,9 +79,9 @@ module.exports = {
 
           res.status(200).send({
             error: false,
-            bearer:{
+            bearer: {
               access: accessToken,
-              refresh:refreshToken
+              refresh: refreshToken,
             },
             token: tokenData.token,
             user,
@@ -94,6 +94,38 @@ module.exports = {
       }
     } else {
       throw new CustomError("Please enter username/email and password!", 401);
+    }
+  },
+  refresh: async (req, res) => {
+    /*
+            #swagger.tags = ["Authentication"]
+            #swagger.summary = "JWT : Refresh"
+            #swagger.description = 'Refresh token.'
+        */
+
+    const refreshToken = req.body?.bearer.refresh;
+
+    if (refreshToken) {
+      const refreshData = jwt.verify(refreshToken, process.env.REFRESH_KEY);
+      if (refreshData) {
+        const user = await User.findOne({ _id: refreshData._id });
+        if (user && user.password == refreshData.password) {
+          res.status(200).send({
+            error: false,
+            bearer: {
+              access: jwt.sign(user.toJSON(), process.env.ACCESS_KEY, {
+                expiresIn: process.env.ACCESS_EXP,
+              }),
+            },
+          });
+        } else {
+          throw new CustomError("Wrong data!", 401);
+        }
+      } else {
+        throw new CustomError("Refresh data is wrong!", 401);
+      }
+    }else {
+      throw new CustomError("Please enter refresh token!", 401);
     }
   },
   logout: async (req, res) => {
