@@ -22,7 +22,4 @@ router.route('/:id')
     .patch(permissions.isStaff, car.update)
     .delete(permissions.isAdmin, car.delete)
 
-
-
-
 module.exports = router

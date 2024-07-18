@@ -7,7 +7,7 @@
 const Car = require('../models/car')
 
 module.exports = {
-    
+
     list: async (req, res) => {
         /*
             #swagger.tags = ["Cars"]
@@ -22,13 +22,13 @@ module.exports = {
             `
         */
 
-            const data = await res.getModelList(Car)
+        const data = await res.getModelList(Car)
 
-            res.status(200).send({
-                error: false,
-                details: await res.getModelListDetails(Car),
-                data
-            })
+        res.status(200).send({
+            error: false,
+            details: await res.getModelListDetails(Car),
+            data
+        })
     },
 
     create: async (req, res) => {
@@ -43,8 +43,8 @@ module.exports = {
                 }
             }
         */
-        
-            
+
+
         // createdId ve updatedId verisini req.user'dan al
         req.body.createdId = req.user._id
         req.body.updatedId = req.user._id
@@ -63,26 +63,26 @@ module.exports = {
             #swagger.summary = "Get Single Car"
         */
 
-        const data = await Car.findOne({_id: req.params.id})
+        const data = await Car.findOne({ _id: req.params.id })
 
-        res.status(200).send({}
+        res.status(200).send({
             error: false,
             data
-        )
+        })
     },
 
     update: async (req, res) => {
-         /*
-            #swagger.tags = ["Users"]
-            #swagger.summary = "Update User"
-            #swagger.parameters['body'] = {
-                in: 'body',
-                required: true,
-               schema: {
-                    $ref: "#/definitions/Car'
-                }
-            }
-        */
+        /*
+           #swagger.tags = ["Cars"]
+           #swagger.summary = "Update Car"
+           #swagger.parameters['body'] = {
+               in: 'body',
+               required: true,
+              schema: {
+                   $ref: "#/definitions/Car'
+               }
+           }
+       */
 
         req.body.updatedId = req.user._id
 
@@ -96,6 +96,16 @@ module.exports = {
     },
 
     delete: async (req, res) => {
-        
+        /*
+           #swagger.tags = ["Cars"]
+           #swagger.summary = "Delete Car"
+       */
+
+        const data = await Car.deleteOne({ _id: req.params.id })
+
+        res.status(data.deletedCount ? 204 : 404).send({
+            error: !data.deletedCount,
+            data
+        })
     },
 }
