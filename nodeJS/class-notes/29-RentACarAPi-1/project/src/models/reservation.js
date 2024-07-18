@@ -62,4 +62,4 @@ const ReservationSchema = new mongoose.Schema({
 }, { collection: 'reservations', timestamps: true})
 
 // Export
-module.export = function = mongoose.model('Reservation', ReservationSchema)
+module.exports = mongoose.model('Reservation', ReservationSchema)
