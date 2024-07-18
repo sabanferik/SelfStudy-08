@@ -58,6 +58,45 @@ const CarSchema = new mongoose.Schema({
         min: 1950,
         max: new Date().getFullYear(), //2024
         required: true,
+    },
+
+    isAutomatic: {
+        type: Boolean,
+        default: false,
+    },
+
+    pricePerDay: {
+        type: Number,
+        required: true
+    },
+
+    //images: []
+    images: {
+        type: Array,
+        default: []
+    },
+
+    isAvailable: {
+        type: Boolean,
+        default: true
+    },
+
+    createdId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+
+    updatedId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
+}, {
+    collection: 'cars',
+    timestamps: true,
 })
+
+//Export
+module.exports = mongoose.module('Car', CarSchema)
 
