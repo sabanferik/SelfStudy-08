@@ -14,15 +14,14 @@ module.exports = async (req, res, next) => {
 
     if (tokenKey) {
 
+        if (tokenKey[0] == 'Token') {
         // SimpleToken:
 
-        const tokenData = await Token.findOne({ token: tokenKey[1] }).populate('userId')
-        if (tokenKey[0] == 'Token') {
+            const tokenData = await Token.findOne({ token: tokenKey[1] }).populate('userId')
             req.user = tokenData ? tokenData.userId : undefined
-            console.log('token >> ', tokenKey[1], tokenData);
 
         } else if (tokenKey[0] == 'Bearer') {
-            // JWT:
+        // JWT:
 
             jwt.verify(tokenKey[1], process.env.ACCESS_KEY, (error, data) => {
                 // //? Hata gösterimi yok:
@@ -31,5 +30,5 @@ module.exports = async (req, res, next) => {
         }
     }
 
-    next()
-}
+        next()
+    }
