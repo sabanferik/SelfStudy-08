@@ -31,3 +31,33 @@ const { mongoose } = require('../configs/dbConnection')
 }
 /* ------------------------------------------------------- */
 // Car Model:
+
+const CarSchema = new mongoose.Schema({
+
+    plateNumber: {
+        type: String,
+        trim: true,
+        unique: true,
+        required: true,
+    },
+
+    brand: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+
+    model: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+
+    year: {
+        type: Number,
+        min: 1950,
+        max: new Date().getFullYear(), //2024
+        required: true,
+    }
+})
+

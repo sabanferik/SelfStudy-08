@@ -57,9 +57,9 @@ const UserSchema = new mongoose.Schema({
         ]
     },
 
-    firstName: String
+    firstName: String,
 
-    lastName: String
+    lastName: String,
 
     isActive: {
         type: Boolean,
