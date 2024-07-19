@@ -7,7 +7,7 @@
 const Reservation = require('../models/reservation')
 
 module.exports = {
-    
+
     list: async (req, res) => {
         /*
             #swagger.tags = ["Reservations"]
@@ -22,37 +22,51 @@ module.exports = {
             `
         */
 
-            const data = await res.getModelList(Reservation)
+        let customFilter = {}
+        if (!req.user.isAdmin && !req.user.isStaff) 
+            customFilter = { userId: req.user._id }
+        
+        const data = await res.getModelList(Reservation, customFilter, [
+            {path: 'userId', select: 'username firstName lastName'},
+            {path: 'carId'},
+            {path: 'createdId', select: 'username'},
+            {path: 'updatedId', select: 'username'},
+        ])
 
-            res.status(200).send({
-                error: false,
-                details: await res.getModelListDetails(Reservation),
-                data
-            })
+        res.status(200).send({
+            error: false,
+            details: await res.getModelListDetails(Reservation),
+            data
+        })
     },
-    
+
     create: async (req, res) => {
-         /*
-            #swagger.tags = ["Reservations"]
-            #swagger.summary = "Create Reservation"
-            #swagger.parameters['body'] = {
-                in: 'body',
-                required: true,
-                schema: {
-                    $ref: "#/definitions/Reservation'
-                }
-            }
-        */
+        /*
+           #swagger.tags = ["Reservations"]
+           #swagger.summary = "Create Reservation"
+           #swagger.parameters['body'] = {
+               in: 'body',
+               required: true,
+               schema: {
+                   $ref: "#/definitions/Reservation'
+               }
+           }
+       */
 
 
         // "Admin/staff değilse" veya "UserId gönderilmemişse" req.user'dan al
-        if((!req.user.isAdmin && !req.user.isStaff) || !req.body?.userId){
+        if ((!req.user.isAdmin && !req.user.isStaff) || !req.body?.userId) {
             req.body.userId = req.user._id
         }
 
         // createdId ve updatedId verisini req.user'dan al
         req.body.createdId = req.user._id
         req.body.updatedId = req.user._id
+
+        // Kullanıcı çakışsan tarihlerde başka bir reservesi var mı?
+        const userReservationInDates = await Reservation.findOne({
+            userId: req.body.userId
+        })
 
         const data = await Reservation.create(req.body)
 
@@ -61,12 +75,12 @@ module.exports = {
             data
         })
     },
-    
+
     read: async (req, res) => {
-         /*
-            #swagger.tags = ["Reservations"]
-            #swagger.summary = "Get Single Reservation"
-        */
+        /*
+           #swagger.tags = ["Reservations"]
+           #swagger.summary = "Get Single Reservation"
+       */
 
         const data = await Reservation.findOne({ _id: req.params.id })
 
@@ -75,42 +89,43 @@ module.exports = {
             data
         })
     },
-    
+
     update: async (req, res) => {
-         /*
-           #swagger.tags = ["Reservations"]
-           #swagger.summary = "Update Reservation"
-           #swagger.parameters['body'] = {
-               in: 'body',
-               required: true,
-              schema: {
-                   $ref: "#/definitions/Reservation'
-               }
-           }
-       */
+        /*
+          #swagger.tags = ["Reservations"]
+          #swagger.summary = "Update Reservation"
+          #swagger.parameters['body'] = {
+              in: 'body',
+              required: true,
+             schema: {
+                  $ref: "#/definitions/Reservation'
+              }
+          }
+      */
 
-           req.body.updatedId = req.user._id
+        let customFilter = { _id: req.params.id }
+        req.body.updatedId = req.user._id
 
-           const data = await Reservation.updateOne(customFilter, req.body, { runValidators: true })
-   
-           res.status(202).send({
-               error: false,
-               data,
-               new: await Car.findOne({ _id: req.params.id })
-           })
+        const data = await Reservation.updateOne(customFilter, req.body, { runValidators: true })
+
+        res.status(202).send({
+            error: false,
+            data,
+            new: await Car.findOne({ _id: req.params.id })
+        })
     },
-    
+
     delete: async (req, res) => {
         /*
            #swagger.tags = ["Reservations"]
            #swagger.summary = "Delete Reservation"
        */
 
-           const data = await Reservation.deleteOne({ _id: req.params.id })
+        const data = await Reservation.deleteOne({ _id: req.params.id })
 
-           res.status(data.deletedCount ? 204 : 404).send({
-               error: !data.deletedCount,
-               data
-           })
+        res.status(data.deletedCount ? 204 : 404).send({
+            error: !data.deletedCount,
+            data
+        })
     },
 }
