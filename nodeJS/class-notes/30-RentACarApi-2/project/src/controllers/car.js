@@ -37,6 +37,24 @@ module.exports = {
                     { endDate: { $lt: getStartDate} } // lt: <
                 ]
             },  { _id: 0, carId: 1}).distinct('carId')
+
+            console.log(reservedCars)
+
+            // 20-30 / 07 kiralık opel
+
+            // 10-19 / 07 aralığında araç kiralamam gerekli
+
+            // start date             and date      
+            // 20 / 07                30 / 07
+            // -------                -------
+            //    0                      0          => 0
+
+            // 10-20 / 07 aralığında araç kiralamam gerekli
+
+            // start date             and date      
+            // 20 / 07                30 / 07
+            // -------                -------
+            //    0                      1          => 1
           
             console.log(' reservedCars >> ', reservedCars);
 
