@@ -56,7 +56,7 @@ module.exports = {
             // -------                -------
             //    0                      1          => 1
           
-            console.log(' reservedCars >> ', reservedCars);
+            // console.log(' reservedCars >> ', reservedCars);
 
             if (reservedCars.length){
                 customFilter._id = {$nin : reservedCars}
