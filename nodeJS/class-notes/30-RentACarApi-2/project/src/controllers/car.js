@@ -22,9 +22,12 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Car, {}, [
-            {path: 'createdId', select: 'username'},
-            {path: 'updatedId', select: 'username'},
+        // Müsait olmayan araçları listeleme:
+        let customFilter = { isAvailable: true }
+
+        const data = await res.getModelList(Car, customFilter, [
+            { path: 'createdId', select: 'username' },
+            { path: 'updatedId', select: 'username' },
         ])
 
         res.status(200).send({
@@ -67,8 +70,8 @@ module.exports = {
         */
 
         const data = await Car.findOne({ _id: req.params.id }).populate([
-            {path: 'createdId', select: 'username'},
-            {path: 'updatedId', select: 'username'},
+            { path: 'createdId', select: 'username' },
+            { path: 'updatedId', select: 'username' },
         ])
 
         res.status(200).send({
