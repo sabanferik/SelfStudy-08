@@ -51,7 +51,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         trim: true,
-        required: true
+        required: true,
         // validate ... // validasyon işlemini pre(save) yapıyor
         // Encrypt işlemini pre(save) yapıyoruz
     },
