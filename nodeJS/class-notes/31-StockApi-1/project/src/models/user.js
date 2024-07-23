@@ -98,8 +98,8 @@ const UserSchema = new mongoose.Schema({
 /* ------------------------------------------------------- */
 // https://mongoosejs.com/docs/middleware.html
 
-UserSchema.pre('save', function (next) {
-    const data = this
+UserSchema.pre(['save', 'updateOne'], function (next) {
+    const data = this?._update || this
     console.log('this >> ', data)
     console.log('pre(save) run.')
 
@@ -116,7 +116,12 @@ UserSchema.pre('save', function (next) {
 
                 console.log('password Encrypt >> ', data.password);
 
-                this.password = data.password
+                if(this?._update) {
+                    this._update = data
+                } else {
+                    this.password = data.password
+                }
+
             } else {
                 next(new Error('Password is not validated.'))
             }

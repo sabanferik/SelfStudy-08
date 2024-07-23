@@ -63,9 +63,39 @@ module.exports = {
     },
 
     update: async (req, res) => {
-        res.status(200).send({
+        /*
+            #swagger.tags = ["Users"]
+            #swagger.summary = "Update User"
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    "username": "test",
+                    "password": "1234",
+                    "email": "test@site.com",
+                    "firstName": "test",
+                    "lastName": "test",
+                }
+            }
+        */
+            console.log('--->>', req.params.id, req.user?.isAdmin);
+
+        // Sadece kendi kaydını güncelleyebilir:
+        //const customFilters = req.user?.isAdmin ? { _id: req.params.id } : { _id: req.user._id }
+        const customFilters = { _id: req.params.id }
+
+        // Yeni kayıtlarda admin/staff durumunu değiştiremez:
+        if (!req.user?.isAdmin) {
+            delete req.body.isStaff
+            delete req.body.isAdmin
+        }
+        
+        const data = await User.updateOne(customFilters, req.body, { runValidators: true })
+
+        res.status(202).send({
             error: false,
-            data: 'list'
+            data,
+            new: await User.findOne(customFilters),
         })
     },
 
