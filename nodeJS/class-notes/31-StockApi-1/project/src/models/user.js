@@ -3,6 +3,7 @@
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 const { mongoose } = require('../configs/dbConnection')
+const passwordEncrypt = require('../helpers/passwordEncrypt')
 /* ------------------------------------------------------- *
 {
     "username": "admin",
@@ -97,9 +98,33 @@ const UserSchema = new mongoose.Schema({
 /* ------------------------------------------------------- */
 // https://mongoosejs.com/docs/middleware.html
 
-UserSchema.pre('save', function(next){
-    console.log('pre(save) run.');
-    next()
+UserSchema.pre('save', function (next) {
+    const data = this
+    console.log('this >> ', data)
+    console.log('pre(save) run.')
+
+    // email@domain.com
+    const isEmailValidated = data.email ? /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email) : true
+    console.log('email kontrol', isEmailValidated)
+
+    if(isEmailValidated) {
+        if(data?.password) {
+            const isPasswordValidated = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(data.password)
+
+            if(isPasswordValidated){
+                data.password = passwordEncrypt(data.password)
+
+                console.log('password Encrypt >> ', data.password);
+
+                this.password = data.password
+            } else {
+                next(new Error('Password is not validated.'))
+            }
+        }
+        next()
+    } else {
+        next(new Error('Email is not validated.'))
+    }
 })
 
 
