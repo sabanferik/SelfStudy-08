@@ -67,7 +67,7 @@ module.exports = {
         // Satınalma sonrası quantity bilgisini göncelle yani artış olmalı
         const updateProduct = await Product.updateOne({ _id: data.productId }, { $inc: { quantity: +data.quantity } })
 
-        res.status(200).send({
+        res.status(201).send({
             error: false,
             data
         })
