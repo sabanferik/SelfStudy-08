@@ -12,6 +12,7 @@
     20 adet aldığımız ürün esasen 15 miş düzenleme yaptım ürün 95 
 */
 const Purchase = require('../models/purchase')
+const Product = require('../models/product')
 
 module.exports = {
 
@@ -56,7 +57,20 @@ module.exports = {
             }
         */
 
-            // user
+        // userId verisini req.user'dan al
+        req.body.userId = req.user._id
+
+        // Create
+
+        const data = await Purchase.create(req.body)
+
+        // Satınalma sonrası quantity bilgisini göncelle yani artış olmalı
+        const updateProduct = await Product.updateOne({ _id: data.productId }, { $inc: { quantity: +data.quantity } })
+
+        res.status(200).send({
+            error: false,
+            data
+        })
     },
 
     read: async (req, res) => {
@@ -78,10 +92,10 @@ module.exports = {
                     { path: 'productId', select: 'productId name categoryId' }
                 ])
 
-                res.status(200).send({
-                    error: false,
-                    data
-                })
+            res.status(200).send({
+                error: false,
+                data
+            })
         } else {
             // All
 
@@ -112,6 +126,24 @@ module.exports = {
                 }
             }
         */
+
+        if (req.body?.quantity) {
+            // mevcut adet bilgisini al:
+            const currentPurchase = await Purchase.findOne({ _id: req.params.id })
+            // farkı bul:
+            const difference = req.body.quantity - currentPurchase.quantity
+            // farkı Product'a güncelle
+            const updateProduct = await Product.updateOne({ _id: currentPurchase.productId }, { $inc: { quantity: +difference } })
+        }
+
+        // Update
+        const data = await Purchase.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+
+        res.status(202).send({
+            error: false,
+            data,
+            new: await Purchase.findOne({ _id: req.params.id })
+        })
     },
 
     delete: async (req, res) => {
@@ -120,5 +152,21 @@ module.exports = {
             #swagger.summary = "Delete Purchase"
         */
 
+        // mevcut adet bilgisini al:
+        const currentPurchase = await Purchase.findOne({ _id: req.params.id })
+
+        // Delete
+        const data = await Purchase.deleteOne({ _id: req.params.id})
+
+        // Adedi Product'dan eksilt:
+        const updateProduct = await Product.updateOne(
+            {_id: currentPurchase.productId}, 
+            {$inc: {quantity: -currentPurchase.quantity}}
+        )
+
+        res.status(data.deletedCount ? 204 : 404).send({
+            error: !data.deletedCount,
+            data
+        })
     },
 }
