@@ -41,13 +41,29 @@ module.exports = {
             #swagger.summary = "Get Single Product"
         */
 
-        const data = await Product.findOne({ _id: req.params.id })
-            .populate(['categoryId', 'brandId'])
+        console.log('read run');
 
-        res.status(200).send({
-            error: false,
-            data
-        })
+        if (req.params.id) {
+            // Single
+
+            const data = await Product.findOne({ _id: req.params.id })
+                .populate(['categoryId', 'brandId'])
+
+            res.status(200).send({
+                error: false,
+                data
+            })
+        } else {
+            // All
+
+            const data = await res.getModelList(Product, {}, ['categoryId', 'brandId'])
+
+            res.status(200).send({
+                error: false,
+                details: await res.getModelListDetails(Product),
+                data
+            })
+        }
     },
 
     update: async (req, res) => {
