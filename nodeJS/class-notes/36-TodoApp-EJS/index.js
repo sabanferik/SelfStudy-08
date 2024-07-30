@@ -14,7 +14,17 @@ const HOST=process.env?.HOST || '127.0.0.1'
 //catch async-error  
 require("express-async-errors")
 
+// TEMPLATE
+
+// https://expressjs.com/en/guide/using-template-engines.html
+// https://ejs.co/
+// https://www.npmjs.com/package/ejs
+// https://github.com/mde/ejs/wiki/Using-EJS-with-Express
+
+// npm i ejs
+
 app.set("view engine", "ejs")
+// default folder './views' //! klasor app.js /index.js ile aynı dizinde olmalı 
 
 // json to obj  and obj to json  
 //! yeri onemli yukarıda kalsın
@@ -22,6 +32,7 @@ app.use(express.json())
 
 //* Accept form data
 // app.use(express.urlencoded({extended:false}))
+//* Gelen verilerin sadece string olarak ele alnıması istenirse, extended: false özelliği kullanılır, fakat eğer bir JSON nesnesi olarak ele alınması istenirse, extended: true parametresi ile kullanmak gerekir. API hizmeti de sunduğumuz için bizim için uygun olan seçenek {extended: true} olacaktır.
 app.use(express.urlencoded({ extended: true }));
 
 

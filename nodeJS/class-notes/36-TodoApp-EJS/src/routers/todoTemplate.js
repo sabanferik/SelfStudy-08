@@ -34,8 +34,8 @@ router.delete('/todos/:id', todo.delete)
 
 
 router.get("/", todoTemplate.list)
-router.get("/create", todoTemplate.create)
-router.post("/create", todoTemplate.create)
+router.get("/create", todoTemplate.create) // Form Render
+router.post("/create", todoTemplate.create) // Save
 
 router.get("/:todoId",todoTemplate.read)
 
