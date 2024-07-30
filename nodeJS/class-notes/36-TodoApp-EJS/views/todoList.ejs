@@ -45,8 +45,10 @@
               <td>
                 <a class="btn btn-sm btn-secondary me-2" href="/view/<%= todo.id %>"
                   >Read</a
-                ><a class="btn btn-sm btn-success" href="/view/update/<%= todo.id %>"
+                ><a class="btn btn-sm btn-success me-2" href="/view/update/<%= todo.id %>"
                   >Update</a
+                >
+                <a class="btn btn-sm btn-danger" href="/view/delete/<%= todo.id %>" onclick="return confirm('Are you sure ?')" >Delete</a
                 >
               </td>
             </tr>
