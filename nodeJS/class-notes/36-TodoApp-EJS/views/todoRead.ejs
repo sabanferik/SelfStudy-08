@@ -12,38 +12,45 @@
     <title>Document</title>
   </head>
   <body>
-    <%# console.log(data) %>
+    <% console.log(todo) %>
     <div class="container">
       <div class="row">
-        <h1>Todo List</h1>
-        <strong>Todo Count: <%= data.count %></strong>
+        <h1>Todo Read</h1>
+        <div>
+             <a class="btn btn-sm btn-primary" href="/view">Todo List</a>
+             <a class="btn btn-sm btn-warning" href="/view/create">New Todo</a>
+        </div>
         <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col"># ID</th>
-              <th scope="col">Title</th>
-              <th scope="col">Description</th>
-              <th scope="col">Priority</th>
-              <th scope="col">Is Done ?</th>
-              <th scope="col">Created Date</th>
-              <th scope="col"><a class="btn btn-sm btn-primary" href="/view/create">New Todo</a></th>
+              <th scope="col"><%= todo.title %></th>
             </tr>
           </thead>
           <tbody>
-            <% for (let todo of data.rows) { %>
             <tr>
-              <td><%= todo.id %></td>
+              <td>Title</td>  
               <td><%= todo.title %></td>
-              <td><%= todo.description %></td>
-              <td><%= todo.priority %></td>
-              <td><%= !todo.isDone ? '❌' : '✅'  %></td>
-              <td><%= todo.createdAt.toLocaleDateString() %></td>
-              <td><a class="btn btn-sm btn-secondary" href="/view/<%= todo.id %>">Read</a></td>
             </tr>
-            <% } %>
+             <tr>
+              <td>Description</td>  
+              <td><%= todo.description %></td>
+            </tr>
+             <tr>
+              <td>Priority</td>  
+              <td><%= todo.priority %></td>
+            </tr>
+             <tr>
+              <td>Is Done ?</td>  
+              <td><%= !todo.isDone ? '❌' : '✅' %></td>
+            </tr>
+            <tr>
+              <td>Created Date</td>  
+              <td><%= todo.createdAt.toLocaleDateString('tr') %></td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </body>
+</body>
 </html>
