@@ -63,10 +63,21 @@ module.exports.BlogPostController = {
       { path: "userId" },
     ]);
 
-    console.log(req.query)
+    // console.log(req.query)
 
     const categories = await BlogCategory.find();
     const recentPosts = await BlogPost.find().sort({createdAt: 'desc'}).limit(3)
+    console.log(req.url)
+
+    if(req.url.includes('?')){
+      //  req.url += '&'
+      if(req.url.includes('page=')){
+        req.url = req.url.split('&page=')[0]
+      }
+    }else{
+      req.url += '?'
+    }
+
 
     // res.status(200).send({
     //   error: false,
@@ -79,6 +90,7 @@ module.exports.BlogPostController = {
       selectedCategory: req.query?.filter?.blogCategoryId,
       recentPosts,
       details: await res.getModelListDetails(BlogPost),
+      pageUrl : req.url
     });
   },
   create: async (req, res) => {
