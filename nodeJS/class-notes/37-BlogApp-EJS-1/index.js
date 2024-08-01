@@ -37,6 +37,10 @@ app.set("views", "./public");//* views klasörü yerine public klasörünü kull
 // app.use(express.urlencoded({extended:false}));
 app.use(express.urlencoded({ extended: true }));
 
+// serve static files
+app.use("/assets", express.static("./public/assets"));
+//* /assets uzantısı görürsen bunun için public klasöründeki assetse erişim sağla.
+
 //? user control
 app.use(require("./src/middlewares/userControl"));
 
