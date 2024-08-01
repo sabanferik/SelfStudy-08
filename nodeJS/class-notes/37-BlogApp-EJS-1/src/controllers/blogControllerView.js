@@ -54,7 +54,6 @@ module.exports.BlogCategoryController = {
 
 module.exports.BlogPostController = {
   list: async (req, res) => {
-    
     const data = await res.getModelList(BlogPost, [
       {
         path: "blogCategoryId",
@@ -66,18 +65,19 @@ module.exports.BlogPostController = {
     // console.log(req.query)
 
     const categories = await BlogCategory.find();
-    const recentPosts = await BlogPost.find().sort({createdAt: 'desc'}).limit(3)
-    console.log(req.url)
+    const recentPosts = await BlogPost.find()
+      .sort({ createdAt: "desc" })
+      .limit(3);
+    console.log(req.url);
 
-    if(req.url.includes('?')){
+    if (req.url.includes("?")) {
       //  req.url += '&'
-      if(req.url.includes('page=')){
-        req.url = req.url.split('&page=')[0]
+      if (req.url.includes("page=")) {
+        req.url = req.url.split("&page=")[0];
       }
-    }else{
-      req.url += '?'
+    } else {
+      req.url += "?";
     }
-
 
     // res.status(200).send({
     //   error: false,
@@ -90,7 +90,7 @@ module.exports.BlogPostController = {
       selectedCategory: req.query?.filter?.blogCategoryId,
       recentPosts,
       details: await res.getModelListDetails(BlogPost),
-      pageUrl : req.url
+      pageUrl: req.url,
     });
   },
   create: async (req, res) => {
@@ -128,9 +128,24 @@ module.exports.BlogPostController = {
   delete: async (req, res) => {
     const data = await BlogPost.deleteOne({ _id: req.params.postId });
     if (data.deletedCount) {
-      res.redirect('/post')
+      // console.log(req);
+      // console.log(
+      //   req.rawHeaders[
+      //     req.rawHeaders.findIndex((item) =>
+      //       item.includes("http://127.0.0.1:8000")
+      //     )
+      //   ]
+      // );
+      // res.redirect('/post')
+      res.redirect(
+        req.rawHeaders[
+          req.rawHeaders.findIndex((item) =>
+            item.includes("http://127.0.0.1:8000")
+          )
+        ]
+      );
     } else {
-      throw new Error('Post not found!')
+      throw new Error("Post not found!");
     }
   },
 
