@@ -73,12 +73,13 @@ module.exports.BlogPostController = {
     //   details: await res.getModelListDetails(BlogPost),
     //   blogs: data,
     // });
-    res.render('index',{
-      posts:data,
+    res.render("index", {
+      posts: data,
       categories,
-      selectedCategory:req.query?.filter?.blogCategoryId,
-      recentPosts
-    })
+      selectedCategory: req.query?.filter?.blogCategoryId,
+      recentPosts,
+      details: await res.getModelListDetails(BlogPost),
+    });
   },
   create: async (req, res) => {
     // req.body.userId = req.session.id
