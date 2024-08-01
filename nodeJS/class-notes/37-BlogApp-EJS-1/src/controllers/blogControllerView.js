@@ -111,16 +111,15 @@ module.exports.BlogPostController = {
     });
   },
   read: async (req, res) => {
-    // const data = await BlogPost.findById(req.params.id); //* sadce id secenegini kabul eder.
-    // const data = await BlogPost.findOne({published: false });
-    // const data = await BlogPost.findOne({ _id: req.params.id }); //* diğer seçenekleri de kabul eder.
-    const data = await BlogPost.findOne({ _id: req.params.id }).populate(
+    const data = await BlogPost.findOne({ _id: req.params.postId }).populate(
       "blogCategoryId"
     );
-    res.status(200).send({
-      error: false,
-      blog: data,
-    });
+    // res.status(200).send({
+    //   error: false,
+    //   blog: data,
+    // });
+// console.log("merhaba",data)
+    res.render('postRead',{post:data})
   },
   update: async (req, res) => {
     // const data = await BlogPost.findByIdAndUpdate(req.params.id,req.body,{new:true}) // {new:true} => return new data
@@ -150,7 +149,13 @@ module.exports.BlogPostController = {
           req.rawHeaders.findIndex((item) =>
             item.includes("http://127.0.0.1:8000")
           )
-        ]
+        ].includes(req.params.postId)
+          ? "/post"
+          : req.rawHeaders[
+              req.rawHeaders.findIndex((item) =>
+                item.includes("http://127.0.0.1:8000")
+              )
+            ]
       );
     } else {
       throw new Error("Post not found!");
