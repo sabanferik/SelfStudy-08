@@ -63,6 +63,8 @@ module.exports.BlogPostController = {
       { path: "userId" },
     ]);
 
+    console.log(req.query)
+
     const categories = await BlogCategory.find();
 
     // res.status(200).send({
@@ -73,6 +75,7 @@ module.exports.BlogPostController = {
     res.render('index',{
       posts:data,
       categories,
+      selectedCategory:req.query?.filter?.blogCategoryId
     })
   },
   create: async (req, res) => {
