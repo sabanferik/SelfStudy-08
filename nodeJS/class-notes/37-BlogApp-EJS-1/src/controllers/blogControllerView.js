@@ -63,6 +63,8 @@ module.exports.BlogPostController = {
       { path: "userId" },
     ]);
 
+    const categories = await BlogCategory.find();
+
     // res.status(200).send({
     //   error: false,
     //   details: await res.getModelListDetails(BlogPost),
@@ -70,6 +72,7 @@ module.exports.BlogPostController = {
     // });
     res.render('index',{
       posts:data,
+      categories,
     })
   },
   create: async (req, res) => {
