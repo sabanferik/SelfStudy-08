@@ -84,7 +84,15 @@ module.exports.BlogPostController = {
     //   details: await res.getModelListDetails(BlogPost),
     //   blogs: data,
     // });
-    res.render("index", {
+    // res.render("index", {
+    //   posts: data,
+    //   categories,
+    //   selectedCategory: req.query?.filter?.blogCategoryId,
+    //   recentPosts,
+    //   details: await res.getModelListDetails(BlogPost),
+    //   pageUrl: req.url,
+    // });
+    res.render("postList", {
       posts: data,
       categories,
       selectedCategory: req.query?.filter?.blogCategoryId,
