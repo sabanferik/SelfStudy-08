@@ -63,12 +63,13 @@ module.exports.BlogPostController = {
     ]);
 
     // console.log(req.query)
+    // console.log(req.session)
 
     const categories = await BlogCategory.find();
     const recentPosts = await BlogPost.find()
       .sort({ createdAt: "desc" })
       .limit(3);
-    console.log(req.url);
+    // console.log(req.url);
 
     if (req.url.includes("?")) {
       //  req.url += '&'
@@ -99,6 +100,7 @@ module.exports.BlogPostController = {
       recentPosts,
       details: await res.getModelListDetails(BlogPost),
       pageUrl: req.url,
+      user: req.session
     });
   },
   create: async (req, res) => {
