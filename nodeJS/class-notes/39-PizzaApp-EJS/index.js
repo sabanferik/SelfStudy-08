@@ -37,6 +37,17 @@ require('express-async-errors')
 /* ------------------------------------------------------- */
 // TEMPLATE:
 
+// let ejs = require("ejs");
+
+// ejs.delimiter = "?"; // % sembolü yerine ? sembolü kullan
+// ejs.openDelimiter = "{";// < sembolü yerine { sembolü kullan
+// ejs.closeDelimiter = "}";// > sembolü yerine } sembolü kullan
+
+app.set("view options",{
+  openDelimiter : "{",
+  closeDelimiter : "}"
+})
+
 app.set('views', './public')
 app.set('view engine', 'ejs')
 
@@ -65,7 +76,7 @@ dbConnection()
 // Accept JSON:
 app.use(express.json())
 // Accept FormData
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 
 // Logger:
 app.use(require('./src/middlewares/logging'))
