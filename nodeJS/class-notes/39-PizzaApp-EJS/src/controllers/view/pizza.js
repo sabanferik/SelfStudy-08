@@ -112,6 +112,7 @@ module.exports = {
           "toppingIds"
         ),
         user: req.user,
+        toppings: await Topping.find()
       });
     }
   },
