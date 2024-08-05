@@ -32,6 +32,7 @@ module.exports = {
     if (req.method == "POST") {
       if (req.files) {
         const images = [];
+        console.log(req.files)
         req.files.forEach((image) => images.push("/uploads/" + image.filename)); //* upload ile gelen resimlerin ismini yakaladık
         //* db ye kaydetmek için req.body ye ekliyoruz
         req.body.images = req.body.images
@@ -40,6 +41,7 @@ module.exports = {
             : [req.body.images, ...images]
           : images; //* aynı anda hem string hem de upload olarak gönderebilsin
       }
+      console.log(req.body)
       const data = await Pizza.create(req.body);
 
       // res.status(201).send({
