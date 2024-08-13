@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className="bg-navbarColor text-sm px-4 flex justify-between">
       <div className="flex items-center">
-        <div>
+        <div className="flex items-center py-5 mr-4 ">
           <Link href="/" className="flex items-center">
             <img src="/clarusway-logo.png" width="150px" alt="" />
           </Link>

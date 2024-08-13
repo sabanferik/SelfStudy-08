@@ -5,7 +5,7 @@ import React from "react";
 const Users = () => {
   const userArr = [1, 2, 3, 4];
   return (
-    <div>
+    <div className="container mx-auto px-6 py-6">
       <h1 className="text-3xl font-bold underline text-center">
         Hello, this is Users Page
       </h1>
