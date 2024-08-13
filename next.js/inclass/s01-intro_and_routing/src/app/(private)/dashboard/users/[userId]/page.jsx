@@ -16,10 +16,19 @@ const UserDetail = ({ params }) => {
 
 export default UserDetail;
 
-//* dinamik sayfalar için meta-data oluşturma
+//* Return a list of `params` to populate the [slug] dynamic segment
+//* dinamik sayfaları static olarak üretme
 export async function generateStaticParams() {
   const userArr = [1, 2, 3, 4];
   return userArr.map((userId) => ({
     userId: userId.toString(),
   }));
+}
+
+//* dinamik sayfalar için meta-data oluşturma
+export async function generateMetadata({ params: { userId } }) {
+  return {
+    title: `User-${userId}`,
+    description: `This is the page of User-${userId}`,
+  };
 }
