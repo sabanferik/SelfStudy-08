@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const TeamItem = ({ email, avatar, first_name, last_name, id }) => {
+  const router = useRouter();
   return (
     <li className="flex justify-between gap-x-6 py-5">
       <div className="flex min-w-0 gap-x-4">
@@ -22,7 +25,10 @@ const TeamItem = ({ email, avatar, first_name, last_name, id }) => {
         </div>
       </div>
       <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-        <button className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+        <button
+          onClick={() => router.push("/team/" + id)}
+          className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
           View
         </button>
       </div>
