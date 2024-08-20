@@ -6,17 +6,17 @@
 const URL = `http://localhost:8080/users`;
 
 //* force cache
-// export const getUsers = async () => {
-//   const res = await fetch(URL);
-//   //    'force-cache' is the default, and can be omitted
-//   //    const res = await fetch(URL, { cache: 'force-cache' });
-//   if (!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error("Failed to fetch data");
-//   }
-//   const data = await res.json();
-//   return data;
-// };
+export const getUsers = async () => {
+  const res = await fetch(URL);
+  //    'force-cache' is the default, and can be omitted
+  //    const res = await fetch(URL, { cache: 'force-cache' });
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  const data = await res.json();
+  return data;
+};
 
 //* revalidate
 // export const getUsers = async () => {
@@ -32,20 +32,20 @@ const URL = `http://localhost:8080/users`;
 // };
 
 //* no-store
-export const getUsers = async () => {
-  const res = await fetch(URL, { cache: "no-store" });
-  //* This will fetch data dynamically, on every request.
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-  const data = await res.json();
-  return data;
-};
+// export const getUsers = async () => {
+//   const res = await fetch(URL, { cache: "no-store" });
+//   //* This will fetch data dynamically, on every request.
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error("Failed to fetch data");
+//   }
+//   const data = await res.json();
+//   return data;
+// };
 
 export const getUsersDetail = async (id) => {
-  const res = await fetch(`${URL}/${id}`, { cache: "no-store" });
-  //* This will fetch data dynamically, on every request.
+  const res = await fetch(`${URL}/${id}`);
+  
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");

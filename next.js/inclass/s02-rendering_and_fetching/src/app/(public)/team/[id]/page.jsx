@@ -14,3 +14,7 @@ const UserDetail = async ({ params: { id } }) => {
 };
 
 export default UserDetail;
+
+export async function generateStaticParams(){
+  
+}
