@@ -1,5 +1,5 @@
 import DetailCard from "@/components/DetailCard";
-import { getUsersDetail } from "@/helpers/apiFunctions";
+import { getUsers, getUsersDetail } from "@/helpers/apiFunctions";
 import React from "react";
 
 const UserDetail = async ({ params: { id } }) => {
@@ -15,6 +15,14 @@ const UserDetail = async ({ params: { id } }) => {
 
 export default UserDetail;
 
-export async function generateStaticParams(){
-  
+export async function generateStaticParams() {
+  const users = await getUsers();
+  return users.map((user) => ({ id: user.id.toString() }));
+}
+
+export async function generateMetadata({ params: { id } }) {
+  const person = await getUsersDetail(id);
+  return {
+    title: person.first_name + " " + person.last_name,
+  };
 }
