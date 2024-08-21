@@ -24,7 +24,7 @@ const TeamItem = ({ email, avatar, first_name, last_name, id }) => {
           </p>
         </div>
       </div>
-      <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+      <div className="shrink-0 flex flex-col items-end">
         <button
           onClick={() => router.push("/team/" + id)}
           className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
