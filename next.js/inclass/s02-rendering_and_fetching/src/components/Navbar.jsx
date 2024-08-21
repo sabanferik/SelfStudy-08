@@ -1,3 +1,4 @@
+"use client";
 import {
   Disclosure,
   DisclosureButton,
@@ -11,6 +12,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import avatar from "/public/avatar.png";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Dashboard", href: "/" },
@@ -24,6 +26,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  let pathname = usePathname(); 
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -61,7 +64,7 @@ export default function Navbar() {
                     href={item.href}
                     aria-current={item.current ? "page" : undefined}
                     className={classNames(
-                      item.current
+                      item.href === pathname
                         ? "bg-gray-900 text-white"
                         : "text-gray-300 hover:bg-gray-700 hover:text-white",
                       "rounded-md px-3 py-2 text-sm font-medium"
@@ -116,21 +119,20 @@ export default function Navbar() {
 
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pb-3 pt-2">
-          {navigation.map((item) => (
-            <DisclosureButton
+        {navigation.map((item) => (
+            <Link
               key={item.name}
-              as="a"
               href={item.href}
               aria-current={item.current ? "page" : undefined}
               className={classNames(
-                item.current
+                item.href === pathname
                   ? "bg-gray-900 text-white"
                   : "text-gray-300 hover:bg-gray-700 hover:text-white",
                 "block rounded-md px-3 py-2 text-base font-medium"
               )}
             >
-              {item.name}
-            </DisclosureButton>
+              <DisclosureButton>{item.name}</DisclosureButton>
+            </Link>
           ))}
         </div>
       </DisclosurePanel>
